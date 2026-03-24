@@ -1,0 +1,577 @@
+/* ========================================
+   游神 YÓUSHÉN — Design System
+   朱砂 × 纯黑 · 庙门打开的瞬间
+   ======================================== */
+
+/* ---------- Google Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,600&display=swap');
+
+/* ---------- Custom Properties ---------- */
+:root {
+    --bg: #080000;
+    --deep-red: #8B0000;
+    --vermilion: #C0392B;
+    --fire: #E74C3C;
+    --gold: #D4AF37;
+    --text: #FFFFFF;
+    --text-muted: rgba(255, 255, 255, 0.50);
+    --text-faint: rgba(255, 255, 255, 0.20);
+    --border: rgba(192, 57, 43, 0.30);
+    --card-bg: rgba(139, 0, 0, 0.08);
+
+    --serif-cn: 'Noto Serif SC', 'Songti SC', serif;
+    --serif-en: 'Playfair Display', Georgia, serif;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--serif-cn);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ==========================================
+   NAVIGATION
+   ========================================== */
+.site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px clamp(24px, 6vw, 56px);
+    z-index: 100;
+    background: transparent;
+    transition: background-color 0.4s, border-color 0.4s;
+    border-bottom: 1px solid transparent;
+}
+
+.site-nav.scrolled {
+    background: rgba(8, 0, 0, 0.92);
+    border-bottom-color: var(--vermilion);
+}
+
+.nav-logo {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.05em;
+}
+
+.nav-logo .cn {
+    color: var(--text);
+}
+
+.nav-logo .en {
+    color: var(--vermilion);
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links a {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text);
+    opacity: 0.85;
+    transition: color 0.3s, opacity 0.3s;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 1px;
+    background: var(--vermilion);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--vermilion);
+    opacity: 1;
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+}
+
+.nav-cta {
+    border: 1px solid var(--vermilion) !important;
+    padding: 8px 18px !important;
+    letter-spacing: 0.2em !important;
+    transition: background 0.3s, color 0.3s !important;
+}
+
+.nav-cta:hover {
+    background: var(--vermilion) !important;
+    color: var(--bg) !important;
+}
+
+/* ==========================================
+   HERO — 100vh
+   ========================================== */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+}
+
+/* Video background */
+.hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.40) saturate(1.2);
+    pointer-events: none;
+}
+
+/* Gradient overlays */
+.hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--bg) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 70% at 50% 50%, transparent 40%, rgba(8, 0, 0, 0.7) 100%);
+    pointer-events: none;
+}
+
+/* Main copy block */
+.hero-content {
+    position: absolute;
+    left: clamp(24px, 6vw, 80px);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.hero-kicker {
+    font-size: 11px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.hero-title {
+    line-height: 1;
+    margin-bottom: 1.2rem;
+}
+
+.hero-title .char-you,
+.hero-title .char-shen {
+    display: block;
+    font-weight: 700;
+    font-size: clamp(120px, 20vw, 240px);
+    line-height: 0.88;
+    letter-spacing: -0.02em;
+}
+
+.hero-title .char-you {
+    color: var(--text);
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.hero-title .char-shen {
+    color: var(--vermilion);
+    text-shadow:
+        0 0 60px rgba(192, 57, 43, 0.6),
+        0 0 120px rgba(192, 57, 43, 0.3);
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.hero-subtitle {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(14px, 1.8vw, 22px);
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Vertical heritage tag – left bottom */
+.hero-heritage {
+    position: absolute;
+    left: clamp(24px, 6vw, 80px);
+    bottom: clamp(28px, 5vh, 60px);
+    writing-mode: vertical-rl;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--text-faint);
+    z-index: 2;
+    opacity: 0;
+}
+
+/* Scroll indicator – right bottom */
+.scroll-hint {
+    position: absolute;
+    right: clamp(20px, 3vw, 40px);
+    bottom: clamp(28px, 5vh, 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+    opacity: 0;
+}
+
+.scroll-hint span {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    writing-mode: vertical-rl;
+}
+
+.scroll-mouse {
+    width: 20px;
+    height: 32px;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    position: relative;
+}
+
+.scroll-mouse::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.6);
+    animation: scrollPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+    0% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+
+    60% {
+        transform: translate(-50%, 10px);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
+/* ==========================================
+   CONTENT SECTIONS — Three Entries
+   ========================================== */
+.section-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--vermilion);
+    opacity: 0.6;
+}
+
+.chapters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.chapter-entry {
+    position: relative;
+    padding: clamp(40px, 5vw, 80px) clamp(24px, 3vw, 48px);
+    min-height: clamp(300px, 40vh, 500px);
+    border-right: 1px solid var(--border);
+    cursor: pointer;
+    overflow: hidden;
+    transition: background 0.4s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.chapter-entry:last-child {
+    border-right: none;
+}
+
+/* Top accent line on hover */
+.chapter-entry::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--vermilion);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s;
+}
+
+.chapter-entry:hover::before {
+    transform: scaleX(1);
+}
+
+.chapter-entry:hover {
+    background: rgba(139, 0, 0, 0.06);
+}
+
+/* Decorative background character */
+.chapter-deco {
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    font-size: clamp(120px, 18vw, 220px);
+    font-weight: 700;
+    color: var(--text-faint);
+    opacity: 0.4;
+    line-height: 1;
+    pointer-events: none;
+    transition: opacity 0.4s;
+}
+
+.chapter-entry:hover .chapter-deco {
+    opacity: 0.8;
+}
+
+.chapter-number {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: clamp(12px, 1.2vw, 16px);
+    color: var(--vermilion);
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.chapter-title-cn {
+    font-weight: 700;
+    font-size: clamp(26px, 3vw, 44px);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.chapter-title-en {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: clamp(14px, 1.5vw, 20px);
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.chapter-desc {
+    font-size: clamp(13px, 1.1vw, 16px);
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 36ch;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Hover arrow */
+.chapter-arrow {
+    margin-top: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.4s 0.1s, transform 0.4s 0.1s;
+}
+
+.chapter-entry:hover .chapter-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.chapter-arrow svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: var(--vermilion);
+    stroke-width: 2;
+}
+
+/* ==========================================
+   QUOTE / STATEMENT
+   ========================================== */
+.statement {
+    padding: clamp(80px, 12vh, 160px) clamp(24px, 6vw, 80px);
+    text-align: center;
+    position: relative;
+}
+
+.statement-text {
+    font-size: clamp(20px, 3vw, 40px);
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 20ch;
+    margin: 0 auto;
+    color: var(--text);
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.statement-text em {
+    font-family: var(--serif-en);
+    font-style: italic;
+    color: var(--vermilion);
+}
+
+.statement-line {
+    width: 40px;
+    height: 1px;
+    background: var(--vermilion);
+    margin: 2rem auto 0;
+    opacity: 0;
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+.site-footer {
+    border-top: 1px solid var(--border);
+    padding: clamp(32px, 5vh, 60px) clamp(24px, 6vw, 80px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--text-faint);
+    text-transform: uppercase;
+}
+
+.footer-right {
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.1em;
+}
+
+/* ==========================================
+   REVEAL ANIMATION UTILITY
+   ========================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+@media (max-width: 900px) {
+    .chapters {
+        grid-template-columns: 1fr;
+    }
+
+    .chapter-entry {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        min-height: auto;
+        padding: 48px 24px;
+    }
+
+    .chapter-entry:last-child {
+        border-bottom: none;
+    }
+
+    .chapter-deco {
+        font-size: 100px;
+        top: 10px;
+        right: 10px;
+    }
+
+    .hero-title .char-you,
+    .hero-title .char-shen {
+        font-size: clamp(80px, 28vw, 160px);
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .site-footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-heritage {
+        display: none;
+    }
+
+    .hero-title .char-you,
+    .hero-title .char-shen {
+        font-size: clamp(70px, 30vw, 120px);
+    }
+}

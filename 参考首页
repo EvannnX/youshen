@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Evan Xiao — Home</title>
+  <meta name="description"
+    content="Replica demo of a portfolio landing page with full-screen background video, left-aligned hero text, and transparent header." />
+  <link rel="icon" type="image/png" href="assets/images/general/logo.png" />
+
+
+  <!-- Web fonts (safe fallbacks included) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800;900&family=Playfair+Display:ital,wght@1,400;1,600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080b0e;
+      --text: #e8ecef;
+      --muted: #c8ced4;
+      --brand: #ffffff;
+      --header-blur: 8px;
+      --maxw: 1200px;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      line-height: 1.25;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility
+    }
+
+    /* ===== Header ===== */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      z-index: 50;
+      background: transparent;
+      transition: background-color .35s, box-shadow .35s, backdrop-filter .35s
+    }
+
+    .site-header.scrolled {
+      background: rgba(9, 12, 15, .55);
+      backdrop-filter: saturate(130%) blur(var(--header-blur));
+      box-shadow: 0 1px 0 rgba(255, 255, 255, .06) inset
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      text-decoration: none;
+      color: var(--brand);
+      font-weight: 900;
+      letter-spacing: .02em;
+      font-size: 1.1rem
+    }
+
+    .logo-mark {
+      width: 30px;
+      height: 30px;
+      border: 2px solid var(--brand);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: .9rem;
+      line-height: 1
+    }
+
+    .logo-img {
+      height: 30px;
+      width: auto;
+      display: block;
+      border-radius: 0
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--brand);
+      opacity: .92;
+      font-weight: 800;
+      letter-spacing: .12em;
+      font-size: .78rem;
+      margin: 0 12px;
+      text-transform: uppercase;
+      position: relative
+    }
+
+    nav a:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -6px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0;
+      transform: scaleX(.4);
+      transition: opacity .25s, transform .25s
+    }
+
+    nav a:hover {
+      opacity: 1
+    }
+
+    nav a:hover:after {
+      opacity: .6;
+      transform: scaleX(1)
+    }
+
+    .btn {
+      appearance: none;
+      border: 1px solid rgba(255, 255, 255, .28);
+      background: rgba(255, 255, 255, .06);
+      color: var(--brand);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      transition: transform .18s, background-color .25s, border-color .25s
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255, 255, 255, .45);
+      background: rgba(255, 255, 255, .12)
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 560px;
+      overflow: hidden
+    }
+
+    .hero .video-container {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 0;
+      background: url('assets/images/projects/robotic-arms-art/signal%202.jpg') center/cover no-repeat
+    }
+
+    .hero .video-container video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(.9) contrast(1.1) brightness(.86);
+      transform: scale(1.8);
+      transform-origin: center;
+      pointer-events: none
+    }
+
+    .hero .shade {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(60% 70% at 70% 50%, rgba(0, 0, 0, .05) 0%, rgba(0, 0, 0, .55) 80%), linear-gradient(180deg, rgba(0, 0, 0, .40) 0%, rgba(0, 0, 0, .55) 100%);
+      mix-blend-mode: multiply
+    }
+
+    .hero .halftone {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .25;
+      background: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, .08) 1px, rgba(255, 255, 255, 0) 1px) 0 0/3px 3px, radial-gradient(circle at 0 0, rgba(0, 0, 0, .25) 0, rgba(0, 0, 0, 0) 60%)
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr
+    }
+
+    .hero-copy {
+      position: absolute;
+      left: clamp(16px, 6vw, 56px);
+      top: clamp(80px, 14vh, 180px);
+      max-width: min(45ch, 45vw)
+    }
+
+    .lede {
+      font-family: "Playfair Display", Georgia, serif;
+      font-style: italic;
+      font-weight: 600;
+      letter-spacing: .01em;
+      font-size: clamp(18px, 2.1vw, 28px);
+      opacity: .95;
+      color: #e9eff6
+    }
+
+    .name {
+      margin: .4rem 0 0 0;
+      font-weight: 900;
+      font-size: clamp(42px, 6.6vw, 68px);
+      letter-spacing: -.01em;
+      line-height: 1.02
+    }
+
+    .roles {
+      margin: .65rem 0 0 0;
+      font-weight: 900;
+      font-size: clamp(36px, 5.2vw, 56px);
+      letter-spacing: -.01em;
+      line-height: 1.05
+    }
+
+    .amp {
+      display: block;
+      font-weight: 900;
+      font-size: clamp(36px, 5.2vw, 56px)
+    }
+
+    .subnote {
+      position: absolute;
+      left: clamp(16px, 6vw, 56px);
+      bottom: clamp(22px, 5vh, 48px);
+      max-width: 46ch;
+      font-size: clamp(14px, 1.6vw, 20px);
+      color: var(--muted);
+      font-family: "Playfair Display", Georgia, serif;
+      font-style: italic
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      right: 18px;
+      bottom: 20px;
+      width: 22px;
+      height: 34px;
+      border: 2px solid rgba(255, 255, 255, .6);
+      border-radius: 16px;
+      opacity: .6
+    }
+
+    .scroll-indicator:after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 6px;
+      border-radius: 2px;
+      background: #fff;
+      animation: scroll 1.6s ease-in-out infinite
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translate(-50%, 0)
+      }
+
+      60% {
+        transform: translate(-50%, 8px)
+      }
+
+      100% {
+        transform: translate(-50%, 0)
+      }
+    }
+
+    .section {
+      padding: 120px 24px;
+      max-width: var(--maxw);
+      margin-inline: auto
+    }
+
+    /* ===== Projects: per-row system (3-up or 2-up) ===== */
+    .projects {
+      padding-top: 40px
+    }
+
+    .projects-mast {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 24px 12px
+    }
+
+    .projects-title {
+      margin: 0;
+      line-height: 1.04;
+      max-width: 22ch
+    }
+
+    .projects-title .mute {
+      display: block;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: clamp(22px, 3.2vw, 44px)
+    }
+
+    .projects-title .fancy {
+      display: block;
+      font-family: "Playfair Display", Georgia, serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: clamp(28px, 4vw, 56px);
+      margin-top: -.15em
+    }
+
+    .projects-title .strong {
+      display: block;
+      font-weight: 900;
+      font-size: clamp(28px, 4.8vw, 56px);
+      letter-spacing: -.01em
+    }
+
+    .cards {
+      max-width: 1600px;
+      margin: 14px auto 0;
+      padding: 0 16px;
+      display: grid;
+      gap: 16px
+    }
+
+    .row {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(3, 1fr);
+      --row-h: clamp(280px, 34vw, 520px)
+    }
+
+    .row .card {
+      position: relative;
+      display: block;
+      height: var(--row-h);
+      border-radius: 18px;
+      overflow: hidden;
+      background: #111;
+      border: 1px solid rgba(255, 255, 255, .06);
+      box-shadow: 0 6px 28px rgba(0, 0, 0, .35);
+      isolation: isolate
+    }
+
+    .row .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transform: scale(1.02);
+      transition: transform .5s ease, filter .5s ease
+    }
+
+    .row .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, .55) 100%);
+      z-index: 1
+    }
+
+    .row .card:hover img {
+      transform: scale(1.06);
+      filter: saturate(1.05) brightness(1.02)
+    }
+
+    .label {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 14px;
+      z-index: 2;
+      color: #fff;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, .65)
+    }
+
+    .label .client {
+      display: block;
+      font-size: .85rem;
+      opacity: .9
+    }
+
+    .label h3 {
+      margin: 4px 0 0;
+      font-size: clamp(20px, 2.6vw, 30px);
+      font-weight: 800;
+      letter-spacing: -.01em
+    }
+
+    .row-2 {
+      grid-template-columns: 1fr 1fr
+    }
+
+    .row-2.wide-left {
+      grid-template-columns: 2fr 1fr
+    }
+
+    .row-2.wide-right {
+      grid-template-columns: 1fr 2fr
+    }
+
+    .row-3 {
+      grid-template-columns: repeat(3, 1fr)
+    }
+
+    /* responsive: match original site */
+    @media (max-width:1200px) {
+      .row-3 {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      .hero video {
+        animation: none
+      }
+
+      .scroll-indicator {
+        display: none
+      }
+    }
+
+    /* ===== Footer (reset to original-style) ===== */
+    .site-footer {
+      margin-top: 84px;
+      background: #0b0d0f;
+      border-top: 1px solid rgba(255, 255, 255, .08);
+      position: relative
+    }
+
+    .site-footer::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 80px;
+      background: radial-gradient(60% 100% at 50% 0%, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0))
+    }
+
+    .footer-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 36px 24px;
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      align-items: start;
+      gap: 36px
+    }
+
+    .site-footer .logo {
+      color: #fff;
+      gap: .4rem
+    }
+
+    .site-footer .logo .logo-img {
+      height: 44px;
+      width: auto;
+      border-radius: 0
+    }
+
+    .site-footer .logo span:not(.logo-mark) {
+      display: none
+    }
+
+    .cols {
+      display: flex;
+      gap: 64px;
+      grid-column: 9 / span 4;
+      justify-self: start
+    }
+
+    .col-title {
+      font-size: .85rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      opacity: .8;
+      margin-bottom: 10px
+    }
+
+    .col ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 8px
+    }
+
+    .col a {
+      color: var(--text);
+      text-decoration: none
+    }
+
+    .col a:hover {
+      text-decoration: underline
+    }
+
+    /* social png icon styles */
+    .col a.icon-link {
+      display: inline-block
+    }
+
+    .col .icon-img {
+      width: 40px;
+      height: 40px;
+      display: block;
+      opacity: .92
+    }
+
+    .col a.icon-link:hover .icon-img {
+      opacity: 1
+    }
+
+    .legal {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 24px 24px;
+      font-size: .85rem;
+      color: var(--muted)
+    }
+
+    @media (max-width:900px) {
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start
+      }
+
+      .cols {
+        gap: 32px
+      }
+    }
+
+    /* === Mobile Responsive Styles === */
+
+    /* iPad and tablets (768px - 1024px) */
+    @media (max-width:1024px) {
+      .row-3 {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .row-2.wide-left,
+      .row-2.wide-right {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .hero h1 {
+        font-size: clamp(36px, 8vw, 64px)
+      }
+
+      .hero .tagline {
+        font-size: clamp(14px, 2vw, 18px);
+        max-width: 90%
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 24px
+      }
+
+      .cols {
+        grid-column: 1;
+        flex-wrap: wrap;
+        gap: 32px
+      }
+    }
+
+    /* Small tablets and large phones (600px - 768px) */
+    @media (max-width:768px) {
+      :root {
+        --g: 12px
+      }
+
+      .site-header {
+        padding: 14px 16px
+      }
+
+      nav a {
+        margin: 0 8px;
+        font-size: .7rem
+      }
+
+      .hero {
+        max-height: 70vh
+      }
+
+      .hero h1 {
+        font-size: clamp(32px, 10vw, 48px)
+      }
+
+      .hero .tagline {
+        font-size: 14px;
+        padding: 0 16px
+      }
+
+      .scroll-indicator {
+        bottom: 20px
+      }
+
+      .section {
+        padding: 48px 16px
+      }
+
+      .row {
+        --row-h: clamp(200px, 50vw, 320px)
+      }
+
+      .row-3,
+      .row-2,
+      .row-2.wide-left,
+      .row-2.wide-right {
+        grid-template-columns: 1fr
+      }
+
+      .row .card .label h3 {
+        font-size: clamp(16px, 4vw, 22px)
+      }
+
+      .row .card .label .client {
+        font-size: .75rem
+      }
+
+      .mast {
+        padding: 28px 16px
+      }
+
+      .mast h2 {
+        font-size: clamp(24px, 6vw, 36px)
+      }
+
+      .mast p {
+        font-size: 14px
+      }
+
+      .footer-inner {
+        padding: 24px 16px
+      }
+
+      .cols {
+        flex-direction: column;
+        gap: 24px
+      }
+
+      .legal {
+        padding: 16px
+      }
+    }
+
+    /* iPhone and small phones (320px - 480px) */
+    @media (max-width:480px) {
+      :root {
+        --g: 10px
+      }
+
+      .site-header {
+        padding: 12px 14px
+      }
+
+      .logo-img {
+        height: 26px
+      }
+
+      nav {
+        display: none
+      }
+
+      .hero {
+        max-height: 60vh
+      }
+
+      .hero h1 {
+        font-size: clamp(28px, 12vw, 42px);
+        letter-spacing: -.02em
+      }
+
+      .hero .tagline {
+        font-size: 13px;
+        line-height: 1.5
+      }
+
+      .hero .eyebrow {
+        font-size: .65rem;
+        padding: 6px 12px
+      }
+
+      .scroll-indicator {
+        display: none
+      }
+
+      .section {
+        padding: 32px 14px
+      }
+
+      .mast {
+        padding: 20px 14px
+      }
+
+      .mast h2 {
+        font-size: clamp(22px, 7vw, 30px)
+      }
+
+      .row {
+        --row-h: clamp(180px, 60vw, 280px)
+      }
+
+      .row .card {
+        border-radius: 12px
+      }
+
+      .row .card .label {
+        left: 12px;
+        right: 12px;
+        bottom: 10px
+      }
+
+      .row .card .label h3 {
+        font-size: 16px
+      }
+
+      .row .card .label .client {
+        font-size: .7rem
+      }
+
+      .site-footer {
+        margin-top: 48px
+      }
+
+      .footer-inner {
+        padding: 20px 14px;
+        gap: 20px
+      }
+
+      .site-footer .logo .logo-img {
+        height: 36px
+      }
+
+      .col-title {
+        font-size: .8rem
+      }
+
+      .col ul {
+        gap: 6px
+      }
+
+      .col a {
+        font-size: .9rem
+      }
+
+      .col .icon-img {
+        width: 32px;
+        height: 32px
+      }
+
+      .legal {
+        font-size: .8rem;
+        padding: 12px 14px
+      }
+    }
+
+    /* Extra small phones (below 360px) */
+    @media (max-width:360px) {
+      .hero h1 {
+        font-size: 26px
+      }
+
+      .hero .tagline {
+        font-size: 12px
+      }
+
+      .row {
+        --row-h: clamp(160px, 55vw, 240px)
+      }
+
+      .row .card .label h3 {
+        font-size: 14px
+      }
+    }
+
+    .icons-vert {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: flex-start
+    }
+
+    /* === (仅新增) 让视频在卡片里像图片一样铺满并有同样的 hover 动效 === */
+    .row .card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transform: scale(1.02);
+      transform-origin: center;
+      transition: transform .5s ease, filter .5s ease
+    }
+
+    .row .card.card-video-robotic video {
+      transform: scale(1.8)
+    }
+
+    .row .card:hover video {
+      transform: scale(1.06);
+      filter: saturate(1.05) brightness(1.02)
+    }
+
+    .row .card.card-video-robotic:hover video {
+      transform: scale(1.86)
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header" id="siteHeader" aria-label="Primary"
+    style="background:transparent;backdrop-filter:none;box-shadow:none;">
+    <a class="logo" href="index.html#top" aria-label="Home">
+      <img class="logo-img" src="assets/images/general/logo.png" alt="Logo" />
+    </a>
+    <nav aria-label="Main">
+      <a href="projects.html">Projects</a>
+      <a href="about.html">About</a>
+      <a class="btn" href="mailto:hello@example.com">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ======= HERO / LANDING ======= -->
+  <main id="top" class="hero" aria-label="Landing section">
+    <div class="video-container" aria-hidden="true">
+      <video id="bgVideo" class="bg" autoplay muted loop playsinline webkit-playsinline preload="metadata"
+        poster="assets/images/projects/robotic-arms-art/signal%202.jpg" aria-hidden="true">
+        <source src="assets/images/projects/robotic-arms-art/signals-of-the-void.mp4" type="video/mp4" />
+        <source src="assets/images/projects/interactive-ai-powered-robot/ai-robot.hero.mp4" type="video/mp4" />
+        Your browser does not support the background video.
+      </video>
+    </div>
+    <div class="shade" aria-hidden="true"></div>
+    <div class="halftone" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="lede">Portfolio of</div>
+        <h1 class="name">Evan Xiao</h1>
+        <h2 class="roles">
+          HCI, UX/UI,<br>
+          Product Designer<br>
+          <span class="amp">&amp; Coder</span>
+        </h2>
+      </div>
+      <p class="subnote">NYU Shanghai junior majoring in Interactive Media Arts with a minor in Computer Science</p>
+      <span class="scroll-indicator" aria-hidden="true"></span>
+    </div>
+  </main>
+
+  <!-- ======= PROJECTS (full) ======= -->
+  <section id="projects" class="section projects" aria-label="Projects">
+    <div id="projectsSentinel"></div>
+    <header class="projects-mast">
+      <h2 class="projects-title">
+        <span class="mute">Some of my</span>
+        <span class="fancy">Favorite</span>
+        <span class="strong">Projects</span>
+        <span class="mute">I've Created in</span>
+        <span class="strong">the Last Few Years</span>
+      </h2>
+    </header>
+
+    <div class="cards">
+      <!-- Row 1: Interactive AI (wide) + Spiral Genesis -->
+      <div class="row row-2 wide-left" style="--row-h: clamp(320px, 34vw, 500px)">
+        <a href="interactive-ai-powered-robot.html" class="card" aria-label="Interactive AI-Powered Robot project">
+          <video autoplay muted loop playsinline webkit-playsinline preload="metadata"
+            poster="assets/images/projects/interactive-ai-powered-robot/ima-bot-blue.jpg">
+            <source src="assets/images/projects/interactive-ai-powered-robot/ai-robot.hero.mp4" type="video/mp4">
+            <source src="assets/images/projects/interactive-ai-powered-robot/ai-robot-2025-08-16.mp4" type="video/mp4">
+          </video>
+          <div class="label">
+            <span class="client">NYU Shanghai · Interactive Media Arts</span>
+            <h3>Interactive AI-Powered Robot</h3>
+          </div>
+        </a>
+        <a href="Spiral-Genesis.html" class="card">
+          <img src="assets/images/projects/Spiral-Genesis/DSC04515.JPG" alt="Spiral Genesis Kinetic Sculpture"
+            loading="lazy" />
+          <div class="label"><span class="client">NYU Shanghai · IMA</span>
+            <h3>Spiral Genesis</h3>
+          </div>
+        </a>
+      </div>
+
+      <!-- Row 2: VEX + Robotic Arms (wide) -->
+      <div class="row row-2 wide-right" style="--row-h: clamp(320px, 34vw, 500px)">
+        <a href="2024-2025-VEX-High-Stakes.html" class="card">
+          <img src="assets/images/projects/2024-2025-VEX-High-Stakes/IMG_9334.JPG" alt="VEX High Stakes Robot"
+            loading="lazy" />
+          <div class="label"><span class="client">NYU Shanghai · Robotics Club</span>
+            <h3>2024-2025 VEX High Stakes</h3>
+          </div>
+        </a>
+        <a href="robotic-arms-art.html" class="card card-video-robotic">
+          <video autoplay muted loop playsinline webkit-playsinline preload="metadata"
+            poster="assets/images/projects/robotic-arms-art/signal%202.jpg">
+            <source src="assets/images/projects/robotic-arms-art/signals-of-the-void.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="label"><span class="client">IMA × Franka Robotics</span>
+            <h3>Robotic Arms in Art</h3>
+          </div>
+        </a>
+      </div>
+
+      <!-- Row 3: 2-up, left double width -->
+      <div class="row row-2 wide-left" style="--row-h: clamp(300px, 30vw, 460px)">
+        <a href="Pulse.html" class="card">
+          <video autoplay muted loop playsinline webkit-playsinline preload="metadata"
+            poster="assets/images/projects/Pulse/截屏2025-03-24-17.19.13.png">
+            <source src="assets/images/projects/Pulse/Pulse-loop.mp4" type="video/mp4" />
+          </video>
+          <div class="label"><span class="client">Light Installation · NYU Shanghai</span>
+            <h3>Pulse — Refracted Light Score</h3>
+          </div>
+        </a>
+        <a href="Echoes.html" class="card" style="background:#0d1117">
+          <img
+            src="assets/images/projects/Echoes/lQDPJwlkjTu0obfNB9DNB9CwFndFp3RXG3gI-HpUjz4-AA_2000_2000_1200x1200@2x.jpg"
+            alt="Echoes - Gaze-Driven AR Heritage Experience" loading="lazy"
+            style="object-fit:cover;transform:scale(1.05);transform-origin:center" />
+          <div class="label"><span class="client">AR · AI · Cultural Heritage</span>
+            <h3>Echoes — Gaze-Driven Heritage AI</h3>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="site-footer" aria-label="Footer">
+    <div class="footer-inner">
+      <a class="logo" href="index.html#top" aria-label="Home"><img class="logo-img" src="assets/images/general/logo.png"
+          alt="Logo" /></a>
+      <div class="cols">
+        <div class="col">
+          <div class="col-title">Sitemap</div>
+          <ul>
+            <li><a href="index.html#top">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="mailto:hello@example.com">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col social-col">
+          <div class="icons-vert">
+            <a class="icon-link" href="https://www.linkedin.com/in/evan-xiao-4a6060309/" aria-label="LinkedIn"><img
+                class="icon-img" src="https://img.icons8.com/ios-glyphs/60/ffffff/linkedin.png" alt="LinkedIn"></a>
+            <a class="icon-link" href="https://www.instagram.com/evan_nn__" aria-label="Instagram"><img class="icon-img"
+                src="https://img.icons8.com/ios-glyphs/60/ffffff/instagram-new.png" alt="Instagram"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="legal">© <span id="year"></span> Evan Xiao</div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById('siteHeader');
+      const hero = document.querySelector('.hero');
+      const video = document.getElementById('bgVideo');
+      const sentinel = document.getElementById('projectsSentinel');
+
+      // === Header transparency: transparent over HERO, solid when project grid is under header ===
+      const applySentinelObserver = () => {
+        if (!sentinel) return;
+        const hh = header.getBoundingClientRect().height || 64;
+        const obs = new IntersectionObserver(([entry]) => {
+          // Solid header once we've scrolled PAST the sentinel (i.e., when it's no longer intersecting)
+          header.classList.toggle('scrolled', !entry.isIntersecting);
+        }, { rootMargin: `-${hh}px 0px 0px 0px`, threshold: 0 });
+        obs.observe(sentinel);
+      };
+      applySentinelObserver();
+      window.addEventListener('resize', applySentinelObserver, { passive: true });
+
+      // Pause video once hero is mostly out of view (saves power)
+      if ('IntersectionObserver' in window && video && hero) {
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(e => {
+            if (e.isIntersecting && e.intersectionRatio > 0.2) { video.play().catch(() => { }); }
+            else { try { video.pause(); } catch (_) { } }
+          });
+        }, { threshold: [0, 0.2, 0.5, 0.8, 1] });
+        io.observe(hero);
+      }
+
+      // iOS: ensure autoplay works when user returns to tab
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden && video && video.paused) { video.play().catch(() => { }); }
+      });
+
+      // Footer year
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+
+</html>
