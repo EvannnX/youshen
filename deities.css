@@ -145,7 +145,7 @@
 
 .duo-img-wrap {
     overflow: hidden;
-    aspect-ratio: 4/5;
+    aspect-ratio: 4/3;
 }
 
 .duo-img-wrap img {
@@ -534,9 +534,10 @@
 }
 
 .content-media--constrained img {
-    max-height: 500px;
+    max-height: 450px;
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
+    object-position: center 20%;
 }
 
 /* ==========================================
