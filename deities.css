@@ -161,6 +161,11 @@
     transform: scale(1.03);
 }
 
+.img-contain {
+    object-fit: contain !important;
+    background-color: var(--bg);
+}
+
 .duo-info {
     padding: clamp(16px, 2vw, 28px);
 }
