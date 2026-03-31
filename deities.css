@@ -1,0 +1,610 @@
+/* ========================================
+   游神 YÓUSHÉN — Deities Page Styles
+   朱砂 × 纯黑 · 神明图谱
+   ======================================== */
+
+/* ==========================================
+   PRINCE SHOWCASE — Large alternating cards
+   ========================================== */
+.prince-showcase {
+    padding: 0 clamp(24px, 6vw, 80px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(30px, 4vh, 60px);
+    margin-bottom: clamp(40px, 5vh, 80px);
+}
+
+.prince-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(30px, 4vw, 60px);
+    align-items: center;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: border-color 0.4s;
+}
+
+.prince-card:hover {
+    border-color: var(--vermilion);
+}
+
+.prince-card--reverse {
+    direction: rtl;
+}
+
+.prince-card--reverse > * {
+    direction: ltr;
+}
+
+.prince-img-wrap {
+    overflow: hidden;
+    height: 100%;
+    min-height: 400px;
+}
+
+.prince-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.85) saturate(1.1);
+    transition: filter 0.5s, transform 0.6s;
+}
+
+.prince-card:hover .prince-img-wrap img {
+    filter: brightness(1) saturate(1.2);
+    transform: scale(1.03);
+}
+
+.prince-info {
+    padding: clamp(24px, 3vw, 48px);
+}
+
+.prince-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 4px 12px;
+    margin-bottom: 1rem;
+}
+
+.prince-info h4 {
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.prince-parent {
+    font-size: 14px;
+    color: var(--vermilion);
+    font-style: italic;
+    font-family: var(--serif-en);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+}
+
+.prince-info p {
+    font-size: clamp(13px, 1.2vw, 16px);
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 0.8rem;
+}
+
+.prince-info p strong {
+    color: var(--text);
+}
+
+.prince-persona {
+    font-style: italic;
+    font-family: var(--serif-en);
+    border-left: 2px solid var(--deep-red);
+    padding-left: 12px;
+    color: var(--text-faint) !important;
+    font-size: 13px !important;
+}
+
+.prince-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.prince-stat span:first-child {
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 700;
+    color: var(--vermilion);
+    line-height: 1;
+}
+
+/* ==========================================
+   DUO SHOWCASE — Side-by-side pair cards
+   ========================================== */
+.duo-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(20px, 3vw, 40px);
+    padding: 0 clamp(24px, 6vw, 80px);
+    margin-bottom: clamp(40px, 5vh, 80px);
+}
+
+.duo-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: border-color 0.4s, transform 0.3s;
+}
+
+.duo-card:hover {
+    border-color: var(--vermilion);
+    transform: translateY(-3px);
+}
+
+.duo-img-wrap {
+    overflow: hidden;
+    aspect-ratio: 4/5;
+}
+
+.duo-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8) saturate(1.1);
+    transition: filter 0.5s, transform 0.5s;
+}
+
+.duo-card:hover .duo-img-wrap img {
+    filter: brightness(1) saturate(1.2);
+    transform: scale(1.03);
+}
+
+.duo-info {
+    padding: clamp(16px, 2vw, 28px);
+}
+
+.duo-info h4 {
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+
+.duo-alias {
+    display: block;
+    font-size: 12px;
+    color: var(--vermilion);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.8rem;
+}
+
+.duo-info p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+}
+
+.duo-info p strong {
+    color: var(--text);
+}
+
+.duo-meaning {
+    font-style: italic;
+    font-size: 12px !important;
+    color: var(--text-faint) !important;
+    border-top: 1px solid var(--border);
+    padding-top: 0.6rem;
+    margin-top: 0.5rem;
+}
+
+/* ==========================================
+   GENERALS GRID — 6-column compact grid
+   ========================================== */
+.generals-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: clamp(10px, 1.5vw, 20px);
+    padding: 0 clamp(24px, 6vw, 80px);
+    margin-bottom: clamp(30px, 4vh, 60px);
+}
+
+.general-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: border-color 0.4s, transform 0.3s;
+    text-align: center;
+}
+
+.general-card:hover {
+    border-color: var(--vermilion);
+    transform: translateY(-3px);
+}
+
+.general-img-wrap {
+    overflow: hidden;
+    aspect-ratio: 3/4;
+}
+
+.general-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8) saturate(1.1);
+    transition: filter 0.5s, transform 0.5s;
+}
+
+.general-card:hover .general-img-wrap img {
+    filter: brightness(1) saturate(1.2);
+    transform: scale(1.05);
+}
+
+.general-role {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 8px 2px;
+    color: var(--text);
+}
+
+.general-func {
+    display: block;
+    font-size: 11px;
+    color: var(--text-faint);
+    padding: 2px 8px 12px;
+    line-height: 1.4;
+}
+
+/* ==========================================
+   DEITY GALLERY — Auto-fill grid cards
+   ========================================== */
+.deity-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(16px, 2vw, 24px);
+    padding: 0 clamp(24px, 6vw, 80px);
+    margin-bottom: clamp(40px, 5vh, 80px);
+}
+
+.deity-gallery--compact {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.gallery-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: border-color 0.4s, transform 0.3s;
+}
+
+.gallery-card:hover {
+    border-color: var(--vermilion);
+    transform: translateY(-3px);
+}
+
+.gallery-img-wrap {
+    overflow: hidden;
+    aspect-ratio: 4/3;
+}
+
+.gallery-card--small .gallery-img-wrap {
+    aspect-ratio: 1/1;
+}
+
+.gallery-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8) saturate(1.1);
+    transition: filter 0.5s, transform 0.5s;
+}
+
+.gallery-card:hover .gallery-img-wrap img {
+    filter: brightness(1) saturate(1.2);
+    transform: scale(1.05);
+}
+
+.gallery-info {
+    padding: clamp(14px, 1.5vw, 24px);
+}
+
+.gallery-info h4 {
+    font-size: clamp(16px, 1.5vw, 20px);
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+
+.gallery-alias {
+    display: block;
+    font-size: 12px;
+    color: var(--vermilion);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6rem;
+    font-style: italic;
+    font-family: var(--serif-en);
+}
+
+.gallery-info p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+.gallery-info p strong {
+    color: var(--text);
+}
+
+/* ==========================================
+   DATA TABLE
+   ========================================== */
+.data-table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.data-table th {
+    text-align: left;
+    padding: 12px 16px;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    border-bottom: 2px solid var(--vermilion);
+    white-space: nowrap;
+}
+
+.data-table td {
+    padding: 12px 16px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+.data-table tr:hover td {
+    color: var(--text);
+    background: rgba(139, 0, 0, 0.04);
+}
+
+/* ==========================================
+   PROCESSION FLOW
+   ========================================== */
+.procession-flow {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
+    margin: 2rem 0;
+}
+
+.flow-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 8px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    text-align: center;
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.flow-item:hover {
+    border-color: var(--vermilion);
+    transform: translateY(-2px);
+}
+
+.flow-item--highlight {
+    border-color: var(--vermilion) !important;
+    background: rgba(192, 57, 43, 0.08);
+}
+
+.flow-num {
+    font-family: var(--serif-en);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--deep-red);
+    opacity: 0.6;
+    line-height: 1;
+}
+
+.flow-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+}
+
+.flow-item--highlight .flow-num {
+    color: var(--vermilion);
+    opacity: 1;
+}
+
+.flow-item--highlight .flow-label {
+    color: var(--text);
+    font-weight: 700;
+}
+
+/* ==========================================
+   GENERALS GRID VARIANTS
+   ========================================== */
+.generals-grid--2col {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.generals-grid--4col {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* ==========================================
+   CHILD TRIO — 3-column compact card layout
+   ========================================== */
+.child-trio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(16px, 2vw, 24px);
+    padding: 0 clamp(24px, 6vw, 80px);
+    margin-bottom: clamp(40px, 5vh, 80px);
+}
+
+.child-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: border-color 0.4s, transform 0.3s;
+}
+
+.child-card:hover {
+    border-color: var(--vermilion);
+    transform: translateY(-3px);
+}
+
+.child-img-wrap {
+    overflow: hidden;
+    aspect-ratio: 3/4;
+}
+
+.child-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8) saturate(1.1);
+    transition: filter 0.5s, transform 0.5s;
+}
+
+.child-card:hover .child-img-wrap img {
+    filter: brightness(1) saturate(1.2);
+    transform: scale(1.05);
+}
+
+.child-info {
+    padding: clamp(14px, 1.5vw, 24px);
+}
+
+.child-info h4 {
+    font-size: clamp(16px, 1.5vw, 20px);
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+
+.child-alias {
+    display: block;
+    font-size: 12px;
+    color: var(--vermilion);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6rem;
+    font-style: italic;
+    font-family: var(--serif-en);
+}
+
+.child-info p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 0.4rem;
+}
+
+.child-info p strong {
+    color: var(--text);
+}
+
+/* ==========================================
+   IMAGE POSITION UTILITY
+   ========================================== */
+.img-pos-top {
+    object-position: top !important;
+}
+
+/* ==========================================
+   CONSTRAINED MEDIA — Limit image height
+   ========================================== */
+.content-media--constrained {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.content-media--constrained img {
+    max-height: 500px;
+    width: 100%;
+    object-fit: contain;
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+@media (max-width: 900px) {
+    .prince-card {
+        grid-template-columns: 1fr;
+    }
+
+    .prince-card--reverse {
+        direction: ltr;
+    }
+
+    .prince-img-wrap {
+        min-height: 300px;
+    }
+
+    .duo-showcase {
+        grid-template-columns: 1fr;
+    }
+
+    .generals-grid,
+    .generals-grid--4col {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .child-trio {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .deity-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .deity-gallery--compact {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .procession-flow {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .generals-grid,
+    .generals-grid--4col {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .generals-grid--2col {
+        grid-template-columns: 1fr;
+    }
+
+    .child-trio {
+        grid-template-columns: 1fr;
+    }
+
+    .deity-gallery,
+    .deity-gallery--compact {
+        grid-template-columns: 1fr;
+    }
+
+    .procession-flow {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .prince-img-wrap {
+        min-height: 250px;
+    }
+}
