@@ -16,21 +16,12 @@
     content: '';
     position: absolute;
     inset: 0;
-    background:
-        linear-gradient(90deg, rgba(8, 0, 0, 0.76), rgba(8, 0, 0, 0.28) 48%, rgba(8, 0, 0, 0.72)),
-        linear-gradient(180deg, rgba(8, 0, 0, 0.18), rgba(8, 0, 0, 0.72) 78%, var(--bg)),
-        url('assets/神殿模型/神殿模型bg.jpg') center / cover no-repeat;
-    filter: brightness(0.78) saturate(1.18);
-    transform: scale(1.02);
+    background: url('assets/神殿模型/神殿模型bg.jpg') center / cover no-repeat;
     z-index: 0;
 }
 
 .temple-hall {
-    position: absolute;
-    inset: 0;
-    perspective: 900px;
-    overflow: hidden;
-    z-index: 1;
+    display: none;
 }
 
 .temple-hall::before,
@@ -320,16 +311,7 @@ model-viewer {
 }
 
 .altar-plinth {
-    position: absolute;
-    left: 50%;
-    bottom: 72px;
-    width: min(360px, 46vw);
-    height: 72px;
-    transform: translateX(-50%) perspective(420px) rotateX(58deg);
-    transform-origin: center bottom;
-    background: linear-gradient(90deg, rgba(139, 0, 0, 0.5), rgba(212, 175, 55, 0.28), rgba(139, 0, 0, 0.5));
-    border: 1px solid rgba(212, 175, 55, 0.24);
-    z-index: 1;
+    display: none;
 }
 
 .altar-plinth span {
