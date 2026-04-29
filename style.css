@@ -99,7 +99,7 @@ a {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: clamp(1rem, 2vw, 2rem);
 }
 
 .nav-links a {
@@ -314,7 +314,7 @@ a {
 }
 
 /* ==========================================
-   CONTENT SECTIONS — Three Entries
+   CONTENT SECTIONS — Chapter Entries
    ========================================== */
 .section-divider {
     width: 100%;
@@ -325,7 +325,7 @@ a {
 
 .chapters {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .chapter-entry {

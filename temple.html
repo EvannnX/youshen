@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>数字神殿 — 游神 · Yóushén</title>
+    <meta name="description" content="进入福州游神数字神殿，在正殿与廊列之间观看神明形象。" />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="history.css" />
+    <link rel="stylesheet" href="temple.css" />
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+
+<body>
+
+    <!-- ======= NAVIGATION ======= -->
+    <header class="site-nav" id="siteNav">
+        <a class="nav-logo" href="index.html">
+            <span class="cn">游神</span>
+            <span class="en">YÓUSHÉN</span>
+        </a>
+        <nav class="nav-links">
+            <a href="history.html">历史</a>
+            <a href="deities.html">神明</a>
+            <a href="deities.html#section8">游行</a>
+            <a href="temple.html" class="nav-cta nav-active">进入神殿</a>
+            <a href="en/temple.html">EN</a>
+        </nav>
+    </header>
+
+    <!-- ======= TEMPLE HERO ======= -->
+    <section class="temple-hero" id="templeHero">
+        <div class="temple-hall" aria-hidden="true">
+            <div class="temple-beam temple-beam--top"></div>
+            <div class="temple-column temple-column--left"></div>
+            <div class="temple-column temple-column--right"></div>
+            <div class="temple-roof"></div>
+            <div class="temple-altar-glow"></div>
+            <div class="temple-floor"></div>
+            <div class="temple-gate-lines"></div>
+        </div>
+        <div class="hero-gradient"></div>
+        <div class="hero-vignette"></div>
+
+        <div class="history-hero-content temple-hero-content">
+            <div class="history-kicker" id="templeKicker">DIGITAL TEMPLE · 数字神殿</div>
+            <h1 class="history-hero-title">
+                <span class="history-title-main" id="templeTitleMain">入殿</span>
+                <span class="history-title-sub" id="templeTitleSub">观神</span>
+            </h1>
+            <p class="history-hero-desc" id="templeDesc">灯火照见塔骨与神位<br>巡游归殿，诸神列席</p>
+        </div>
+
+        <a class="temple-enter" href="#sanctum" id="templeEnter">ENTER</a>
+    </section>
+
+    <!-- ======= INTRO STATEMENT ======= -->
+    <section class="history-intro temple-intro">
+        <div class="history-intro-inner reveal">
+            <p class="history-lead">
+                走入殿中，神明不再只是图谱中的条目。<em>正殿聚焦一尊神像</em>，廊列展开完整谱系，巡游中的角色在此各归其位。
+            </p>
+            <div class="history-lead-line"></div>
+        </div>
+    </section>
+
+    <!-- ======= SANCTUM VIEWER ======= -->
+    <section class="temple-sanctum" id="sanctum">
+        <div class="section-header reveal">
+            <span class="section-num">殿</span>
+            <div class="section-titles">
+                <h2 class="section-title-cn">正殿观像</h2>
+                <p class="section-title-en">Main Altar</p>
+                <p class="section-subtitle">一尊神明，一处神位，于殿心凝视其形貌与职司</p>
+            </div>
+        </div>
+
+        <div class="sanctum-layout">
+            <aside class="temple-index reveal" aria-label="神明索引">
+                <div class="index-heading">
+                    <span>神位索引</span>
+                    <strong id="modelCount">00</strong>
+                </div>
+                <div class="index-list" id="deityIndex"></div>
+            </aside>
+
+            <div class="altar-view reveal">
+                <div class="altar-frame">
+                    <div class="altar-backdrop" aria-hidden="true"></div>
+                    <model-viewer id="mainModel" camera-controls touch-action="pan-y" auto-rotate shadow-intensity="1"
+                        exposure="0.9" environment-image="neutral" loading="lazy"></model-viewer>
+                    <div class="model-fallback" id="modelFallback">
+                        <img id="fallbackImage" src="assets/神明图谱/马夫.jpg" alt="马夫" />
+                    </div>
+                    <div class="altar-plinth" aria-hidden="true">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="altar-meta">
+                    <div>
+                        <span class="altar-eyebrow" id="activeRole">巡游职役 · Horse Handler</span>
+                        <h3 id="activeName">马夫</h3>
+                    </div>
+                    <p id="activeDesc">马夫随队前行，牵引仪仗的节奏，也维系巡境中的秩序与方向。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ======= DEITY CORRIDOR ======= -->
+    <section class="history-section temple-corridor" id="corridor">
+        <div class="section-header reveal">
+            <span class="section-num">列</span>
+            <div class="section-titles">
+                <h2 class="section-title-cn">诸神廊列</h2>
+                <p class="section-title-en">Procession Gallery</p>
+                <p class="section-subtitle">从职役、世子到主神系统，巡游队列在殿内重新展开</p>
+            </div>
+        </div>
+
+        <div class="corridor-grid" id="corridorGrid"></div>
+    </section>
+
+    <!-- ======= FOOTER ======= -->
+    <footer class="site-footer">
+        <div class="footer-left">游神 · Yóushén</div>
+        <div class="footer-right">© <span id="footerYear"></span> Evan Xiao · Digital Heritage Project</div>
+    </footer>
+
+    <script src="temple.js"></script>
+</body>
+
+</html>

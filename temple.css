@@ -1,0 +1,511 @@
+/* ========================================
+   游神 YÓUSHÉN — Digital Temple
+   朱砂 × 纯黑 · 入殿观神
+   ======================================== */
+
+.temple-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 620px;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 50% 42%, rgba(212, 175, 55, 0.12), transparent 28%),
+        linear-gradient(180deg, #120101 0%, var(--bg) 72%);
+}
+
+.temple-hall {
+    position: absolute;
+    inset: 0;
+    perspective: 900px;
+    overflow: hidden;
+}
+
+.temple-hall::before,
+.temple-hall::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 28vw;
+    background:
+        linear-gradient(90deg, rgba(8, 0, 0, 0.95), rgba(139, 0, 0, 0.16), transparent),
+        repeating-linear-gradient(90deg, transparent 0 13%, rgba(212, 175, 55, 0.10) 13% 14%, transparent 14% 22%);
+    opacity: 0.85;
+}
+
+.temple-hall::before {
+    left: 0;
+}
+
+.temple-hall::after {
+    right: 0;
+    transform: scaleX(-1);
+}
+
+.temple-beam {
+    position: absolute;
+    left: 8vw;
+    right: 8vw;
+    height: 18px;
+    background: linear-gradient(90deg, transparent, var(--vermilion), var(--gold), var(--vermilion), transparent);
+    opacity: 0.65;
+    box-shadow: 0 0 40px rgba(192, 57, 43, 0.35);
+}
+
+.temple-beam--top {
+    top: 16vh;
+}
+
+.temple-roof {
+    position: absolute;
+    left: 50%;
+    top: 5vh;
+    width: min(860px, 78vw);
+    height: 28vh;
+    transform: translateX(-50%);
+    clip-path: polygon(50% 0, 100% 70%, 88% 100%, 12% 100%, 0 70%);
+    background:
+        linear-gradient(180deg, rgba(192, 57, 43, 0.42), rgba(139, 0, 0, 0.08)),
+        repeating-linear-gradient(90deg, rgba(212, 175, 55, 0.10) 0 2px, transparent 2px 46px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+    opacity: 0.72;
+}
+
+.temple-column {
+    position: absolute;
+    top: 18vh;
+    bottom: 8vh;
+    width: clamp(44px, 6vw, 86px);
+    background:
+        linear-gradient(90deg, rgba(8, 0, 0, 0.3), rgba(192, 57, 43, 0.62), rgba(212, 175, 55, 0.22), rgba(8, 0, 0, 0.4)),
+        repeating-linear-gradient(180deg, transparent 0 58px, rgba(212, 175, 55, 0.20) 58px 60px);
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    box-shadow: 0 0 38px rgba(192, 57, 43, 0.24);
+}
+
+.temple-column--left {
+    left: clamp(30px, 11vw, 170px);
+}
+
+.temple-column--right {
+    right: clamp(30px, 11vw, 170px);
+}
+
+.temple-altar-glow {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    width: min(620px, 70vw);
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.24), rgba(192, 57, 43, 0.14) 28%, transparent 62%);
+    filter: blur(4px);
+}
+
+.temple-floor {
+    position: absolute;
+    left: 50%;
+    right: auto;
+    bottom: -8vh;
+    width: 130vw;
+    height: 44vh;
+    transform: translateX(-50%) rotateX(62deg);
+    transform-origin: center bottom;
+    background:
+        linear-gradient(90deg, transparent 49.8%, rgba(212, 175, 55, 0.16) 50%, transparent 50.2%),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 9vw),
+        repeating-linear-gradient(0deg, rgba(192, 57, 43, 0.10) 0 1px, transparent 1px 7vh);
+    opacity: 0.86;
+}
+
+.temple-gate-lines {
+    position: absolute;
+    inset: 12vh 18vw 10vh;
+    border: 1px solid rgba(212, 175, 55, 0.16);
+    border-top-color: rgba(192, 57, 43, 0.34);
+    transform: perspective(900px) rotateX(3deg);
+}
+
+.temple-hero-content {
+    max-width: 720px;
+}
+
+.temple-enter {
+    position: absolute;
+    right: clamp(24px, 6vw, 80px);
+    bottom: clamp(32px, 6vh, 72px);
+    z-index: 4;
+    width: 84px;
+    aspect-ratio: 1;
+    border: 1px solid var(--vermilion);
+    display: grid;
+    place-items: center;
+    font-family: var(--serif-en);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    background: rgba(8, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateY(16px);
+    transition: background 0.3s, transform 0.3s, border-color 0.3s;
+}
+
+.temple-enter:hover {
+    background: rgba(192, 57, 43, 0.18);
+    border-color: var(--gold);
+    transform: translateY(-3px);
+}
+
+.temple-intro {
+    background: linear-gradient(to bottom, var(--bg), rgba(139, 0, 0, 0.05));
+}
+
+.temple-sanctum {
+    padding: clamp(60px, 8vh, 100px) clamp(24px, 6vw, 80px);
+}
+
+.sanctum-layout {
+    display: grid;
+    grid-template-columns: minmax(220px, 300px) 1fr;
+    gap: clamp(24px, 4vw, 56px);
+    align-items: stretch;
+}
+
+.temple-index {
+    border: 1px solid var(--border);
+    background: rgba(139, 0, 0, 0.06);
+    min-height: 520px;
+    max-height: 72vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.index-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 18px 18px 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.index-heading span {
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    color: var(--vermilion);
+}
+
+.index-heading strong {
+    font-family: var(--serif-en);
+    color: var(--gold);
+    font-size: 22px;
+}
+
+.index-list {
+    overflow: auto;
+    padding: 8px;
+}
+
+.index-button {
+    width: 100%;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--text-muted);
+    padding: 13px 10px;
+    text-align: left;
+    cursor: pointer;
+    font-family: var(--serif-cn);
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 10px;
+    align-items: center;
+    transition: background 0.25s, border-color 0.25s, color 0.25s;
+}
+
+.index-button:hover,
+.index-button.is-active {
+    color: var(--text);
+    background: rgba(192, 57, 43, 0.08);
+    border-color: var(--border);
+}
+
+.index-number {
+    font-family: var(--serif-en);
+    color: var(--deep-red);
+    font-weight: 700;
+}
+
+.index-button.is-active .index-number {
+    color: var(--vermilion);
+}
+
+.index-name {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.index-role {
+    display: block;
+    font-size: 11px;
+    color: var(--text-faint);
+    line-height: 1.35;
+    margin-top: 2px;
+}
+
+.altar-view {
+    min-width: 0;
+}
+
+.altar-frame {
+    position: relative;
+    min-height: min(72vh, 700px);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    background:
+        linear-gradient(180deg, rgba(139, 0, 0, 0.10), rgba(8, 0, 0, 0.9)),
+        radial-gradient(circle at 50% 40%, rgba(212, 175, 55, 0.16), transparent 42%);
+}
+
+.altar-backdrop {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, transparent 47%, rgba(212, 175, 55, 0.14) 50%, transparent 53%),
+        repeating-linear-gradient(90deg, transparent 0 10%, rgba(192, 57, 43, 0.11) 10% 10.3%, transparent 10.3% 20%),
+        radial-gradient(ellipse at center 32%, rgba(192, 57, 43, 0.22), transparent 58%);
+    opacity: 0.85;
+}
+
+model-viewer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: calc(100% - 92px);
+    z-index: 2;
+    --poster-color: transparent;
+}
+
+.model-fallback {
+    position: absolute;
+    inset: 0 0 92px;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    padding: clamp(28px, 4vw, 54px);
+}
+
+.model-fallback img {
+    max-width: min(380px, 74%);
+    max-height: 78%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: brightness(0.92) saturate(1.08) drop-shadow(0 34px 54px rgba(0, 0, 0, 0.65));
+}
+
+.altar-frame.has-model .model-fallback {
+    display: none;
+}
+
+.altar-plinth {
+    position: absolute;
+    left: 50%;
+    bottom: 72px;
+    width: min(360px, 46vw);
+    height: 72px;
+    transform: translateX(-50%) perspective(420px) rotateX(58deg);
+    transform-origin: center bottom;
+    background: linear-gradient(90deg, rgba(139, 0, 0, 0.5), rgba(212, 175, 55, 0.28), rgba(139, 0, 0, 0.5));
+    border: 1px solid rgba(212, 175, 55, 0.24);
+    z-index: 1;
+}
+
+.altar-plinth span {
+    position: absolute;
+    inset: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.altar-meta {
+    position: relative;
+    z-index: 3;
+    min-height: 92px;
+    margin-top: -92px;
+    padding: clamp(18px, 2.4vw, 28px);
+    border-top: 1px solid var(--border);
+    background: linear-gradient(90deg, rgba(8, 0, 0, 0.92), rgba(55, 4, 4, 0.9));
+    display: flex;
+    justify-content: space-between;
+    gap: 28px;
+    align-items: flex-end;
+}
+
+.altar-eyebrow {
+    display: block;
+    font-family: var(--serif-en);
+    font-size: 12px;
+    color: var(--vermilion);
+    letter-spacing: 0.12em;
+    margin-bottom: 6px;
+}
+
+.altar-meta h3 {
+    font-size: clamp(24px, 3vw, 42px);
+    line-height: 1.05;
+}
+
+.altar-meta p {
+    max-width: 46ch;
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.temple-corridor {
+    background:
+        linear-gradient(180deg, transparent, rgba(139, 0, 0, 0.04), transparent),
+        repeating-linear-gradient(90deg, transparent 0 11.8%, rgba(192, 57, 43, 0.06) 12%, transparent 12.2% 24%);
+}
+
+.corridor-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(16px, 2vw, 26px);
+}
+
+.model-card {
+    border: 1px solid var(--border);
+    background: rgba(139, 0, 0, 0.08);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, border-color 0.3s, background 0.3s;
+}
+
+.model-card:hover,
+.model-card.is-active {
+    transform: translateY(-4px);
+    border-color: var(--vermilion);
+    background: rgba(192, 57, 43, 0.10);
+}
+
+.model-card-figure {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at center 32%, rgba(212, 175, 55, 0.16), transparent 48%),
+        linear-gradient(180deg, rgba(8, 0, 0, 0.25), rgba(8, 0, 0, 0.9));
+}
+
+.model-card-figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.78) saturate(1.1);
+    transition: transform 0.5s, filter 0.5s;
+}
+
+.model-card:hover .model-card-figure img {
+    transform: scale(1.05);
+    filter: brightness(0.95) saturate(1.18);
+}
+
+.model-card-info {
+    padding: 16px 16px 18px;
+}
+
+.model-card-info h3 {
+    font-size: clamp(17px, 1.5vw, 22px);
+    line-height: 1.2;
+    margin-bottom: 6px;
+}
+
+.model-card-info span {
+    display: block;
+    color: var(--vermilion);
+    font-family: var(--serif-en);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+}
+
+.model-card-info p {
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+@media (max-width: 1100px) {
+    .corridor-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .altar-meta {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 900px) {
+    .temple-hero {
+        min-height: 560px;
+    }
+
+    .temple-column--left {
+        left: 18px;
+    }
+
+    .temple-column--right {
+        right: 18px;
+    }
+
+    .temple-gate-lines {
+        inset: 13vh 54px 10vh;
+    }
+
+    .sanctum-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .temple-index {
+        min-height: auto;
+        max-height: none;
+    }
+
+    .index-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .altar-frame {
+        min-height: 620px;
+    }
+}
+
+@media (max-width: 560px) {
+    .temple-hero {
+        min-height: 520px;
+    }
+
+    .temple-enter {
+        width: 66px;
+        right: 24px;
+    }
+
+    .corridor-grid,
+    .index-list {
+        grid-template-columns: 1fr;
+    }
+
+    .altar-frame {
+        min-height: 540px;
+    }
+
+    .altar-plinth {
+        width: 72vw;
+    }
+}
