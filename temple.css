@@ -9,9 +9,20 @@
     height: 100vh;
     min-height: 620px;
     overflow: hidden;
+    background: var(--bg);
+}
+
+.temple-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
     background:
-        radial-gradient(ellipse at 50% 42%, rgba(212, 175, 55, 0.12), transparent 28%),
-        linear-gradient(180deg, #120101 0%, var(--bg) 72%);
+        linear-gradient(90deg, rgba(8, 0, 0, 0.76), rgba(8, 0, 0, 0.28) 48%, rgba(8, 0, 0, 0.72)),
+        linear-gradient(180deg, rgba(8, 0, 0, 0.18), rgba(8, 0, 0, 0.72) 78%, var(--bg)),
+        url('assets/神殿模型/神殿模型bg.jpg') center / cover no-repeat;
+    filter: brightness(0.78) saturate(1.18);
+    transform: scale(1.02);
+    z-index: 0;
 }
 
 .temple-hall {
@@ -19,6 +30,7 @@
     inset: 0;
     perspective: 900px;
     overflow: hidden;
+    z-index: 1;
 }
 
 .temple-hall::before,
@@ -129,6 +141,7 @@
 
 .temple-hero-content {
     max-width: 720px;
+    z-index: 3;
 }
 
 .temple-enter {
@@ -264,19 +277,15 @@
     min-height: min(72vh, 700px);
     border: 1px solid var(--border);
     overflow: hidden;
-    background:
-        linear-gradient(180deg, rgba(139, 0, 0, 0.10), rgba(8, 0, 0, 0.9)),
-        radial-gradient(circle at 50% 40%, rgba(212, 175, 55, 0.16), transparent 42%);
+    background: #000;
 }
 
 .altar-backdrop {
     position: absolute;
     inset: 0;
-    background:
-        linear-gradient(90deg, transparent 47%, rgba(212, 175, 55, 0.14) 50%, transparent 53%),
-        repeating-linear-gradient(90deg, transparent 0 10%, rgba(192, 57, 43, 0.11) 10% 10.3%, transparent 10.3% 20%),
-        radial-gradient(ellipse at center 32%, rgba(192, 57, 43, 0.22), transparent 58%);
-    opacity: 0.85;
+    background: #000;
+    opacity: 1;
+    z-index: 0;
 }
 
 model-viewer {
