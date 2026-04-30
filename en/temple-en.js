@@ -36,14 +36,14 @@
             name: 'Prince Zhao',
             role: 'Prince Figure · Contemporary Icon',
             image: '../assets/神明图谱/赵世子.jpg',
-            model: '',
+            model: '../assets/神殿模型/赵世子.glb',
             desc: 'Side-parted hair and black-and-gold robes give Prince Zhao one of the most recognizable contemporary Youshen silhouettes.'
         },
         {
             name: 'Prince Zhang',
             role: 'Prince Figure · Zhang Lineage',
             image: '../assets/神明图谱/张世子.jpg',
-            model: '',
+            model: '../assets/神殿模型/张大世子.glb',
             desc: 'Prince Zhang carries a more composed and traditional presence within the expanding prince-figure lineage.'
         },
         {

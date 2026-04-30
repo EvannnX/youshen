@@ -36,14 +36,14 @@
             name: '赵世子',
             role: '世子团 · Prince Squad',
             image: 'assets/神明图谱/赵世子.jpg',
-            model: '',
+            model: 'assets/神殿模型/赵世子.glb',
             desc: '斜分刘海与黑色鎏金龙袍构成鲜明气质，是当代游神传播中最具辨识度的世子形象之一。'
         },
         {
             name: '张大世子',
             role: '世子团 · Zhang Prince',
             image: 'assets/神明图谱/张世子.jpg',
-            model: '',
+            model: 'assets/神殿模型/张大世子.glb',
             desc: '显灵公张元伯长子，神态端正而亲近，在世子谱系中保留更传统的仪容气质。'
         },
         {
