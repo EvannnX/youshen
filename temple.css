@@ -306,6 +306,26 @@ model-viewer {
     filter: brightness(0.92) saturate(1.08) drop-shadow(0 34px 54px rgba(0, 0, 0, 0.65));
 }
 
+.model-fallback.is-loading img,
+.model-fallback.is-error img {
+    display: none;
+}
+
+.model-fallback.is-loading::before,
+.model-fallback.is-error::before {
+    content: attr(data-message);
+    font-size: clamp(18px, 2.2vw, 30px);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--gold);
+    text-shadow: 0 0 34px rgba(212, 175, 55, 0.28);
+}
+
+.model-fallback.is-error::before {
+    color: var(--vermilion);
+    text-shadow: 0 0 34px rgba(192, 57, 43, 0.28);
+}
+
 .altar-frame.has-model .model-fallback {
     display: none;
 }

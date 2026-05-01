@@ -50,7 +50,7 @@
             name: '张二世子',
             role: '世子团 · Second Prince',
             image: 'assets/神明图谱/张二世子.jpg',
-            model: '',
+            model: 'assets/神殿模型/张二世子.glb',
             desc: '承接世子团的年轻化造型，在传统神格之外呈现更鲜明的当代审美。'
         },
         {
@@ -219,6 +219,11 @@
             fallbackImage.src = deity.image;
             fallbackImage.alt = deity.name;
         }
+        if (modelFallback) {
+            modelFallback.classList.toggle('is-loading', Boolean(deity.model));
+            modelFallback.classList.remove('is-error');
+            modelFallback.dataset.message = deity.model ? '模型加载中' : '';
+        }
 
         if (mainModel && altarFrame) {
             altarFrame.classList.remove('has-model');
@@ -236,10 +241,16 @@
         mainModel.addEventListener('load', () => {
             if (mainModel.getAttribute('src')) {
                 altarFrame.classList.add('has-model');
+                if (modelFallback) modelFallback.classList.remove('is-loading', 'is-error');
             }
         });
         mainModel.addEventListener('error', () => {
             altarFrame.classList.remove('has-model');
+            if (modelFallback) {
+                modelFallback.classList.remove('is-loading');
+                modelFallback.classList.add('is-error');
+                modelFallback.dataset.message = '模型加载失败';
+            }
         });
     }
 

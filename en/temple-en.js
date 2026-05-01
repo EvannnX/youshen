@@ -50,7 +50,7 @@
             name: 'Second Prince Zhang',
             role: 'Prince Figure · Younger Presence',
             image: '../assets/神明图谱/张二世子.jpg',
-            model: '',
+            model: '../assets/神殿模型/张二世子.glb',
             desc: 'A youthful figure whose styling shows how Youshen continues to absorb new visual language.'
         },
         {
@@ -219,6 +219,11 @@
             fallbackImage.src = deity.image;
             fallbackImage.alt = deity.name;
         }
+        if (modelFallback) {
+            modelFallback.classList.toggle('is-loading', Boolean(deity.model));
+            modelFallback.classList.remove('is-error');
+            modelFallback.dataset.message = deity.model ? 'Loading model' : '';
+        }
 
         if (mainModel && altarFrame) {
             altarFrame.classList.remove('has-model');
@@ -236,10 +241,16 @@
         mainModel.addEventListener('load', () => {
             if (mainModel.getAttribute('src')) {
                 altarFrame.classList.add('has-model');
+                if (modelFallback) modelFallback.classList.remove('is-loading', 'is-error');
             }
         });
         mainModel.addEventListener('error', () => {
             altarFrame.classList.remove('has-model');
+            if (modelFallback) {
+                modelFallback.classList.remove('is-loading');
+                modelFallback.classList.add('is-error');
+                modelFallback.dataset.message = 'Model failed to load';
+            }
         });
     }
 
