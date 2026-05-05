@@ -27,94 +27,94 @@
     const deities = [
         {
             name: 'Horse Handler',
-            role: 'Procession Attendant · Horse Handler',
+            role: 'Procession Role · Horse Handler',
             image: '../assets/神明图谱/马夫.jpg',
             model: '../assets/神殿模型/马夫.glb',
-            desc: 'The horse handler moves with the procession, holding rhythm, direction, and ritual order together.'
+            desc: 'The horse handler travels with the procession, helping set its pace, direction, and ritual order.'
         },
         {
             name: 'Prince Zhao',
-            role: 'Prince Figure · Contemporary Icon',
+            role: 'Prince Squad · Contemporary Icon',
             image: '../assets/神明图谱/赵世子.jpg',
             model: '../assets/神殿模型/赵世子.glb',
-            desc: 'Side-parted hair and black-and-gold robes give Prince Zhao one of the most recognizable contemporary Youshen silhouettes.'
+            desc: 'With side-parted hair and a black-and-gold dragon robe, Prince Zhao has become one of the most recognizable prince figures in contemporary Youshen culture.'
         },
         {
-            name: 'Prince Zhang',
-            role: 'Prince Figure · Zhang Lineage',
+            name: 'Elder Prince Zhang',
+            role: 'Prince Squad · Zhang Lineage',
             image: '../assets/神明图谱/张世子.jpg',
             model: '../assets/神殿模型/张大世子.glb',
-            desc: 'Prince Zhang carries a more composed and traditional presence within the expanding prince-figure lineage.'
+            desc: 'The eldest son of Zhang Yuanbo, Xianling Gong, he keeps a steadier and more traditional bearing within the Prince Squad.'
         },
         {
             name: 'Second Prince Zhang',
-            role: 'Prince Figure · Younger Presence',
+            role: 'Prince Squad · Younger Presence',
             image: '../assets/神明图谱/张二世子.jpg',
             model: '../assets/神殿模型/张二世子.glb',
-            desc: 'A youthful figure whose styling shows how Youshen continues to absorb new visual language.'
+            desc: 'His younger styling gives the Prince Squad a more contemporary look, showing how Youshen keeps absorbing new visual language.'
         },
         {
             name: 'Seventh Lord',
             role: 'Underworld Messenger · General Xie',
             image: '../assets/神明图谱/七爷.jpg',
             model: '',
-            desc: 'Tall, pale, and elongated, the Seventh Lord forms one half of a powerful underworld pair.'
+            desc: 'Tall, pale, and long-bodied, the Seventh Lord forms one half of the underworld pair with the Eighth Lord.'
         },
         {
             name: 'Eighth Lord',
             role: 'Underworld Messenger · General Fan',
             image: '../assets/神明图谱/八爷.jpg',
             model: '',
-            desc: 'Dark-faced and heavy in bearing, the Eighth Lord completes the visual contrast of the pair.'
+            desc: 'Dark-faced, shorter, and weightier in presence, the Eighth Lord completes the pair through strong ritual contrast.'
         },
         {
-            name: 'White Horse Lord',
-            role: 'Local Guardian · Territorial Deity',
+            name: 'Baima Zunwang',
+            role: 'Territorial Guardian · Local Protector',
             image: '../assets/神明图谱/白马尊王.jpg',
             model: '',
-            desc: 'A local guardian figure linking neighborhood, temple, and protected territory.'
+            desc: 'A representative territorial guardian, Baima Zunwang links neighborhood, temple, and the protected ritual boundary.'
         },
         {
             name: 'Nezha',
-            role: 'Youthful Deity · Child-God Presence',
+            role: 'Child Deity · Nezha',
             image: '../assets/神明图谱/哪吒.jpg',
             model: '',
-            desc: 'A quick, youthful divine image that brings speed and bright energy into the procession.'
+            desc: 'A lively child deity whose image brings speed, brightness, and youthful force into the procession.'
         },
         {
             name: 'Fuzhou City God',
-            role: 'City God · Patrol and Protection',
+            role: 'City God Procession · Urban Guardian',
             image: '../assets/神明图谱/福州城隍.jpg',
             model: '',
-            desc: 'The city-god tradition connects Youshen to older forms of urban protection and public authority.'
+            desc: 'The City God procession carries an older logic of urban protection, linking Youshen with civic order and local memory.'
         },
         {
-            name: 'Five Emperors',
-            role: 'Plague-Expelling Deities · Five Spirits',
+            name: 'Five Blessing Emperors',
+            role: 'Plague-Expelling Deities · Five Linggong',
             image: '../assets/神明图谱/五福大帝台湾.png',
             model: '',
-            desc: 'The Five Emperors form a central ritual system of protection, epidemic control, and blessing.'
+            desc: 'The Five Linggong system is one of the foundations of Fuzhou Youshen, turning plague-expelling power into protection and blessing for the community.'
         },
         {
             name: 'Guan Di',
             role: 'Martial God · Loyalty and Authority',
             image: '../assets/神明图谱/关帝.png',
             model: '',
-            desc: 'Red face, long beard, armor, and weaponry turn Guan Di into a solemn center of martial virtue.'
+            desc: 'Guan Di gathers loyalty and martial courage into one solemn image, marked by red face, long beard, armor, and weapon.'
         },
         {
             name: 'Marshal Ma',
-            role: 'Protector Marshal · Ritual Guardian',
+            role: 'Protector Marshal · Ritual Power',
             image: '../assets/神明图谱/马元帅.JPG',
             model: '',
-            desc: 'Marshal figures bring armor, weapons, and talismanic force into the visual language of protection.'
+            desc: 'Marshal figures often carry a protector role; armor, weapons, and ritual implements all heighten their commanding presence.'
         },
         {
             name: 'Baozhang Gong',
-            role: 'Opening Officer · Procession Order',
+            role: 'Path Opener · Procession Order',
             image: '../assets/神明图谱/保长公.jpg',
             model: '../assets/神殿模型/保长公.glb',
-            desc: 'Baozhang Gong moves near the front of the route, opening the way and carrying the memory of local order into the procession.'
+            desc: 'Baozhang Gong moves near the front, clearing the way, holding the line, and bringing memories of local order into the deity procession.'
         }
     ];
 
