@@ -603,9 +603,29 @@ a {
 }
 
 @media (min-width: 1600px) {
+    body {
+        font-size: 18px;
+    }
+
     .site-nav {
         padding-left: max(56px, calc((100vw - var(--layout-wide-max)) / 2 + 56px));
         padding-right: max(56px, calc((100vw - var(--layout-wide-max)) / 2 + 56px));
+    }
+
+    .nav-logo {
+        font-size: 1.18rem;
+    }
+
+    .nav-logo .en {
+        font-size: 0.86rem;
+    }
+
+    .nav-links a {
+        font-size: 0.82rem;
+    }
+
+    .nav-cta {
+        padding: 10px 22px !important;
     }
 
     .hero-content,
@@ -613,8 +633,24 @@ a {
         left: max(80px, calc((100vw - var(--layout-wide-max)) / 2 + 80px));
     }
 
+    .hero-kicker {
+        font-size: 13px;
+    }
+
+    .hero-subtitle {
+        font-size: 24px;
+    }
+
+    .hero-heritage {
+        font-size: 12px;
+    }
+
     .scroll-hint {
         right: max(40px, calc((100vw - var(--layout-wide-max)) / 2 + 40px));
+    }
+
+    .scroll-hint span {
+        font-size: 11px;
     }
 
     .chapters {
@@ -628,10 +664,43 @@ a {
         min-height: clamp(420px, 42vh, 620px);
     }
 
+    .chapter-number {
+        font-size: 18px;
+    }
+
+    .chapter-title-cn {
+        font-size: clamp(34px, 2.4vw, 52px);
+    }
+
+    .chapter-title-en {
+        font-size: 22px;
+    }
+
+    .chapter-desc {
+        font-size: 18px;
+        max-width: 38ch;
+    }
+
+    .chapter-arrow {
+        font-size: 14px;
+    }
+
+    .statement-text {
+        font-size: clamp(28px, 2.4vw, 46px);
+    }
+
     .statement,
     .site-footer {
         padding-left: max(80px, calc((100vw - var(--layout-wide-max)) / 2 + 80px));
         padding-right: max(80px, calc((100vw - var(--layout-wide-max)) / 2 + 80px));
+    }
+
+    .footer-left {
+        font-size: 14px;
+    }
+
+    .footer-right {
+        font-size: 13px;
     }
 }
 

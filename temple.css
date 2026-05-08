@@ -478,6 +478,8 @@ model-viewer {
 @media (min-width: 1600px) {
     .temple-enter {
         right: max(80px, calc((100vw - var(--layout-wide-max)) / 2 + 80px));
+        width: 92px;
+        font-size: 12px;
     }
 
     .temple-sanctum {
@@ -489,14 +491,58 @@ model-viewer {
         grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
     }
 
+    .index-heading span {
+        font-size: 14px;
+    }
+
+    .index-heading strong {
+        font-size: 26px;
+    }
+
+    .index-number {
+        font-size: 15px;
+    }
+
+    .index-name {
+        font-size: 17px;
+    }
+
+    .index-role {
+        font-size: 13px;
+    }
+
     .altar-frame {
         min-height: min(76vh, 820px);
+    }
+
+    .altar-eyebrow {
+        font-size: 14px;
+    }
+
+    .altar-meta h3 {
+        font-size: 46px;
+    }
+
+    .altar-meta p {
+        font-size: 16px;
     }
 
     .corridor-grid {
         max-width: var(--layout-max);
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .model-card-info h3 {
+        font-size: 24px;
+    }
+
+    .model-card-info span {
+        font-size: 14px;
+    }
+
+    .model-card-info p {
+        font-size: 15px;
     }
 }
 

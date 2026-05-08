@@ -554,6 +554,81 @@
         padding-left: 0;
         padding-right: 0;
     }
+
+    .prince-tag {
+        font-size: 12px;
+    }
+
+    .prince-info h4 {
+        font-size: 40px;
+    }
+
+    .prince-parent {
+        font-size: 16px;
+    }
+
+    .prince-info p {
+        font-size: 17px;
+    }
+
+    .prince-persona {
+        font-size: 15px !important;
+    }
+
+    .duo-info h4 {
+        font-size: 28px;
+    }
+
+    .duo-alias {
+        font-size: 14px;
+    }
+
+    .duo-info p {
+        font-size: 16px;
+    }
+
+    .duo-meaning {
+        font-size: 14px !important;
+    }
+
+    .general-role {
+        font-size: 15px;
+    }
+
+    .general-func {
+        font-size: 13px;
+    }
+
+    .gallery-info h4,
+    .child-info h4 {
+        font-size: 22px;
+    }
+
+    .gallery-alias,
+    .child-alias {
+        font-size: 14px;
+    }
+
+    .gallery-info p,
+    .child-info p {
+        font-size: 15px;
+    }
+
+    .data-table {
+        font-size: 16px;
+    }
+
+    .data-table th {
+        font-size: 13px;
+    }
+
+    .flow-num {
+        font-size: 24px;
+    }
+
+    .flow-label {
+        font-size: 14px;
+    }
 }
 
 /* ==========================================
