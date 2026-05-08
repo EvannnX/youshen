@@ -20,6 +20,9 @@
     --card-bg: rgba(139, 0, 0, 0.08);
     --layout-max: 1520px;
     --layout-wide-max: 1760px;
+    --scrollbar-track: #080000;
+    --scrollbar-thumb: rgba(192, 57, 43, 0.78);
+    --scrollbar-thumb-hover: rgba(212, 175, 55, 0.88);
 
     --serif-cn: 'Noto Serif SC', 'Songti SC', serif;
     --serif-en: 'Playfair Display', Georgia, serif;
@@ -35,23 +38,55 @@
 }
 
 html {
+    background: var(--bg);
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+    scrollbar-width: thin;
 }
 
 body {
+    min-height: 100vh;
     background: var(--bg);
     color: var(--text);
     font-family: var(--serif-cn);
     font-weight: 300;
     line-height: 1.6;
     overflow-x: hidden;
+    overscroll-behavior-y: none;
 }
 
 a {
     color: inherit;
     text-decoration: none;
+}
+
+* {
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+    scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--scrollbar-thumb-hover), var(--scrollbar-thumb));
+    border: 2px solid var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+*::-webkit-scrollbar-corner {
+    background: var(--scrollbar-track);
 }
 
 /* ==========================================
