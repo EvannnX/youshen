@@ -641,8 +641,9 @@
 
 @media (min-width: 1600px) {
     .history-hero-content {
-        left: max(80px, calc((100vw - var(--layout-max)) / 2 + 80px));
-        max-width: 820px;
+        left: clamp(80px, 7vw, 140px);
+        max-width: 1040px;
+        text-align: left;
     }
 
     .history-kicker {
@@ -650,15 +651,15 @@
     }
 
     .history-title-main {
-        font-size: clamp(80px, 8vw, 160px);
+        font-size: clamp(120px, 10vw, 230px);
     }
 
     .history-title-sub {
-        font-size: clamp(56px, 6vw, 116px);
+        font-size: clamp(84px, 7vw, 170px);
     }
 
     .history-hero-desc {
-        font-size: 22px;
+        font-size: 26px;
     }
 
     .history-intro,

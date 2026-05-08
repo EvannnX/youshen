@@ -630,15 +630,24 @@ a {
 
     .hero-content,
     .hero-heritage {
-        left: max(80px, calc((100vw - var(--layout-wide-max)) / 2 + 80px));
+        left: clamp(80px, 7vw, 140px);
+    }
+
+    .hero-content {
+        text-align: left;
     }
 
     .hero-kicker {
         font-size: 13px;
     }
 
+    .hero-title .char-you,
+    .hero-title .char-shen {
+        font-size: clamp(190px, 16vw, 360px);
+    }
+
     .hero-subtitle {
-        font-size: 24px;
+        font-size: 28px;
     }
 
     .hero-heritage {
