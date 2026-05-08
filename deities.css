@@ -545,6 +545,17 @@
     object-position: center 20%;
 }
 
+@media (min-width: 1600px) {
+    .prince-showcase,
+    .duo-showcase,
+    .generals-grid,
+    .deity-gallery,
+    .child-trio {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
 /* ==========================================
    RESPONSIVE
    ========================================== */

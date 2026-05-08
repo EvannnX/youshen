@@ -639,6 +639,25 @@
     transform: scaleX(1) !important;
 }
 
+@media (min-width: 1600px) {
+    .history-hero-content {
+        left: max(80px, calc((100vw - var(--layout-max)) / 2 + 80px));
+        max-width: 760px;
+    }
+
+    .history-intro,
+    .history-section,
+    .history-conclusion {
+        padding-left: max(80px, calc((100vw - var(--layout-max)) / 2));
+        padding-right: max(80px, calc((100vw - var(--layout-max)) / 2));
+    }
+
+    .history-section .deities-showcase {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
 /* ==========================================
    RESPONSIVE
    ========================================== */
