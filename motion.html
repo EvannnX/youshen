@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <title>实时动捕 — 游神 · Yóushén</title>
+    <meta name="description" content="通过摄像头识别用户骨架，并将动作实时映射到 3D 模型。" />
+
+    <link rel="stylesheet" href="style.css?v=20260508-hero" />
+    <link rel="stylesheet" href="motion.css?v=20260531-13" />
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.165.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.165.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script>
+        window.addEventListener('error', function (event) {
+            var status = document.getElementById('motionStatus');
+            var modelStatus = document.getElementById('modelStatus');
+            if (status) status.textContent = '页面脚本加载失败';
+            if (modelStatus) modelStatus.textContent = '3D 或识别模块加载失败';
+            console.error(event.error || event.message);
+        });
+        window.addEventListener('unhandledrejection', function (event) {
+            var status = document.getElementById('motionStatus');
+            if (status) status.textContent = '启动失败，请检查摄像头权限';
+            console.error(event.reason);
+        });
+    </script>
+</head>
+
+<body>
+
+    <header class="site-nav scrolled" id="siteNav">
+        <a class="nav-logo" href="index.html">
+            <span class="cn">游神</span>
+            <span class="en">YÓUSHÉN</span>
+        </a>
+        <nav class="nav-links">
+            <a href="history.html">历史</a>
+            <a href="deities.html">神明</a>
+            <a href="deities.html#section8">游行</a>
+            <a href="temple.html">进入神殿</a>
+            <a href="motion.html" class="nav-cta nav-active">实时动捕</a>
+            <a href="en/index.html">EN</a>
+        </nav>
+    </header>
+
+    <main class="motion-page">
+        <section class="motion-hero">
+            <div class="motion-copy">
+                <div class="motion-kicker">REAL-TIME RENDERING · POSE RETARGETING</div>
+                <h1>实时动作镜像</h1>
+                <p>页面打开后会自动启动摄像头，并把你的身体大关节动作同步到 3D 神像骨骼上。</p>
+            </div>
+
+            <div class="motion-status" id="motionStatus">正在准备摄像头</div>
+        </section>
+
+        <section class="motion-stage" aria-label="实时动捕舞台">
+            <div class="motion-camera is-mirrored">
+                <video id="cameraVideo" playsinline muted></video>
+                <canvas id="poseCanvas"></canvas>
+                <div class="motion-label">Camera Skeleton</div>
+            </div>
+
+            <div class="motion-render">
+                <canvas id="rigCanvas"></canvas>
+                <div class="motion-label">3D Retargeted Model</div>
+                <div class="motion-model-status" id="modelStatus">模型加载中</div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="motion.js?v=20260531-13"></script>
+</body>
+
+</html>
