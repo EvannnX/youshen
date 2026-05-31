@@ -3,7 +3,7 @@ import { PoseTracker, POSE_CONNECTIONS } from './src/pose/PoseTracker.js?v=20260
 import { AvatarLoader } from './src/avatar/AvatarLoader.js?v=20260531-13';
 import { HumanoidRetargeter } from './src/avatar/HumanoidRetargeter.js?v=20260531-13';
 
-const MODEL_URL = new URL('assets/实时渲染模型/traditional+opera+costume+3d+model.glb', import.meta.url).href;
+const MODEL_URL = new URL('assets/实时渲染模型/七爷动作.glb', import.meta.url).href;
 
 const AUTO_MIRROR = true;
 const RETARGET_OPTIONS = {
@@ -117,7 +117,7 @@ async function loadAvatar() {
     } catch (error) {
         console.error(error);
         setModelStatus('3D 神像加载失败');
-        setStatus('请检查 models/character.glb 路径');
+        setStatus('请检查实时渲染模型路径');
     }
 }
 
