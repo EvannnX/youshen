@@ -4,12 +4,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>数字神殿 — 游神 · Yóushén</title>
+    <title>数字神殿 — 游神  —  Yóushén</title>
     <meta name="description" content="进入福州游神数字神殿，在正殿与廊列之间观看神明形象。" />
 
     <link rel="stylesheet" href="style.css?v=20260508-hero" />
     <link rel="stylesheet" href="history.css?v=20260508-hero" />
-    <link rel="stylesheet" href="temple.css?v=20260508-type" />
+    <link rel="stylesheet" href="temple.css?v=20260915-context" />
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 
@@ -25,8 +25,8 @@
             <a href="history.html">历史</a>
             <a href="deities.html">神明</a>
             <a href="deities.html#section8">游行</a>
-            <a href="motion.html">动捕</a>
-            <a href="temple.html" class="nav-cta nav-active">进入神殿</a>
+            <a href="temple.html" class="nav-active">进入神殿</a>
+            <a href="motion.html" class="nav-cta">顶塔骨</a>
             <a href="en/temple.html">EN</a>
         </nav>
     </header>
@@ -37,7 +37,7 @@
         <div class="hero-vignette"></div>
 
         <div class="history-hero-content temple-hero-content">
-            <div class="history-kicker" id="templeKicker">DIGITAL TEMPLE · 数字神殿</div>
+            <div class="history-kicker" id="templeKicker">数字神殿</div>
             <h1 class="history-hero-title">
                 <span class="history-title-main" id="templeTitleMain">入殿</span>
                 <span class="history-title-sub" id="templeTitleSub">观神</span>
@@ -45,15 +45,20 @@
             <p class="history-hero-desc" id="templeDesc">灯火照见塔骨与神位<br>巡游归殿，诸神列席</p>
         </div>
 
-        <a class="temple-enter" href="#sanctum" id="templeEnter">ENTER</a>
+        <a class="temple-enter" href="#templeStory" id="templeEnter">ENTER</a>
     </section>
 
     <!-- ======= INTRO STATEMENT ======= -->
-    <section class="history-intro temple-intro">
+    <section class="history-intro temple-intro" id="templeStory">
         <div class="history-intro-inner reveal">
             <p class="history-lead">
-                走入殿中，神明不再只是图谱中的条目。<em>正殿聚焦一尊神像</em>，廊列展开完整谱系，巡游中的角色在此各归其位。
+                <em>游神从庙宇开始。</em>年节到来时，人们请出本境供奉的神明，神将与仪仗随行，在所属地域内巡游祈福，最终回銮入庙。不同村落拥有各自的主祀神与随行阵容，也由此形成福州丰富的游神面貌。
             </p>
+            <div class="temple-journey" aria-label="游神过程">
+                <span>请神出庙</span><i aria-hidden="true"></i>
+                <span>巡游祈福</span><i aria-hidden="true"></i>
+                <span>回銮入庙</span>
+            </div>
             <div class="history-lead-line"></div>
         </div>
     </section>
@@ -65,9 +70,46 @@
             <div class="section-titles">
                 <h2 class="section-title-cn">正殿观像</h2>
                 <p class="section-title-en">Main Altar</p>
-                <p class="section-subtitle">一尊神明，一处神位，于殿心凝视其形貌与职司</p>
+                <p class="section-subtitle">进入游神的神明体系，可以先从他们在巡游中的身份开始</p>
             </div>
         </div>
+
+        <div class="procession-context reveal">
+            <article class="procession-origin">
+                <span class="curation-kicker">FROM TEMPLE TO PROCESSION</span>
+                <h3>谁会走出庙门？</h3>
+                <p>巡游以地方供奉的主神为核心，世子、神将及其他随行角色共同组成神驾。主神通常乘轿出巡，许多神将则以塔骨形态由人挺行。</p>
+                <small>同一角色在不同村落、宫庙与节期中的关系和位置可能不同。</small>
+            </article>
+            <section class="procession-roles" aria-labelledby="rolesTitle">
+                <div class="roles-heading">
+                    <span class="curation-kicker">ROLES IN PROCESSION</span>
+                    <h3 id="rolesTitle">巡游中的四类身份</h3>
+                </div>
+                <div class="roles-grid">
+                    <article><b>01</b><strong>主神</strong><p>本境或庙宇所供奉的核心神明</p></article>
+                    <article><b>02</b><strong>世子与陪祀</strong><p>围绕主神形成的眷属与陪祀神</p></article>
+                    <article><b>03</b><strong>神将与部属</strong><p>随神驾巡行，常以塔骨形态出现</p></article>
+                    <article><b>04</b><strong>开道与仪仗</strong><p>引导队伍、清理道路并维持行进秩序</p></article>
+                </div>
+            </section>
+        </div>
+
+        <aside class="selection-note reveal" aria-labelledby="curationTitle">
+            <div class="selection-number" aria-hidden="true">
+                <strong>13</strong><span>代表角色</span>
+            </div>
+            <div class="curation-copy">
+                <span class="curation-kicker">WHY THESE THIRTEEN?</span>
+                <h3 id="curationTitle">为什么选择这十三位？</h3>
+                <p>福州各地的供奉组合随村落和境而变化。本页选取十三位具有代表性的神明与巡游角色，覆盖开道、世子、神将与地方主祀等不同身份，用来建立认识福州游神的第一组坐标。</p>
+            </div>
+            <div class="selection-order">
+                <span>本页观看顺序</span>
+                <p>开道角色 → 世子陪祀 → 神将部属 → 主祀与地方信仰</p>
+                <small>这是便于理解身份与职能的策展顺序，不是一套全福州统一的仪式队序。</small>
+            </div>
+        </aside>
 
         <div class="sanctum-layout">
             <aside class="temple-index reveal" aria-label="神明索引">
@@ -81,18 +123,19 @@
             <div class="altar-view reveal">
                 <div class="altar-frame">
                     <div class="altar-backdrop" aria-hidden="true"></div>
-                    <model-viewer id="mainModel" camera-controls touch-action="pan-y" auto-rotate shadow-intensity="1"
-                        exposure="0.9" environment-image="neutral" loading="lazy"></model-viewer>
+                    <model-viewer id="mainModel" camera-controls touch-action="pan-y" auto-rotate
+                        auto-rotate-delay="8000" rotation-per-second="12deg" camera-orbit="90deg 75deg auto"
+                        shadow-intensity="1" exposure="0.9" environment-image="neutral" loading="lazy"></model-viewer>
                     <div class="model-fallback" id="modelFallback">
-                        <img id="fallbackImage" src="assets/神明图谱/马夫.jpg" alt="马夫" />
+                        <img id="fallbackImage" src="assets/神明图谱/保长公.jpg" alt="保长公" />
                     </div>
                 </div>
                 <div class="altar-meta">
                     <div>
-                        <span class="altar-eyebrow" id="activeRole">巡游职役 · Horse Handler</span>
-                        <h3 id="activeName">马夫</h3>
+                        <span class="altar-eyebrow" id="activeRole">开道与仪仗  —  Procession Leader</span>
+                        <h3 id="activeName">保长公</h3>
                     </div>
-                    <p id="activeDesc">马夫随队前行，牵引仪仗的节奏，也维系巡境中的秩序与方向。</p>
+                    <p id="activeDesc">巡游中的前导角色。保长公通常位于队伍前方，与炮手、旗锣和高照等仪仗共同开路，引导神驾进入巡游路线。</p>
                 </div>
             </div>
         </div>
@@ -107,7 +150,7 @@
             <div class="section-titles">
                 <h2 class="section-title-cn">诸神廊列</h2>
                 <p class="section-title-en">Procession Gallery</p>
-                <p class="section-subtitle">从职役、世子到主神系统，巡游队列在殿内重新展开</p>
+                <p class="section-subtitle">从开道者到主祀神，十三位代表角色依巡游身份展开。点击神像，可查看其关系与巡游职能。</p>
             </div>
         </div>
 
@@ -116,11 +159,11 @@
 
     <!-- ======= FOOTER ======= -->
     <footer class="site-footer">
-        <div class="footer-left">游神 · Yóushén</div>
-        <div class="footer-right">© <span id="footerYear"></span> Evan Xiao · Digital Heritage Project</div>
+        <div class="footer-left">游神  —  Yóushén</div>
+        <div class="footer-right">© <span id="footerYear"></span> Evan Xiao  —  Digital Heritage Project</div>
     </footer>
 
-    <script src="temple.js"></script>
+    <script src="temple.js?v=20260915-front5"></script>
 </body>
 
 </html>

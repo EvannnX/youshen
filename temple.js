@@ -23,98 +23,112 @@
     const activeRole = document.getElementById('activeRole');
     const activeName = document.getElementById('activeName');
     const activeDesc = document.getElementById('activeDesc');
+    const FRONT_CAMERA_ORBIT = '90deg 75deg auto';
 
     const deities = [
         {
+            name: '保长公',
+            role: '巡游前导  —  Procession Leader',
+            stage: '开道与仪仗',
+            image: 'assets/神明图谱/保长公.jpg',
+            model: 'assets/神殿模型/保长公.glb',
+            desc: '巡游中的前导角色。保长公通常位于队伍前方，与炮手、旗锣和高照等仪仗共同开路，引导神驾进入巡游路线。'
+        },
+        {
             name: '马夫',
-            role: '巡游职役 · Horse Handler',
+            role: '开道角色  —  Path Opener',
+            stage: '开道与仪仗',
             image: 'assets/神明图谱/马夫.jpg',
             model: 'assets/神殿模型/马夫.glb',
-            desc: '马夫随队前行，牵引仪仗的节奏，也维系巡境中的秩序与方向。'
+            desc: '行进在神驾前方的开道角色。马夫手持马鞭，以往返跑跳和挥鞭动作清理道路，为后方的神将与主神开出巡游通道。'
         },
         {
             name: '赵世子',
-            role: '世子团 · Prince Squad',
+            role: '陪祀世子  —  Prince Zhao',
+            stage: '世子与陪祀',
             image: 'assets/神明图谱/赵世子.jpg',
             model: 'assets/神殿模型/赵世子.glb',
-            desc: '斜分刘海与黑色鎏金龙袍构成鲜明气质，是当代游神传播中最具辨识度的世子形象之一。'
+            desc: '五福大帝信仰体系中的世子之一。福州地方传说将他与振灵公赵光明联系在一起，在巡游中以陪祀神身份随神驾出行。'
         },
         {
             name: '张大世子',
-            role: '世子团 · Zhang Prince',
+            role: '陪祀世子  —  Elder Prince Zhang',
+            stage: '世子与陪祀',
             image: 'assets/神明图谱/张世子.jpg',
             model: 'assets/神殿模型/张大世子.glb',
-            desc: '显灵公张元伯长子，神态端正而亲近，在世子谱系中保留更传统的仪容气质。'
+            desc: '显灵公张元伯信仰体系中的世子，与张二世子共同构成福州游神中较为人熟知的世子形象。'
         },
         {
             name: '张二世子',
-            role: '世子团 · Second Prince',
+            role: '陪祀世子  —  Second Prince Zhang',
+            stage: '世子与陪祀',
             image: 'assets/神明图谱/张二世子.jpg',
             model: 'assets/神殿模型/张二世子.glb',
-            desc: '承接世子团的年轻化造型，在传统神格之外呈现更鲜明的当代审美。'
-        },
-        {
-            name: '七爷',
-            role: '阴司使者 · General Xie',
-            image: 'assets/神明图谱/七爷.jpg',
-            model: '',
-            desc: '白面高冠，身形修长，与八爷共同构成阴司使者的双重形象。'
-        },
-        {
-            name: '八爷',
-            role: '阴司使者 · General Fan',
-            image: 'assets/神明图谱/八爷.jpg',
-            model: '',
-            desc: '黑面短躯，威严沉重，与七爷一白一黑、一高一矮，形成强烈的仪式对照。'
-        },
-        {
-            name: '白马尊王',
-            role: '境主神 · Guardian Deity',
-            image: 'assets/神明图谱/白马尊王.jpg',
-            model: '',
-            desc: '地方境主神的代表之一，连接社区、宫庙与巡境秩序。'
+            desc: '显灵公张元伯信仰体系中的世子之一，经常与张大世子共同出现在福州游神的神将阵容中。'
         },
         {
             name: '哪吒',
-            role: '孩儿弟 · Nezha',
+            role: '童神将  —  Nezha',
+            stage: '神将与部属',
             image: 'assets/神明图谱/哪吒.jpg',
             model: '',
-            desc: '童神形象灵动明快，在巡游队列中带来鲜明的速度感与少年气。'
+            desc: '福州游神中常见的童神形象。在不同地方的神驾阵容中，他可以作为随行神将出现，具体关系与位置因境庙而异。'
         },
         {
-            name: '福州城隍',
-            role: '城隍巡游 · City God',
-            image: 'assets/神明图谱/福州城隍.jpg',
+            name: '七爷',
+            role: '随行神将  —  Seventh Lord',
+            stage: '神将与部属',
+            image: 'assets/神明图谱/七爷.jpg',
             model: '',
-            desc: '城隍出巡承载城市空间的守护逻辑，也让游神与地方治理记忆相互交叠。'
+            desc: '福州游神中常见的随行神将，通常与八爷成对出现。其神像常制成可由人挺行的塔骨，随主神巡行村境。'
         },
         {
-            name: '五福大帝',
-            role: '瘟神驱疫 · Five Emperors',
-            image: 'assets/神明图谱/五福大帝台湾.png',
+            name: '八爷',
+            role: '随行神将  —  Eighth Lord',
+            stage: '神将与部属',
+            image: 'assets/神明图谱/八爷.jpg',
             model: '',
-            desc: '五灵公系统是福州游神信仰的核心之一，从瘟神驱疫到护境赐福，构成巡游的神学根基。'
-        },
-        {
-            name: '关帝',
-            role: '忠义武神 · Guan Di',
-            image: 'assets/神明图谱/关帝.png',
-            model: '',
-            desc: '忠义与武勇凝结于关帝形象，红面长髯与甲胄兵器构成庄严的视觉中心。'
+            desc: '与七爷共同出现的随行神将，也是福州传统游神中常见的塔骨形象之一。'
         },
         {
             name: '马元帅',
-            role: '护法元帅 · Marshal Ma',
+            role: '护法神将  —  Marshal Ma',
+            stage: '神将与部属',
             image: 'assets/神明图谱/马元帅.JPG',
             model: '',
-            desc: '元帅类神明多具护法意味，甲胄、兵器与法器共同强化威仪。'
+            desc: '道教护法神将之一，在不同宫庙的神驾中具有镇护与威仪象征；是否随行以及具体位置会因境庙而异。'
         },
         {
-            name: '保长公',
-            role: '开道先锋 · Procession Officer',
-            image: 'assets/神明图谱/保长公.jpg',
-            model: 'assets/神殿模型/保长公.glb',
-            desc: '保长公行于队列前端，开路、压阵，也把乡土秩序带入神明巡境。'
+            name: '关帝',
+            role: '武神信仰  —  Guan Di',
+            stage: '主祀与地方信仰',
+            image: 'assets/神明图谱/关帝.png',
+            model: '',
+            desc: '广泛供奉的忠义武神，在福州部分境庙和迎神活动中也会出巡。在不同神驾中，关帝的主祀或陪祀关系需结合当地宫庙理解。'
+        },
+        {
+            name: '白马尊王',
+            role: '地方保护神  —  White Horse King',
+            stage: '主祀与地方信仰',
+            image: 'assets/神明图谱/白马尊王.jpg',
+            model: '',
+            desc: '福州重要的地方保护神之一。白马尊王信仰长期分布于福州及周边地区，各地境庙也形成了自己的祭祀与迎神传统。'
+        },
+        {
+            name: '福州城隍',
+            role: '城邑保护神  —  Fuzhou City God',
+            stage: '主祀与地方信仰',
+            image: 'assets/神明图谱/福州城隍.jpg',
+            model: '',
+            desc: '守护城邑的城隍神。福州城隍出巡将城市空间、地方秩序与巡境祈安的传统联系起来。'
+        },
+        {
+            name: '五福大帝',
+            role: '地方保护神  —  Five Emperors',
+            stage: '主祀与地方信仰',
+            image: 'assets/神明图谱/五福大帝台湾.png',
+            model: '',
+            desc: '福州重要的地方保护神信仰体系，与驱疫、祈安和保境传统关系密切。在长乐等地的游神活动中，五福大帝会与所属部将及其他神圣共同巡境。'
         }
     ];
 
@@ -138,6 +152,18 @@
             nav.classList.toggle('scrolled', !entry.isIntersecting);
         }, { threshold: 0.05 });
         navObserver.observe(hero);
+    }
+
+    if (mainModel && altarFrame) {
+        mainModel.addEventListener('load', showLoadedModel);
+        mainModel.addEventListener('error', () => {
+            altarFrame.classList.remove('has-model');
+            if (modelFallback) {
+                modelFallback.classList.remove('is-loading');
+                modelFallback.classList.add('is-error');
+                modelFallback.dataset.message = '模型加载失败';
+            }
+        });
     }
 
     renderTempleItems();
@@ -182,7 +208,7 @@
                 <span class="index-number">${String(index + 1).padStart(2, '0')}</span>
                 <span>
                     <span class="index-name">${deity.name}</span>
-                    <span class="index-role">${deity.role}</span>
+                    <span class="index-role">${deity.stage} ${deity.role}</span>
                 </span>
             `;
             deityIndex.appendChild(button);
@@ -195,6 +221,7 @@
                     <img src="${deity.image}" alt="${deity.name}" loading="lazy" />
                 </div>
                 <div class="model-card-info">
+                    <small>${deity.stage}</small>
                     <h3>${deity.name}</h3>
                     <span>${deity.role}</span>
                     <p>${deity.desc}</p>
@@ -226,32 +253,28 @@
         }
 
         if (mainModel && altarFrame) {
-            altarFrame.classList.remove('has-model');
             if (deity.model) {
+                const isAlreadyLoaded = mainModel.getAttribute('src') === deity.model && mainModel.loaded;
+                mainModel.setAttribute('camera-orbit', FRONT_CAMERA_ORBIT);
                 mainModel.setAttribute('src', deity.model);
                 mainModel.setAttribute('alt', deity.name);
+                if (isAlreadyLoaded) showLoadedModel();
+                else altarFrame.classList.remove('has-model');
             } else {
+                altarFrame.classList.remove('has-model');
                 mainModel.removeAttribute('src');
                 mainModel.removeAttribute('alt');
             }
         }
     }
 
-    if (mainModel && altarFrame) {
-        mainModel.addEventListener('load', () => {
-            if (mainModel.getAttribute('src')) {
-                altarFrame.classList.add('has-model');
-                if (modelFallback) modelFallback.classList.remove('is-loading', 'is-error');
-            }
-        });
-        mainModel.addEventListener('error', () => {
-            altarFrame.classList.remove('has-model');
-            if (modelFallback) {
-                modelFallback.classList.remove('is-loading');
-                modelFallback.classList.add('is-error');
-                modelFallback.dataset.message = '模型加载失败';
-            }
-        });
+    function showLoadedModel() {
+        if (!mainModel?.getAttribute('src') || !altarFrame) return;
+        mainModel.setAttribute('camera-orbit', FRONT_CAMERA_ORBIT);
+        mainModel.resetTurntableRotation?.();
+        mainModel.jumpCameraToGoal?.();
+        altarFrame.classList.add('has-model');
+        if (modelFallback) modelFallback.classList.remove('is-loading', 'is-error');
     }
 
     document.addEventListener('click', (event) => {

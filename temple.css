@@ -1,6 +1,6 @@
 /* ========================================
    游神 YÓUSHÉN — Digital Temple
-   朱砂 × 纯黑 · 入殿观神
+   朱砂 × 纯黑  —  入殿观神
    ======================================== */
 
 .temple-hero {
@@ -167,6 +167,154 @@
 
 .temple-sanctum {
     padding: clamp(60px, 8vh, 100px) clamp(24px, 6vw, 80px);
+}
+
+.temple-journey {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 2vw, 28px);
+    margin-top: clamp(28px, 4vw, 48px);
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+}
+
+.temple-journey i {
+    flex: 1 1 80px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(192, 57, 43, 0.3), var(--vermilion));
+}
+
+.procession-context {
+    max-width: var(--layout-wide-max);
+    margin: 0 auto clamp(24px, 3vw, 38px);
+    display: grid;
+    grid-template-columns: minmax(280px, 0.7fr) minmax(500px, 1.3fr);
+    border: 1px solid rgba(212, 175, 55, 0.28);
+    background: linear-gradient(115deg, rgba(139, 0, 0, 0.17), rgba(8, 0, 0, 0.84));
+}
+
+.procession-origin,
+.procession-roles,
+.curation-copy,
+.selection-order {
+    padding: clamp(22px, 2.8vw, 36px);
+}
+
+.procession-origin {
+    border-right: 1px solid rgba(212, 175, 55, 0.22);
+}
+
+.curation-kicker,
+.selection-order > span {
+    color: var(--vermilion);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+}
+
+.procession-origin h3,
+.roles-heading h3,
+.curation-copy h3 {
+    margin: 8px 0 10px;
+    font-size: clamp(24px, 2.4vw, 36px);
+}
+
+.procession-origin p,
+.procession-origin small,
+.curation-copy p,
+.selection-order p,
+.selection-order small,
+.roles-grid p {
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+.procession-origin small {
+    display: block;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(192, 57, 43, 0.18);
+    font-size: 12px;
+}
+
+.roles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 22px;
+    border-top: 1px solid rgba(192, 57, 43, 0.24);
+    border-left: 1px solid rgba(192, 57, 43, 0.24);
+}
+
+.roles-grid article {
+    min-height: 122px;
+    padding: 18px;
+    border-right: 1px solid rgba(192, 57, 43, 0.24);
+    border-bottom: 1px solid rgba(192, 57, 43, 0.24);
+}
+
+.roles-grid b {
+    display: block;
+    margin-bottom: 14px;
+    color: var(--vermilion);
+    font-family: var(--serif-en);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+}
+
+.roles-grid strong {
+    display: block;
+    color: var(--text);
+    font-size: 16px;
+}
+
+.roles-grid p {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.selection-note {
+    max-width: var(--layout-wide-max);
+    margin: 0 auto clamp(32px, 5vw, 58px);
+    display: grid;
+    grid-template-columns: 132px minmax(260px, 1.1fr) minmax(280px, 0.9fr);
+    border: 1px solid rgba(192, 57, 43, 0.24);
+    background: rgba(8, 0, 0, 0.58);
+}
+
+.selection-number {
+    padding: clamp(20px, 2.5vw, 32px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid rgba(192, 57, 43, 0.2);
+}
+
+.selection-number strong {
+    color: var(--gold);
+    font-family: var(--serif-en);
+    font-size: 56px;
+    line-height: 1;
+}
+
+.selection-number span {
+    color: var(--vermilion);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+}
+
+.selection-order {
+    border-left: 1px solid rgba(192, 57, 43, 0.18);
+}
+
+.selection-order p {
+    margin: 10px 0 8px;
+    color: var(--text);
+}
+
+.selection-order small {
+    display: block;
+    font-size: 12px;
 }
 
 .sanctum-layout {
@@ -419,6 +567,64 @@ model-viewer {
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s, border-color 0.3s, background 0.3s;
+}
+
+.model-card-info small {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+}
+
+@media (max-width: 900px) {
+    .procession-context {
+        grid-template-columns: 1fr;
+    }
+
+    .procession-origin {
+        border-right: 0;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.22);
+    }
+
+    .selection-note {
+        grid-template-columns: 96px 1fr;
+    }
+
+    .selection-order {
+        grid-column: 1 / -1;
+        border-left: 0;
+        border-top: 1px solid rgba(212, 175, 55, 0.18);
+    }
+}
+
+@media (max-width: 560px) {
+    .temple-journey {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .temple-journey i {
+        flex: 0 0 28px;
+        width: 1px;
+        margin-left: 4px;
+        background: linear-gradient(180deg, rgba(192, 57, 43, 0.3), var(--vermilion));
+    }
+
+    .roles-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .selection-note {
+        grid-template-columns: 1fr;
+    }
+
+    .selection-number {
+        align-items: flex-start;
+        border-right: 0;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.22);
+    }
 }
 
 .model-card:hover,

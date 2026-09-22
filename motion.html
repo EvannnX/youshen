@@ -2,82 +2,255 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="Cache-Control" content="no-store" />
-    <title>实时动捕 — 游神 · Yóushén</title>
-    <meta name="description" content="通过摄像头识别用户骨架，并将动作实时映射到 3D 模型。" />
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <meta http-equiv="Cache-Control" content="no-store" />
+ <title>顶塔骨 — 游神 Yóushén</title>
+ <meta name="description" content="通过摄像头识别用户骨架，并将动作实时映射到 3D 模型。" />
 
-    <link rel="stylesheet" href="style.css?v=20260508-hero" />
-    <link rel="stylesheet" href="motion.css?v=20260531-13" />
-    <script type="importmap">
-        {
-            "imports": {
-                "three": "https://unpkg.com/three@0.165.0/build/three.module.js",
-                "three/addons/": "https://unpkg.com/three@0.165.0/examples/jsm/"
-            }
-        }
-    </script>
-    <script>
-        window.addEventListener('error', function (event) {
-            var status = document.getElementById('motionStatus');
-            var modelStatus = document.getElementById('modelStatus');
-            if (status) status.textContent = '页面脚本加载失败';
-            if (modelStatus) modelStatus.textContent = '3D 或识别模块加载失败';
-            console.error(event.error || event.message);
-        });
-        window.addEventListener('unhandledrejection', function (event) {
-            var status = document.getElementById('motionStatus');
-            if (status) status.textContent = '启动失败，请检查摄像头权限';
-            console.error(event.reason);
-        });
-    </script>
+ <link rel="stylesheet" href="style.css?v=20260508-hero" />
+ <link rel="stylesheet" href="motion.css?v=20260915-guide" />
+ <script type="importmap">
+ {
+ "imports": {
+ "three": "https://unpkg.com/three@0.165.0/build/three.module.js",
+ "three/addons/": "https://unpkg.com/three@0.165.0/examples/jsm/"
+ }
+ }
+ </script>
+ <script>
+ window.addEventListener('error', function (event) {
+ var status = document.getElementById('motionStatus');
+ var modelStatus = document.getElementById('modelStatus');
+ if (status) status.textContent = '页面脚本加载失败';
+ if (modelStatus) modelStatus.textContent = '3D 或识别模块加载失败';
+ console.error(event.error || event.message);
+ });
+ window.addEventListener('unhandledrejection', function (event) {
+ var status = document.getElementById('motionStatus');
+ if (status) status.textContent = '启动失败，请检查摄像头权限';
+ console.error(event.reason);
+ });
+ </script>
 </head>
 
 <body>
 
-    <header class="site-nav scrolled" id="siteNav">
-        <a class="nav-logo" href="index.html">
-            <span class="cn">游神</span>
-            <span class="en">YÓUSHÉN</span>
-        </a>
-        <nav class="nav-links">
-            <a href="history.html">历史</a>
-            <a href="deities.html">神明</a>
-            <a href="deities.html#section8">游行</a>
-            <a href="temple.html">进入神殿</a>
-            <a href="motion.html" class="nav-cta nav-active">实时动捕</a>
-            <a href="en/index.html">EN</a>
-        </nav>
-    </header>
+ <header class="site-nav scrolled" id="siteNav">
+ <a class="nav-logo" href="index.html">
+ <span class="cn">游神</span>
+ <span class="en">YÓUSHÉN</span>
+ </a>
+ <nav class="nav-links">
+ <a href="history.html">历史</a>
+ <a href="deities.html">神明</a>
+ <a href="deities.html#section8">游行</a>
+ <a href="temple.html">进入神殿</a>
+ <a href="motion.html" class="nav-cta nav-active">顶塔骨</a>
+ <a href="en/index.html">EN</a>
+ </nav>
+ </header>
 
-    <main class="motion-page">
-        <section class="motion-hero">
-            <div class="motion-copy">
-                <div class="motion-kicker">REAL-TIME RENDERING · POSE RETARGETING</div>
-                <h1>实时动作镜像</h1>
-                <p>页面打开后会自动启动摄像头，并把你的身体大关节动作同步到 3D 神像骨骼上。</p>
-            </div>
+ <main class="motion-page" id="motionPage">
+ <section class="motion-onboarding" id="motionGuide" aria-labelledby="motionGuideTitle">
+ <div class="guide-heading">
+ <div>
+ <div class="motion-kicker">BEFORE YOU CARRY — 体验指南</div>
+ <p class="guide-step-label">01 / 03 — 先了解，再选择</p>
+ <h1 id="motionGuideTitle">如何顶起一尊<br>数字塔骨</h1>
+ </div>
+ <p class="guide-intro">整个体验约需一分钟。先选一尊已适配动作的神明，再允许摄像头、站入画面，最后用缓慢而清晰的动作唤起数字塔骨。</p>
+ </div>
 
-            <div class="motion-status" id="motionStatus">正在准备摄像头</div>
-        </section>
+ <div class="guide-grid">
+ <article class="guide-card">
+ <span>01</span>
+ <h2>认清适配状态</h2>
+ <p>只选择标有“可动捕”的神明。其他模型会保留在名单中并显示“适配中”，暂时不能进入实时体验。</p>
+ </article>
+ <article class="guide-card">
+ <span>02</span>
+ <h2>留出身体空间</h2>
+ <p>面对摄像头站立，让头部、肩膀、手肘、手腕和髋部留在画面中；避免背光与多人入镜。</p>
+ </article>
+ <article class="guide-card">
+ <span>03</span>
+ <h2>缓慢开始动作</h2>
+ <p>允许摄像头后先保持正面站姿，再缓慢抬臂、转身。动作越稳定，塔骨的回应越清晰。</p>
+ </article>
+ </div>
 
-        <section class="motion-stage" aria-label="实时动捕舞台">
-            <div class="motion-camera is-mirrored">
-                <video id="cameraVideo" playsinline muted></video>
-                <canvas id="poseCanvas"></canvas>
-                <div class="motion-label">Camera Skeleton</div>
-            </div>
+ <div class="guide-footer">
+ <p><strong>隐私提示</strong> 摄像头画面仅在当前浏览器中用于实时姿态识别，本页不提供录制或上传功能。</p>
+ <button class="motion-button guide-enter-button" id="enterSelectionButton" type="button">我知道了，开始选择</button>
+ </div>
+ </section>
 
-            <div class="motion-render">
-                <canvas id="rigCanvas"></canvas>
-                <div class="motion-label">3D Retargeted Model</div>
-                <div class="motion-model-status" id="modelStatus">模型加载中</div>
-            </div>
-        </section>
-    </main>
+ <section class="motion-hero">
+ <div class="motion-copy">
+ <div class="motion-kicker">EMBODIED TǍGǓ EXPERIENCE</div>
+ <p class="guide-step-label">02 / 03 — 选择可动捕神明</p>
+ <h1>选择一尊神明</h1>
+ <p>每一尊塔骨都不只是造型，而是神明、工艺与社区记忆共同构成的身体。选择一尊神明，了解它的身份，并通过你的动作唤起它的数字形态。</p>
+ </div>
 
-    <script type="module" src="motion.js?v=20260531-13"></script>
+ <div class="motion-hero-side">
+ <button class="guide-back" id="showGuideButton" type="button">查看体验指南</button>
+ <div class="motion-status" id="motionStatus">请选择一尊神明</div>
+ </div>
+ </section>
+
+ <section class="motion-experience" aria-label="选择神明进入塔骨体验">
+ <aside class="deity-panel">
+ <div class="deity-panel-kicker">Choose a Deity to Carry</div>
+ <h2 id="deityName">七爷</h2>
+ <p class="deity-english" id="deityEnglish">Seventh Lord, Xie Bi'an</p>
+ <div class="motion-support" id="deitySupport">可动捕 — MOTION READY</div>
+
+ <div class="deity-meta">
+ <div>
+ <span>Role</span>
+ <strong id="deityRole">Underworld Messenger</strong>
+ </div>
+ <div>
+ <span>Visual Code</span>
+ <strong id="deityCode">Tall frame, white face, long tongue</strong>
+ </div>
+ <div>
+ <span>Movement Style</span>
+ <strong id="deityMovement">Weighted, ceremonial, slow</strong>
+ </div>
+ </div>
+
+ <p class="deity-story" id="deityStory">
+ 七爷是福州游神中最经典的塔骨形象之一，承担巡捕、护境与驱邪的仪式角色。
+ </p>
+
+ <div class="deity-actions">
+ <a class="motion-button ghost" id="storyLink" href="deities.html#section3">了解神明</a>
+ <button class="motion-button" id="tryCarryButton" type="button">下一步：站位与校准</button>
+ </div>
+
+ <div class="deity-selector" id="deitySelector" aria-label="选择塔骨模型"></div>
+ </aside>
+
+ <section class="motion-stage" id="motionStage" aria-label="实时动捕舞台">
+ <div class="motion-camera is-mirrored" id="cameraPane">
+ <video id="cameraVideo" playsinline muted></video>
+ <canvas id="poseCanvas"></canvas>
+ <div class="motion-label">Camera Skeleton</div>
+ </div>
+
+ <div class="motion-render">
+ <div class="carry-guide" id="carryGuide">
+ <div>Stand in the circle</div>
+ <p>保持上半身在摄像头范围内，缓慢移动你的手臂。</p>
+ </div>
+ <canvas id="rigCanvas"></canvas>
+ <div class="motion-label" id="renderLabel">Digital Tǎgǔ Preview</div>
+ <div class="motion-model-status" id="modelStatus">模型加载中</div>
+ </div>
+ </section>
+ </section>
+
+ <section class="calibration-panel" id="calibrationPanel" aria-label="摄像头校准">
+ <div>
+ <span>03 / 03 — Calibration</span>
+ <h2>站入互动区域</h2>
+ <p>保持肩膀、手肘和手腕在画面中。动作不需要很快，数字塔骨会以更庄重的方式回应你的身体。</p>
+ </div>
+ <button class="motion-button" id="enableCameraButton" type="button">启用摄像头，开始体验</button>
+ </section>
+
+ <section class="system-architecture" id="architecture" aria-label="顶塔骨系统架构图">
+ <div class="architecture-heading">
+ <div class="motion-kicker">PROTOTYPE ARCHITECTURE</div>
+ <h2>实时顶塔骨系统架构</h2>
+ <p>系统以浏览器端实时动捕为核心，把观众的身体动作转译为数字神将的骨骼姿态，并与神明内容库、3D 模型和舞台渲染连接。</p>
+ </div>
+
+ <div class="architecture-diagram">
+ <div class="architecture-lane">
+ <div class="lane-title">01 输入层</div>
+ <article class="arch-node is-user">
+ <span>USER STATE</span>
+ <h3>观众与神明选择</h3>
+ <p>选择七爷或武判官，确定塔骨身份、动作风格和对应 GLB 模型。</p>
+ </article>
+ <article class="arch-node">
+ <span>CAMERA STREAM</span>
+ <h3>浏览器摄像头</h3>
+ <p>通过 getUserMedia 获取视频流，作为动作识别和骨架预览的原始输入。</p>
+ </article>
+ </div>
+
+ <div class="architecture-connector" aria-hidden="true"><span></span></div>
+
+ <div class="architecture-lane is-core">
+ <div class="lane-title">02 感知与分析层</div>
+ <article class="arch-node is-primary">
+ <span>POSE TRACKER</span>
+ <h3>MediaPipe 姿态识别</h3>
+ <p>检测 33 个人体关键点，输出屏幕坐标、世界坐标和关键点可靠性。</p>
+ </article>
+ <article class="arch-node">
+ <span>CALIBRATION</span>
+ <h3>关键点过滤与校准</h3>
+ <p>判断肩、肘、腕、髋等核心节点是否稳定，降低遮挡和抖动带来的误差。</p>
+ </article>
+ </div>
+
+ <div class="architecture-connector" aria-hidden="true"><span></span></div>
+
+ <div class="architecture-lane is-core">
+ <div class="lane-title">03 映射与控制层</div>
+ <article class="arch-node is-primary">
+ <span>RETARGETING</span>
+ <h3>人体到塔骨骨骼映射</h3>
+ <p>将人体关节方向转换为神将骨骼旋转，处理镜像、朝向、深度和动作平滑。</p>
+ </article>
+ <article class="arch-node">
+ <span>MODEL LIBRARY</span>
+ <h3>神明模型与内容库</h3>
+ <p>AvatarLoader 加载 GLB，神明图谱提供身份、造型、仪式角色和动作语义。</p>
+ </article>
+ </div>
+
+ <div class="architecture-connector" aria-hidden="true"><span></span></div>
+
+ <div class="architecture-lane">
+ <div class="lane-title">04 输出体验层</div>
+ <article class="arch-node is-output">
+ <span>THREE.JS STAGE</span>
+ <h3>3D 数字塔骨舞台</h3>
+ <p>Three.js 渲染神将模型，实时展示动作同步状态和数字塔骨预览。</p>
+ </article>
+ <article class="arch-node">
+ <span>EXTENSIONS</span>
+ <h3>展陈扩展接口</h3>
+ <p>后续可接入语音讲解、仪式音效、灯光控制、投影屏幕或数据记录模块。</p>
+ </article>
+ </div>
+ </div>
+
+ <div class="architecture-feedback" aria-label="系统反馈链路">
+ <div>
+ <span>STATUS FEEDBACK</span>
+ <strong>摄像头权限 / 模型加载 / 动作同步状态</strong>
+ </div>
+ <div>
+ <span>CULTURAL CONTEXT</span>
+ <strong>神明身份 / 塔骨工艺 / 巡游角色说明</strong>
+ </div>
+ <div>
+ <span>FUTURE AGENT LAYER</span>
+ <strong>可扩展为语音问答、展览导览或多模态助手</strong>
+ </div>
+ </div>
+ </section>
+ </main>
+
+ <script type="module" src="motion.js?v=20260915-no-dot"></script>
 </body>
 
 </html>

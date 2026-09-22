@@ -27,91 +27,91 @@
     const deities = [
         {
             name: 'Horse Handler',
-            role: 'Procession Role · Horse Handler',
+            role: 'Procession Role  —  Horse Handler',
             image: '../assets/神明图谱/马夫.jpg',
             model: '../assets/神殿模型/马夫.glb',
             desc: 'The horse handler travels with the procession, helping set its pace, direction, and ritual order.'
         },
         {
             name: 'Prince Zhao',
-            role: 'Prince Squad · Contemporary Icon',
+            role: 'Prince Squad  —  Contemporary Icon',
             image: '../assets/神明图谱/赵世子.jpg',
             model: '../assets/神殿模型/赵世子.glb',
             desc: 'With side-parted hair and a black-and-gold dragon robe, Prince Zhao has become one of the most recognizable prince figures in contemporary Youshen culture.'
         },
         {
             name: 'Elder Prince Zhang',
-            role: 'Prince Squad · Zhang Lineage',
+            role: 'Prince Squad  —  Zhang Lineage',
             image: '../assets/神明图谱/张世子.jpg',
             model: '../assets/神殿模型/张大世子.glb',
             desc: 'The eldest son of Zhang Yuanbo, Xianling Gong, he keeps a steadier and more traditional bearing within the Prince Squad.'
         },
         {
             name: 'Second Prince Zhang',
-            role: 'Prince Squad · Younger Presence',
+            role: 'Prince Squad  —  Younger Presence',
             image: '../assets/神明图谱/张二世子.jpg',
             model: '../assets/神殿模型/张二世子.glb',
             desc: 'His younger styling gives the Prince Squad a more contemporary look, showing how Youshen keeps absorbing new visual language.'
         },
         {
             name: 'Seventh Lord',
-            role: 'Underworld Messenger · General Xie',
+            role: 'Underworld Messenger  —  General Xie',
             image: '../assets/神明图谱/七爷.jpg',
             model: '',
             desc: 'Tall, pale, and long-bodied, the Seventh Lord forms one half of the underworld pair with the Eighth Lord.'
         },
         {
             name: 'Eighth Lord',
-            role: 'Underworld Messenger · General Fan',
+            role: 'Underworld Messenger  —  General Fan',
             image: '../assets/神明图谱/八爷.jpg',
             model: '',
             desc: 'Dark-faced, shorter, and weightier in presence, the Eighth Lord completes the pair through strong ritual contrast.'
         },
         {
             name: 'Baima Zunwang',
-            role: 'Territorial Guardian · Local Protector',
+            role: 'Territorial Guardian  —  Local Protector',
             image: '../assets/神明图谱/白马尊王.jpg',
             model: '',
             desc: 'A representative territorial guardian, Baima Zunwang links neighborhood, temple, and the protected ritual boundary.'
         },
         {
             name: 'Nezha',
-            role: 'Child Deity · Nezha',
+            role: 'Child Deity  —  Nezha',
             image: '../assets/神明图谱/哪吒.jpg',
             model: '',
             desc: 'A lively child deity whose image brings speed, brightness, and youthful force into the procession.'
         },
         {
             name: 'Fuzhou City God',
-            role: 'City God Procession · Urban Guardian',
+            role: 'City God Procession  —  Urban Guardian',
             image: '../assets/神明图谱/福州城隍.jpg',
             model: '',
             desc: 'The City God procession carries an older logic of urban protection, linking Youshen with civic order and local memory.'
         },
         {
             name: 'Five Blessing Emperors',
-            role: 'Plague-Expelling Deities · Five Linggong',
+            role: 'Plague-Expelling Deities  —  Five Linggong',
             image: '../assets/神明图谱/五福大帝台湾.png',
             model: '',
             desc: 'The Five Linggong system is one of the foundations of Fuzhou Youshen, turning plague-expelling power into protection and blessing for the community.'
         },
         {
             name: 'Guan Di',
-            role: 'Martial God · Loyalty and Authority',
+            role: 'Martial God  —  Loyalty and Authority',
             image: '../assets/神明图谱/关帝.png',
             model: '',
             desc: 'Guan Di gathers loyalty and martial courage into one solemn image, marked by red face, long beard, armor, and weapon.'
         },
         {
             name: 'Marshal Ma',
-            role: 'Protector Marshal · Ritual Power',
+            role: 'Protector Marshal  —  Ritual Power',
             image: '../assets/神明图谱/马元帅.JPG',
             model: '',
             desc: 'Marshal figures often carry a protector role; armor, weapons, and ritual implements all heighten their commanding presence.'
         },
         {
             name: 'Baozhang Gong',
-            role: 'Path Opener · Procession Order',
+            role: 'Path Opener  —  Procession Order',
             image: '../assets/神明图谱/保长公.jpg',
             model: '../assets/神殿模型/保长公.glb',
             desc: 'Baozhang Gong moves near the front, clearing the way, holding the line, and bringing memories of local order into the deity procession.'
