@@ -24,6 +24,8 @@
     const activeName = document.getElementById('activeName');
     const activeDesc = document.getElementById('activeDesc');
     const FRONT_CAMERA_ORBIT = '90deg 75deg auto';
+    const backFacingScans = new Set(['保长公', '马夫', '赵世子', '张大世子', '张二世子', '七爷']);
+    const textPoseModels = new Set(['孩儿弟', '文状元', '八爷', '马元帅', '温元帅', '康元帅', '七爷', '华光大世子', '长郡主', '金龙太子', '哪吒', '小太子']);
 
     const deities = [
         {
@@ -319,9 +321,11 @@
 
         if (mainModel && altarFrame) {
             if (deity.model) {
-                const isAlreadyLoaded = mainModel.getAttribute('src') === deity.model && mainModel.loaded;
+                const source = textPoseModels.has(deity.name) ? `assets/temple-text-models/${deity.name}.glb` : deity.model;
+                const isAlreadyLoaded = mainModel.getAttribute('src') === source && mainModel.loaded;
                 mainModel.setAttribute('camera-orbit', FRONT_CAMERA_ORBIT);
-                mainModel.setAttribute('src', deity.model);
+                mainModel.setAttribute('orientation', backFacingScans.has(deity.name) ? '0deg 0deg -90deg' : '0deg 0deg 90deg');
+                mainModel.setAttribute('src', source);
                 mainModel.setAttribute('alt', deity.name);
                 if (isAlreadyLoaded) showLoadedModel();
                 else altarFrame.classList.remove('has-model');

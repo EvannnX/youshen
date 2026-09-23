@@ -309,7 +309,7 @@ async function replaceProps() {
 }
 replaceProps();
 
-function start() { active = true; $('intro').hidden = true; }
+function start() { active = true; const intro = $('intro'); if (intro) intro.hidden = true; }
 function select(index) {
   start(); selected = (index + stations.length) % stations.length;
   const s = stations[selected];
@@ -323,7 +323,7 @@ function select(index) {
   $('detailStage').textContent = s.data.stage;
   $('detailDesc').textContent = s.data.desc;
   $('zone').textContent = s.isAltar ? '五福主坛' : s.data.stage;
-  $('classicLink').href = `temple.html?deity=${encodeURIComponent(s.data.name)}#sanctum`;
+  $('classicLink').href = `temple-text.html?deity=${encodeURIComponent(s.data.name)}#sanctum`;
   document.querySelectorAll('#deityList button').forEach((b, i) => b.classList.toggle('active', i === selected));
   requestModel(selected); updateStatus();
   rotationEnabled = false; $('rotate').textContent = '旋转神像';
@@ -334,7 +334,7 @@ deities.forEach((d, i) => {
   b.append(n, d.name); b.addEventListener('click', () => select(i)); $('deityList').appendChild(b);
 });
 $('count').textContent = deities.length;
-$('start').onclick = () => { start(); $('help').showModal(); };
+if ($('start')) $('start').onclick = () => { start(); $('help').showModal(); };
 $('helpOpen').onclick = () => $('help').showModal();
 $('helpClose').onclick = $('helpDone').onclick = () => $('help').close();
 $('directoryOpen').onclick = () => { $('directory').hidden = !$('directory').hidden; $('detail').hidden = true; };

@@ -14,17 +14,16 @@
   <div class="vignette" aria-hidden="true"></div>
   <header class="topbar">
     <a href="index.html" class="brand">游神<span>YÓUSHÉN</span></a>
-    <nav><a href="temple.html#sanctum">图文神殿</a><button id="helpOpen" aria-label="操作指南">?</button></nav>
+    <nav><a href="temple-text.html#sanctum">图文神殿</a><button id="helpOpen" aria-label="操作指南">?</button></nav>
   </header>
-  <aside class="intro" id="intro"><button id="start" class="primary">开始巡览 <span>↗</span></button><small>拖动环顾 / W A S D 行走 / 点击神位观像</small></aside>
   <aside class="detail" id="detail" hidden aria-label="当前神像详情"><button id="detailClose" class="close" aria-label="关闭详情">×</button><span class="eyebrow" id="detailStage"></span><h2 id="detailName"></h2><details id="story" open><summary>神明故事</summary><p id="detailDesc"></p><small>本空间采用策展顺序，各地仪式队序有所不同。</small></details><div id="modelStatus" role="status"></div><div class="detail-actions"><button id="rotate">旋转神像</button><button id="retry" hidden>重新加载</button><a id="classicLink" href="temple.html#sanctum">图文观像 ↗</a></div></aside>
   <aside class="directory" id="directory" hidden><div class="drawer-title"><h2>神位索引</h2><button id="directoryClose" aria-label="关闭神位索引">×</button></div><div id="deityList"></div></aside>
   <div class="location"><span class="eyebrow">当前所在</span><strong id="zone">入殿门庭</strong><span id="roomStatus" role="status">正在点亮神殿…</span></div>
   <footer class="dock"><button id="directoryOpen">神位索引 <span id="count">21</span></button><div class="tour-controls"><button id="previous" aria-label="上一尊">←</button><button id="home">回到入口</button><button id="next" aria-label="下一尊">→</button></div><button id="altar">前往主坛 ↗</button></footer>
   <div class="move-pad" aria-label="触屏行走"><button data-move="forward" aria-label="前进">↑</button><div><button data-move="left" aria-label="左移">←</button><button data-move="back" aria-label="后退">↓</button><button data-move="right" aria-label="右移">→</button></div></div>
   <dialog id="help"><button id="helpClose" class="close" aria-label="关闭操作指南">×</button><span class="eyebrow">游览指南</span><h2>让灯火带你认识诸神</h2><p>拖动场景环顾，使用 W A S D 或方向键行走。手机上使用右下角方向按钮。</p><p>点击神像、名牌或索引即可前往展位。下方左右箭头按策展顺序巡览；“前往主坛”可直接到达五福大帝。</p><p>选中神像后可旋转观看。模型加载期间会保留图片，加载失败可重试。</p><button id="helpDone" class="primary">开始游览</button></dialog>
-  <div id="fatal" class="fatal" hidden><h2>暂时无法开启三维神殿</h2><p id="fatalMessage">请使用支持 WebGL 的浏览器访问。</p><a href="temple.html#sanctum">进入图文神殿 ↗</a></div>
-  <noscript><div class="fatal">请启用 JavaScript，或<a href="temple.html#sanctum">进入图文神殿</a>。</div></noscript>
+  <div id="fatal" class="fatal" hidden><h2>暂时无法开启三维神殿</h2><p id="fatalMessage">请使用支持 WebGL 的浏览器访问。</p><a href="temple-text.html#sanctum">进入图文神殿 ↗</a></div>
+  <noscript><div class="fatal">请启用 JavaScript，或<a href="temple-text.html#sanctum">进入图文神殿</a>。</div></noscript>
   <script type="module">
     import('./temple-space.js?v=20260923-original-2').catch(error => {
       console.error(error);
