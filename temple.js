@@ -67,12 +67,52 @@
             desc: '显灵公张元伯信仰体系中的世子之一，经常与张大世子共同出现在福州游神的神将阵容中。'
         },
         {
+            name: '华光大世子',
+            role: '陪祀世子  —  Prince Huaguang',
+            stage: '世子与陪祀',
+            image: 'assets/神明图谱/华光大世子.jpg',
+            model: 'assets/神殿模型/华光大世子.glb',
+            desc: '华光大帝信仰体系中的世子形象，常以额生神目、黑金龙甲与红袍示人，在巡游阵容中展现威仪与护卫意味。'
+        },
+        {
+            name: '金龙太子',
+            role: '陪祀太子  —  Golden Dragon Prince',
+            stage: '世子与陪祀',
+            image: 'assets/神明图谱/金龙太子.jpg',
+            model: 'assets/神殿模型/金龙太子.glb',
+            desc: '福州游神中的太子形象之一，常以金鳞龙袍与华丽冠饰塑造俊秀而庄重的形象，作为陪祀角色随神驾巡行。'
+        },
+        {
+            name: '长郡主',
+            role: '陪祀郡主  —  Princess Zhang',
+            stage: '世子与陪祀',
+            image: 'assets/神明图谱/张郡主.jpg',
+            model: 'assets/神殿模型/长郡主.glb',
+            desc: '显灵公张元伯信仰体系中的郡主形象，也是世子阵容中具有辨识度的女性陪祀角色。'
+        },
+        {
+            name: '孩儿弟',
+            role: '童神角色  —  Child Deity',
+            stage: '神将与部属',
+            image: 'assets/神明图谱/孩儿弟.jpg',
+            model: 'assets/神殿模型/孩儿弟.glb',
+            desc: '以大头、围兜、侧辫与笑容为特征的童神角色，在巡游中以活泼亲近的形象丰富神驾阵容。'
+        },
+        {
             name: '哪吒',
             role: '童神将  —  Nezha',
             stage: '神将与部属',
             image: 'assets/神明图谱/哪吒.jpg',
             model: 'assets/神殿模型/哪吒.glb',
             desc: '福州游神中常见的童神形象。在不同地方的神驾阵容中，他可以作为随行神将出现，具体关系与位置因境庙而异。'
+        },
+        {
+            name: '小太子',
+            role: '童神角色  —  Little Prince',
+            stage: '神将与部属',
+            image: 'assets/神明图谱/小太子.jpg',
+            model: 'assets/神殿模型/小太子.glb',
+            desc: '为少年参与游神而塑造的较小型太子形象，体量更轻，也让年轻一代能够进入巡游与传承的现场。'
         },
         {
             name: '七爷',

@@ -26,6 +26,13 @@
 
     const deities = [
         {
+            name: 'Baozhang Gong',
+            role: 'Path Opener  —  Procession Order',
+            image: '../assets/神明图谱/保长公.jpg',
+            model: '../assets/神殿模型/保长公.glb',
+            desc: 'Baozhang Gong moves near the front, clearing the way, holding the line, and bringing memories of local order into the deity procession.'
+        },
+        {
             name: 'Horse Handler',
             role: 'Procession Role  —  Horse Handler',
             image: '../assets/神明图谱/马夫.jpg',
@@ -52,6 +59,34 @@
             image: '../assets/神明图谱/张二世子.jpg',
             model: '../assets/神殿模型/张二世子.glb',
             desc: 'His younger styling gives the Prince Squad a more contemporary look, showing how Youshen keeps absorbing new visual language.'
+        },
+        {
+            name: 'Prince Huaguang',
+            role: 'Prince Squad  —  Huaguang Lineage',
+            image: '../assets/神明图谱/华光大世子.jpg',
+            model: '../assets/神殿模型/华光大世子.glb',
+            desc: 'A prince figure associated with the Huaguang tradition, recognizable by his divine third eye, black-and-gold dragon armor, and red robe.'
+        },
+        {
+            name: 'Golden Dragon Prince',
+            role: 'Prince Squad  —  Golden Dragon',
+            image: '../assets/神明图谱/金龙太子.jpg',
+            model: '../assets/神殿模型/金龙太子.glb',
+            desc: 'A richly dressed prince figure whose golden-scaled robe and ornate crown give the procession an elegant ceremonial presence.'
+        },
+        {
+            name: 'Princess Zhang',
+            role: 'Prince Squad  —  Princess Figure',
+            image: '../assets/神明图谱/张郡主.jpg',
+            model: '../assets/神殿模型/长郡主.glb',
+            desc: 'A princess figure in the Zhang Yuanbo tradition and a distinctive female presence within the wider prince group.'
+        },
+        {
+            name: 'Child Deity',
+            role: 'Child Deity  —  Procession Companion',
+            image: '../assets/神明图谱/孩儿弟.jpg',
+            model: '../assets/神殿模型/孩儿弟.glb',
+            desc: 'A cheerful child figure with a large head, bib, and side braids, bringing a lively and approachable presence to the procession.'
         },
         {
             name: 'Seventh Lord',
@@ -82,6 +117,13 @@
             desc: 'A lively child deity whose image brings speed, brightness, and youthful force into the procession.'
         },
         {
+            name: 'Little Prince',
+            role: 'Child Deity  —  Youth Participation',
+            image: '../assets/神明图谱/小太子.jpg',
+            model: '../assets/神殿模型/小太子.glb',
+            desc: 'A smaller and lighter prince figure designed for younger participants, opening a direct path for children to join the living tradition.'
+        },
+        {
             name: 'Fuzhou City God',
             role: 'City God Procession  —  Urban Guardian',
             image: '../assets/神明图谱/福州城隍.jpg',
@@ -108,13 +150,6 @@
             image: '../assets/神明图谱/马元帅.JPG',
             model: '../assets/神殿模型/马元帅.glb',
             desc: 'Marshal figures often carry a protector role; armor, weapons, and ritual implements all heighten their commanding presence.'
-        },
-        {
-            name: 'Baozhang Gong',
-            role: 'Path Opener  —  Procession Order',
-            image: '../assets/神明图谱/保长公.jpg',
-            model: '../assets/神殿模型/保长公.glb',
-            desc: 'Baozhang Gong moves near the front, clearing the way, holding the line, and bringing memories of local order into the deity procession.'
         }
     ];
 
