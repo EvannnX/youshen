@@ -25,10 +25,12 @@
   <div id="fatal" class="fatal" hidden><h2>暂时无法开启三维神殿</h2><p id="fatalMessage">请使用支持 WebGL 的浏览器访问。</p><a href="temple-text.html#sanctum">进入图文神殿 ↗</a></div>
   <noscript><div class="fatal">请启用 JavaScript，或<a href="temple-text.html#sanctum">进入图文神殿</a>。</div></noscript>
   <script type="module">
-    import('./temple-space.js?v=20260923-original-2').catch(error => {
+    import('./temple-space.js?v=20260923-en-1').catch(error => {
       console.error(error);
       document.getElementById('fatal').hidden = false;
-      if (location.protocol === 'file:') document.getElementById('fatalMessage').textContent = '三维资源需要通过网站地址或本地 HTTP 服务打开，不能直接双击文件。';
+      if (location.protocol === 'file:') document.getElementById('fatalMessage').textContent = new URLSearchParams(location.search).get('lang') === 'en'
+        ? '3D assets must be opened through a website address or local HTTP server, not by double-clicking this file.'
+        : '三维资源需要通过网站地址或本地 HTTP 服务打开，不能直接双击文件。';
     });
   </script>
 </body>

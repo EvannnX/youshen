@@ -7,6 +7,88 @@ import { applyRelaxedPose } from './temple-pose.js?v=20260923-clearance-3';
 import { templeMaterial } from './temple-materials.js';
 
 const $ = id => document.getElementById(id);
+const isEnglish = new URLSearchParams(location.search).get('lang') === 'en';
+const englishNames = {
+  '保长公': 'Procession Leader', '马夫': 'Horse Handler', '赵世子': 'Prince Zhao',
+  '张大世子': 'Elder Prince Zhang', '张二世子': 'Second Prince Zhang', '华光大世子': 'Prince Huaguang',
+  '金龙太子': 'Golden Dragon Prince', '长郡主': 'Princess Zhang', '孩儿弟': 'Child Deity',
+  '哪吒': 'Nezha', '小太子': 'Little Prince', '文状元': 'Civil Scholar', '七爷': 'Seventh Lord',
+  '八爷': 'Eighth Lord', '马元帅': 'Marshal Ma', '温元帅': 'Marshal Wen', '康元帅': 'Marshal Kang',
+  '关帝': 'Guan Di', '白马尊王': 'White Horse King', '福州城隍': 'Fuzhou City God', '五福大帝': 'Five Emperors'
+};
+const englishStages = {
+  '开道与仪仗': 'Procession Lead', '世子与陪祀': 'Princes and Attendants',
+  '神将与部属': 'Guardians and Retinue', '主祀与地方信仰': 'Main Deities'
+};
+const englishDescriptions = {
+  '保长公': 'A procession leader who opens the way and establishes the ritual order.',
+  '马夫': 'A path opening attendant who helps set the pace and direction of the procession.',
+  '赵世子': 'A prince figure honoured as an attendant deity within the procession.',
+  '张大世子': 'The elder of the Zhang princes, accompanying the ritual procession.',
+  '张二世子': 'The younger Zhang prince, presented with the accompanying deity group.',
+  '华光大世子': 'A Prince Huaguang figure, represented with martial splendour in the procession.',
+  '金龙太子': 'A Golden Dragon Prince figure, one of the princely attendants in local worship.',
+  '长郡主': 'A princess figure included among the princely and attendant deities.',
+  '孩儿弟': 'A child deity with a smaller ritual image and a distinct place in the group.',
+  '哪吒': 'Nezha, a youthful martial deity recognised by his energetic, protective presence.',
+  '小太子': 'A Little Prince figure, shown at a smaller scale than the adult deity images.',
+  '文状元': 'A civil scholar figure associated with learning, achievement and ceremonial order.',
+  '七爷': 'Seventh Lord, a familiar guardian figure in the procession.',
+  '八爷': 'Eighth Lord, paired in popular practice with other protective procession figures.',
+  '马元帅': 'Marshal Ma, a martial guardian represented in the deity retinue.',
+  '温元帅': 'Marshal Wen, a martial guardian represented in the deity retinue.',
+  '康元帅': 'Marshal Kang, a martial guardian represented in the deity retinue.',
+  '关帝': 'Guan Di, revered for loyalty, righteousness and martial protection.',
+  '白马尊王': 'White Horse King, a local deity honoured in Fuzhou area traditions.',
+  '福州城隍': 'The City God of Fuzhou, protector of the city and its community.',
+  '五福大帝': 'The Five Emperors, the principal group represented at the main altar.'
+};
+const deityName = deity => isEnglish ? englishNames[deity.name] || deity.name : deity.name;
+const stageName = stage => isEnglish ? englishStages[stage] || stage : stage;
+const deityDescription = deity => isEnglish ? englishDescriptions[deity.name] || deity.desc : deity.desc;
+const ui = (zh, en) => isEnglish ? en : zh;
+
+function localizeStaticInterface() {
+  if (!isEnglish) return;
+  document.documentElement.lang = 'en';
+  document.title = 'Immersive Temple — Youshen';
+  $('scene').setAttribute('aria-label', 'Interactive Youshen immersive temple');
+  renderer.domElement.setAttribute('aria-label', 'Immersive temple. Drag to look around and use arrow keys to walk.');
+  const brand = document.querySelector('.brand');
+  brand.href = 'en/index.html'; brand.innerHTML = 'Youshen<span>FUZHOU</span>';
+  document.querySelector('.topbar nav a').href = 'en/temple.html#sanctum';
+  document.querySelector('.topbar nav a').textContent = 'Text Temple';
+  $('helpOpen').setAttribute('aria-label', 'Visitor guide');
+  $('detail').setAttribute('aria-label', 'Selected deity details');
+  $('detailClose').setAttribute('aria-label', 'Close details');
+  document.querySelector('#story summary').textContent = 'Deity story';
+  document.querySelector('#story small').textContent = 'This display follows a curatorial sequence. Procession orders vary by locality.';
+  $('rotate').textContent = 'Rotate figure'; $('retry').textContent = 'Retry loading';
+  $('classicLink').textContent = 'View in text temple';
+  document.querySelector('.drawer-title h2').textContent = 'Deity index';
+  $('directoryClose').setAttribute('aria-label', 'Close deity index');
+  document.querySelector('.location .eyebrow').textContent = 'You are here';
+  $('zone').textContent = 'Entrance Hall'; $('roomStatus').textContent = 'Lighting the temple...';
+  $('directoryOpen').innerHTML = 'Deity index <span id="count">21</span>';
+  $('previous').setAttribute('aria-label', 'Previous figure'); $('next').setAttribute('aria-label', 'Next figure');
+  $('home').textContent = 'Entrance'; $('altar').textContent = 'Main Altar';
+  document.querySelector('.move-pad').setAttribute('aria-label', 'Touch controls');
+  document.querySelector('[data-move="forward"]').setAttribute('aria-label', 'Forward');
+  document.querySelector('[data-move="left"]').setAttribute('aria-label', 'Move left');
+  document.querySelector('[data-move="back"]').setAttribute('aria-label', 'Back');
+  document.querySelector('[data-move="right"]').setAttribute('aria-label', 'Move right');
+  document.querySelector('#help .eyebrow').textContent = 'Visitor guide';
+  document.querySelector('#help h2').textContent = 'Let the lantern light introduce the deities';
+  const help = document.querySelectorAll('#help p');
+  help[0].textContent = 'Drag to look around. Use W A S D or the arrow keys to walk. On mobile, use the direction controls at bottom right.';
+  help[1].textContent = 'Select a figure, nameplate or index entry to travel to its station. The bottom arrows follow the curatorial route. Main Altar takes you directly to the Five Emperors.';
+  help[2].textContent = 'After selecting a figure, you can rotate it. A reference image remains visible while a model loads, and failed loads can be retried.';
+  $('helpDone').textContent = 'Begin visiting'; $('helpClose').setAttribute('aria-label', 'Close visitor guide');
+  document.querySelector('#fatal h2').textContent = 'The immersive temple cannot open right now';
+  $('fatalMessage').textContent = 'Please use a browser that supports WebGL.';
+  document.querySelector('#fatal a').href = 'en/temple.html#sanctum';
+  document.querySelector('#fatal a').textContent = 'Open text temple';
+}
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const scene = new THREE.Scene();
 scene.background = new THREE.Color('#19130f');
@@ -23,6 +105,7 @@ renderer.toneMappingExposure = 1.3;
 $('scene').appendChild(renderer.domElement);
 renderer.domElement.tabIndex = 0;
 renderer.domElement.setAttribute('aria-label', '三维神殿，拖动环顾，方向键行走');
+localizeStaticInterface();
 const hemi = new THREE.HemisphereLight('#ffddad', '#32313e', 2.3);
 scene.add(hemi);
 const sunlight = new THREE.DirectionalLight('#ffd6a0', 3.2);
@@ -200,7 +283,7 @@ deities.forEach((d, index) => {
     const aspect = t.image.width / t.image.height;
     picture.scale.x = Math.min(1, (isAltar ? 3.7 : 3.4) * aspect / (isAltar ? 7 : 2.35));
   }, undefined, () => {});
-  const plaque = label(d.name, isAltar ? 3.4 : 2.4);
+  const plaque = label(deityName(d), isAltar ? 3.4 : 2.4);
   plaque.position.set(0, isAltar ? .94 : .46, isAltar ? 2.3 : 1.1); root.add(plaque);
   picture.userData.index = plaque.userData.index = index;
   clickTargets.push(picture, plaque);
@@ -241,9 +324,13 @@ function updateStatus() {
   const s = stations[selected];
   const readyCount = stations.filter(station => station.state === 'ready').length;
   const errorCount = stations.filter(station => station.state === 'error').length;
-  $('roomStatus').textContent = readyCount === stations.length ? `${readyCount} 尊神像已入殿` : `神像入殿 ${readyCount} / ${stations.length}${errorCount ? '，部分加载失败可点选重试' : ''}`;
+  $('roomStatus').textContent = readyCount === stations.length
+    ? ui(`${readyCount} 尊神像已入殿`, `${readyCount} figures are in the hall`)
+    : ui(`神像入殿 ${readyCount} / ${stations.length}${errorCount ? '，部分加载失败可点选重试' : ''}`, `Figures in hall ${readyCount} / ${stations.length}${errorCount ? '. Some models can be retried.' : ''}`);
   if (!s) return;
-  const states = { idle: '已显示参考图，等待载入', loading: '正在载入三维神像…', ready: '三维神像已就位', error: '模型未能载入，当前显示参考图' };
+  const states = isEnglish
+    ? { idle: 'Reference image is visible. Waiting to load.', loading: 'Loading 3D figure...', ready: '3D figure is in place.', error: 'Model could not load. Reference image remains visible.' }
+    : { idle: '已显示参考图，等待载入', loading: '正在载入三维神像…', ready: '三维神像已就位', error: '模型未能载入，当前显示参考图' };
   $('modelStatus').textContent = states[s.state];
   $('retry').hidden = s.state !== 'error';
   $('rotate').disabled = s.state !== 'ready';
@@ -319,19 +406,19 @@ function select(index) {
   desired = { position: destination, look: new THREE.Vector3(s.root.position.x, 2.65, s.root.position.z) };
   $('story').open = innerWidth > 700;
   $('detail').hidden = false; $('directory').hidden = true;
-  $('detailName').textContent = s.data.name;
-  $('detailStage').textContent = s.data.stage;
-  $('detailDesc').textContent = s.data.desc;
-  $('zone').textContent = s.isAltar ? '五福主坛' : s.data.stage;
-  $('classicLink').href = `temple-text.html?deity=${encodeURIComponent(s.data.name)}#sanctum`;
+  $('detailName').textContent = deityName(s.data);
+  $('detailStage').textContent = stageName(s.data.stage);
+  $('detailDesc').textContent = deityDescription(s.data);
+  $('zone').textContent = s.isAltar ? ui('五福主坛', 'Five Emperors Altar') : stageName(s.data.stage);
+  $('classicLink').href = isEnglish ? 'en/temple.html#sanctum' : `temple-text.html?deity=${encodeURIComponent(s.data.name)}#sanctum`;
   document.querySelectorAll('#deityList button').forEach((b, i) => b.classList.toggle('active', i === selected));
   requestModel(selected); updateStatus();
-  rotationEnabled = false; $('rotate').textContent = '旋转神像';
+  rotationEnabled = false; $('rotate').textContent = ui('旋转神像', 'Rotate figure');
 }
 deities.forEach((d, i) => {
   const b = document.createElement('button');
   const n = document.createElement('span'); n.textContent = String(i + 1).padStart(2, '0');
-  b.append(n, d.name); b.addEventListener('click', () => select(i)); $('deityList').appendChild(b);
+  b.append(n, deityName(d)); b.addEventListener('click', () => select(i)); $('deityList').appendChild(b);
 });
 $('count').textContent = deities.length;
 if ($('start')) $('start').onclick = () => { start(); $('help').showModal(); };
@@ -345,9 +432,9 @@ $('next').onclick = () => select(selected + 1);
 $('altar').onclick = () => select(stations.length - 1);
 $('home').onclick = () => {
   start(); desired = { position: new THREE.Vector3(0, 2.5, 10), look: new THREE.Vector3(0, 2.5, -40) };
-  selected = -1; $('detail').hidden = true; $('directory').hidden = true; $('zone').textContent = '入殿门庭'; rotationEnabled = false;
+  selected = -1; $('detail').hidden = true; $('directory').hidden = true; $('zone').textContent = ui('入殿门庭', 'Entrance Hall'); rotationEnabled = false;
 };
-$('rotate').onclick = () => { rotationEnabled = !rotationEnabled; $('rotate').textContent = rotationEnabled ? '停止旋转' : '旋转神像'; };
+$('rotate').onclick = () => { rotationEnabled = !rotationEnabled; $('rotate').textContent = rotationEnabled ? ui('停止旋转', 'Stop rotating') : ui('旋转神像', 'Rotate figure'); };
 $('retry').onclick = () => { if (selected >= 0) { stations[selected].state = 'idle'; requestModel(selected); } };
 
 let pointer = null;
@@ -390,7 +477,7 @@ document.querySelectorAll('[data-move]').forEach(b => {
   for (const event of ['pointerup', 'pointercancel', 'lostpointercapture']) b.addEventListener(event, () => keys.delete(b.dataset.move));
 });
 renderer.domElement.addEventListener('webglcontextlost', e => {
-  e.preventDefault(); $('fatal').hidden = false; $('fatalMessage').textContent = '图形资源已中断，请刷新页面重新进入，或使用图文神殿。';
+  e.preventDefault(); $('fatal').hidden = false; $('fatalMessage').textContent = ui('图形资源已中断，请刷新页面重新进入，或使用图文神殿。', 'Graphics were interrupted. Refresh to enter again, or use the text temple.');
 });
 addEventListener('resize', () => {
   camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix();
@@ -426,7 +513,7 @@ function animate(time) {
   if (nearbyCheck > 1.5 && active && !desired && selected < 0) {
     nearbyCheck = 0;
     const closest = stations.filter(s => s.target.distanceTo(camera.position) < 7).sort((a, b) => a.target.distanceTo(camera.position) - b.target.distanceTo(camera.position));
-    if (closest[0]) { requestModel(closest[0].index); $('zone').textContent = closest[0].data.stage; }
+    if (closest[0]) { requestModel(closest[0].index); $('zone').textContent = stageName(closest[0].data.stage); }
   }
   renderer.render(scene, camera);
 }
