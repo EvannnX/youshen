@@ -57,56 +57,56 @@
             name: 'Seventh Lord',
             role: 'Underworld Messenger  —  General Xie',
             image: '../assets/神明图谱/七爷.jpg',
-            model: '',
+            model: '../assets/神殿模型/七爷.glb',
             desc: 'Tall, pale, and long-bodied, the Seventh Lord forms one half of the underworld pair with the Eighth Lord.'
         },
         {
             name: 'Eighth Lord',
             role: 'Underworld Messenger  —  General Fan',
             image: '../assets/神明图谱/八爷.jpg',
-            model: '',
+            model: '../assets/神殿模型/八爷.glb',
             desc: 'Dark-faced, shorter, and weightier in presence, the Eighth Lord completes the pair through strong ritual contrast.'
         },
         {
             name: 'Baima Zunwang',
             role: 'Territorial Guardian  —  Local Protector',
             image: '../assets/神明图谱/白马尊王.jpg',
-            model: '',
+            model: '../assets/神殿模型/白马尊王.glb',
             desc: 'A representative territorial guardian, Baima Zunwang links neighborhood, temple, and the protected ritual boundary.'
         },
         {
             name: 'Nezha',
             role: 'Child Deity  —  Nezha',
             image: '../assets/神明图谱/哪吒.jpg',
-            model: '',
+            model: '../assets/神殿模型/哪吒.glb',
             desc: 'A lively child deity whose image brings speed, brightness, and youthful force into the procession.'
         },
         {
             name: 'Fuzhou City God',
             role: 'City God Procession  —  Urban Guardian',
             image: '../assets/神明图谱/福州城隍.jpg',
-            model: '',
+            model: '../assets/神殿模型/福州城隍.glb',
             desc: 'The City God procession carries an older logic of urban protection, linking Youshen with civic order and local memory.'
         },
         {
             name: 'Five Blessing Emperors',
             role: 'Plague-Expelling Deities  —  Five Linggong',
             image: '../assets/神明图谱/五福大帝台湾.png',
-            model: '',
+            model: '../assets/神殿模型/五福大帝群像.glb',
             desc: 'The Five Linggong system is one of the foundations of Fuzhou Youshen, turning plague-expelling power into protection and blessing for the community.'
         },
         {
             name: 'Guan Di',
             role: 'Martial God  —  Loyalty and Authority',
             image: '../assets/神明图谱/关帝.png',
-            model: '',
+            model: '../assets/神殿模型/关帝.glb',
             desc: 'Guan Di gathers loyalty and martial courage into one solemn image, marked by red face, long beard, armor, and weapon.'
         },
         {
             name: 'Marshal Ma',
             role: 'Protector Marshal  —  Ritual Power',
             image: '../assets/神明图谱/马元帅.JPG',
-            model: '',
+            model: '../assets/神殿模型/马元帅.glb',
             desc: 'Marshal figures often carry a protector role; armor, weapons, and ritual implements all heighten their commanding presence.'
         },
         {

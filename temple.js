@@ -71,7 +71,7 @@
             role: '童神将  —  Nezha',
             stage: '神将与部属',
             image: 'assets/神明图谱/哪吒.jpg',
-            model: '',
+            model: 'assets/神殿模型/哪吒.glb',
             desc: '福州游神中常见的童神形象。在不同地方的神驾阵容中，他可以作为随行神将出现，具体关系与位置因境庙而异。'
         },
         {
@@ -79,7 +79,7 @@
             role: '随行神将  —  Seventh Lord',
             stage: '神将与部属',
             image: 'assets/神明图谱/七爷.jpg',
-            model: '',
+            model: 'assets/神殿模型/七爷.glb',
             desc: '福州游神中常见的随行神将，通常与八爷成对出现。其神像常制成可由人挺行的塔骨，随主神巡行村境。'
         },
         {
@@ -87,7 +87,7 @@
             role: '随行神将  —  Eighth Lord',
             stage: '神将与部属',
             image: 'assets/神明图谱/八爷.jpg',
-            model: '',
+            model: 'assets/神殿模型/八爷.glb',
             desc: '与七爷共同出现的随行神将，也是福州传统游神中常见的塔骨形象之一。'
         },
         {
@@ -95,7 +95,7 @@
             role: '护法神将  —  Marshal Ma',
             stage: '神将与部属',
             image: 'assets/神明图谱/马元帅.JPG',
-            model: '',
+            model: 'assets/神殿模型/马元帅.glb',
             desc: '道教护法神将之一，在不同宫庙的神驾中具有镇护与威仪象征；是否随行以及具体位置会因境庙而异。'
         },
         {
@@ -103,7 +103,7 @@
             role: '武神信仰  —  Guan Di',
             stage: '主祀与地方信仰',
             image: 'assets/神明图谱/关帝.png',
-            model: '',
+            model: 'assets/神殿模型/关帝.glb',
             desc: '广泛供奉的忠义武神，在福州部分境庙和迎神活动中也会出巡。在不同神驾中，关帝的主祀或陪祀关系需结合当地宫庙理解。'
         },
         {
@@ -111,7 +111,7 @@
             role: '地方保护神  —  White Horse King',
             stage: '主祀与地方信仰',
             image: 'assets/神明图谱/白马尊王.jpg',
-            model: '',
+            model: 'assets/神殿模型/白马尊王.glb',
             desc: '福州重要的地方保护神之一。白马尊王信仰长期分布于福州及周边地区，各地境庙也形成了自己的祭祀与迎神传统。'
         },
         {
@@ -119,7 +119,7 @@
             role: '城邑保护神  —  Fuzhou City God',
             stage: '主祀与地方信仰',
             image: 'assets/神明图谱/福州城隍.jpg',
-            model: '',
+            model: 'assets/神殿模型/福州城隍.glb',
             desc: '守护城邑的城隍神。福州城隍出巡将城市空间、地方秩序与巡境祈安的传统联系起来。'
         },
         {
@@ -127,7 +127,7 @@
             role: '地方保护神  —  Five Emperors',
             stage: '主祀与地方信仰',
             image: 'assets/神明图谱/五福大帝台湾.png',
-            model: '',
+            model: 'assets/神殿模型/五福大帝群像.glb',
             desc: '福州重要的地方保护神信仰体系，与驱疫、祈安和保境传统关系密切。在长乐等地的游神活动中，五福大帝会与所属部将及其他神圣共同巡境。'
         }
     ];
