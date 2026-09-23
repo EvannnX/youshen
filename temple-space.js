@@ -269,7 +269,7 @@ async function pump() {
     // The original five scans face -X; current Tripo humanoid exports face +Z.
     const scans = ['保长公', '马夫', '赵世子', '张大世子', '张二世子', '七爷'];
     model.rotation.y = s.data.rotationY ?? (scans.includes(s.data.name) ? -Math.PI / 2 : 0);
-    s.pose = s.data.name === '小太子' ? {adjusted:false,reason:'original-shape'} : applyRelaxedPose(model,s.data.name);
+    s.pose = applyRelaxedPose(model,s.data.name);
     const child = ['孩儿弟','小太子'].includes(s.data.name);
     fit(model, s.isAltar ? 4.2 : child ? 3.8*2/3 : 3.8, s.isAltar ? 8 : child ? Infinity : 3.15, s.isAltar ? 3.5 : child ? Infinity : 2.5, s.isAltar ? 1.2 : .72);
     const pivot = new THREE.Group(); pivot.add(model); s.root.add(pivot); s.model = pivot;
