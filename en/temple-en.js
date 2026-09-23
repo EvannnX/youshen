@@ -124,6 +124,13 @@
             desc: 'A smaller and lighter prince figure designed for younger participants, opening a direct path for children to join the living tradition.'
         },
         {
+            name: 'Civil Scholar',
+            role: 'Procession Official  —  Civil Scholar',
+            image: '../assets/神明图谱/文状元.jpg',
+            model: '../assets/神殿模型/文状元.glb',
+            desc: 'A civil-official tower figure that often follows the prince group, distinguished from martial generals by an ornate crown, formal robes, and a composed expression.'
+        },
+        {
             name: 'Fuzhou City God',
             role: 'City God Procession  —  Urban Guardian',
             image: '../assets/神明图谱/福州城隍.jpg',
@@ -150,6 +157,20 @@
             image: '../assets/神明图谱/马元帅.JPG',
             model: '../assets/神殿模型/马元帅.glb',
             desc: 'Marshal figures often carry a protector role; armor, weapons, and ritual implements all heighten their commanding presence.'
+        },
+        {
+            name: 'Marshal Wen',
+            role: 'Protector Marshal  —  Wen Qiong',
+            image: '../assets/神明图谱/温元帅.jpg',
+            model: '../assets/神殿模型/温元帅.glb',
+            desc: 'The blue-faced, red-haired protector of the Nine Cases and Thirteen Halls tradition, one of the most recognizable marshal figures in urban Fuzhou processions.'
+        },
+        {
+            name: 'Marshal Kang',
+            role: 'Protector Marshal  —  Kang Xi',
+            image: '../assets/神明图谱/康元帅.jpg',
+            model: '../assets/神殿模型/康元帅.glb',
+            desc: 'A compassionate protector in the Nine Cases and Thirteen Halls tradition, paired with Marshal Wen as the two commanding marshals.'
         }
     ];
 

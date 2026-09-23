@@ -1,0 +1,17 @@
+/* Text-only navigation; keep keyboard focus indicators for accessibility. */
+button,button:hover,.primary,.dock button,.move-pad button,
+#deityList button,#deityList button.active,.topbar nav button {
+  background:transparent;border:0;border-radius:0;backdrop-filter:none;box-shadow:none;
+}
+button:hover,#deityList button.active {color:#ffd599;}
+.intro,.detail,.directory,dialog {
+  background:transparent;border:0;box-shadow:none;backdrop-filter:none;
+  text-shadow:0 1px 5px #000,0 2px 14px #000;
+}
+.brand span,.detail small {border:0;}
+.intro {top:auto;bottom:150px;padding:0;}
+.detail,.directory {text-shadow:0 1px 4px #000,0 0 12px #000;}
+.primary {min-width:0;gap:18px;padding-left:0;}
+.topbar,.dock,.location {text-shadow:0 1px 5px #000;}
+dialog::backdrop {background:#090604cc;backdrop-filter:blur(4px);}
+@media(max-width:700px){.intro{top:auto;bottom:170px;}}

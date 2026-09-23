@@ -1,0 +1,171 @@
+export const deities = [
+        {
+            name: '保长公',
+            role: '巡游前导  —  Procession Leader',
+            stage: '开道与仪仗',
+            image: 'assets/神明图谱/保长公.jpg',
+            model: 'assets/神殿模型/保长公.glb',
+            desc: '巡游中的前导角色。保长公通常位于队伍前方，与炮手、旗锣和高照等仪仗共同开路，引导神驾进入巡游路线。'
+        },
+        {
+            name: '马夫',
+            role: '开道角色  —  Path Opener',
+            stage: '开道与仪仗',
+            image: 'assets/神明图谱/马夫.jpg',
+            model: 'assets/神殿模型/马夫.glb',
+            desc: '行进在神驾前方的开道角色。马夫手持马鞭，以往返跑跳和挥鞭动作清理道路，为后方的神将与主神开出巡游通道。'
+        },
+        {
+            name: '赵世子',
+            role: '陪祀世子  —  Prince Zhao',
+            stage: '世子与陪祀',
+            image: 'assets/神明图谱/赵世子.jpg',
+            model: 'assets/神殿模型/赵世子.glb',
+            desc: '五福大帝信仰体系中的世子之一。福州地方传说将他与振灵公赵光明联系在一起，在巡游中以陪祀神身份随神驾出行。'
+        },
+        {
+            name: '张大世子',
+            role: '陪祀世子  —  Elder Prince Zhang',
+            stage: '世子与陪祀',
+            image: 'assets/神明图谱/张世子.jpg',
+            model: 'assets/神殿模型/张大世子.glb',
+            desc: '显灵公张元伯信仰体系中的世子，与张二世子共同构成福州游神中较为人熟知的世子形象。'
+        },
+        {
+            name: '张二世子',
+            role: '陪祀世子  —  Second Prince Zhang',
+            stage: '世子与陪祀',
+            image: 'assets/神明图谱/张二世子.jpg',
+            model: 'assets/神殿模型/张二世子.glb',
+            desc: '显灵公张元伯信仰体系中的世子之一，经常与张大世子共同出现在福州游神的神将阵容中。'
+        },
+        {
+            name: '华光大世子',
+            role: '陪祀世子  —  Prince Huaguang',
+            stage: '世子与陪祀',
+            image: 'assets/神明图谱/华光大世子.jpg',
+            model: 'assets/神殿模型/华光大世子.glb',
+            desc: '华光大帝信仰体系中的世子形象，常以额生神目、黑金龙甲与红袍示人，在巡游阵容中展现威仪与护卫意味。'
+        },
+        {
+            name: '金龙太子',
+            role: '陪祀太子  —  Golden Dragon Prince',
+            stage: '世子与陪祀',
+            image: 'assets/神明图谱/金龙太子.jpg',
+            model: 'assets/神殿模型/金龙太子.glb',
+            desc: '福州游神中的太子形象之一，常以金鳞龙袍与华丽冠饰塑造俊秀而庄重的形象，作为陪祀角色随神驾巡行。'
+        },
+        {
+            name: '长郡主',
+            role: '陪祀郡主  —  Princess Zhang',
+            stage: '世子与陪祀',
+            image: 'assets/神明图谱/张郡主.jpg',
+            model: 'assets/神殿模型/长郡主.glb',
+            desc: '显灵公张元伯信仰体系中的郡主形象，也是世子阵容中具有辨识度的女性陪祀角色。'
+        },
+        {
+            name: '孩儿弟',
+            role: '童神角色  —  Child Deity',
+            stage: '神将与部属',
+            image: 'assets/神明图谱/孩儿弟.jpg',
+            model: 'assets/神殿模型/孩儿弟.glb',
+            desc: '以大头、围兜、侧辫与笑容为特征的童神角色，在巡游中以活泼亲近的形象丰富神驾阵容。'
+        },
+        {
+            name: '哪吒',
+            role: '童神将  —  Nezha',
+            stage: '神将与部属',
+            image: 'assets/神明图谱/哪吒.jpg',
+            model: 'assets/神殿模型/哪吒.glb',
+            desc: '福州游神中常见的童神形象。在不同地方的神驾阵容中，他可以作为随行神将出现，具体关系与位置因境庙而异。'
+        },
+        {
+            name: '小太子',
+            role: '童神角色  —  Little Prince',
+            stage: '神将与部属',
+            image: 'assets/神明图谱/小太子.jpg',
+            model: 'assets/神殿模型/小太子.glb',
+            desc: '为少年参与游神而塑造的较小型太子形象，体量更轻，也让年轻一代能够进入巡游与传承的现场。'
+        },
+        {
+            name: '文状元',
+            role: '随行文官  —  Civil Official',
+            stage: '神将与部属',
+            image: 'assets/神明图谱/文状元.jpg',
+            model: 'assets/神殿模型/文状元.glb',
+            desc: '游神队伍中的文官类塔骨角色，常位于世子团之后，以冠饰、官服与温雅面容形成有别于武将的仪仗形象。'
+        },
+        {
+            name: '七爷',
+            role: '随行神将  —  Seventh Lord',
+            stage: '神将与部属',
+            image: 'assets/神明图谱/七爷.jpg',
+            model: 'assets/神殿模型/七爷.glb',
+            desc: '福州游神中常见的随行神将，通常与八爷成对出现。其神像常制成可由人挺行的塔骨，随主神巡行村境。'
+        },
+        {
+            name: '八爷',
+            role: '随行神将  —  Eighth Lord',
+            stage: '神将与部属',
+            image: 'assets/神明图谱/八爷.jpg',
+            model: 'assets/神殿模型/八爷.glb',
+            desc: '与七爷共同出现的随行神将，也是福州传统游神中常见的塔骨形象之一。'
+        },
+        {
+            name: '马元帅',
+            role: '护法神将  —  Marshal Ma',
+            stage: '神将与部属',
+            image: 'assets/神明图谱/马元帅.JPG',
+            model: 'assets/神殿模型/马元帅.glb',
+            desc: '道教护法神将之一，在不同宫庙的神驾中具有镇护与威仪象征；是否随行以及具体位置会因境庙而异。'
+        },
+        {
+            name: '温元帅',
+            role: '护法神将  —  Marshal Wen',
+            stage: '神将与部属',
+            image: 'assets/神明图谱/温元帅.jpg',
+            model: 'assets/神殿模型/温元帅.glb',
+            desc: '九案十三堂信仰体系中的温太保温琼，蓝面红发的形象源于吞服瘟丹的传说，也是福州城区游神中极具辨识度的护法神将。'
+        },
+        {
+            name: '康元帅',
+            role: '护法神将  —  Marshal Kang',
+            stage: '神将与部属',
+            image: 'assets/神明图谱/康元帅.jpg',
+            model: 'assets/神殿模型/康元帅.glb',
+            desc: '九案十三堂信仰体系中的康元帅康席，以仁慈护生的传说著称，与温元帅并称温康二都统。'
+        },
+        {
+            name: '关帝',
+            role: '武神信仰  —  Guan Di',
+            stage: '主祀与地方信仰',
+            image: 'assets/神明图谱/关帝.png',
+            model: 'assets/神殿模型/关帝.glb',
+            desc: '广泛供奉的忠义武神，在福州部分境庙和迎神活动中也会出巡。在不同神驾中，关帝的主祀或陪祀关系需结合当地宫庙理解。'
+        },
+        {
+            name: '白马尊王',
+            role: '地方保护神  —  White Horse King',
+            stage: '主祀与地方信仰',
+            image: 'assets/神明图谱/白马尊王.jpg',
+            model: 'assets/神殿模型/白马尊王.glb',
+            desc: '福州重要的地方保护神之一。白马尊王信仰长期分布于福州及周边地区，各地境庙也形成了自己的祭祀与迎神传统。'
+        },
+        {
+            name: '福州城隍',
+            role: '城邑保护神  —  Fuzhou City God',
+            stage: '主祀与地方信仰',
+            image: 'assets/神明图谱/福州城隍.jpg',
+            model: 'assets/神殿模型/福州城隍.glb',
+            desc: '守护城邑的城隍神。福州城隍出巡将城市空间、地方秩序与巡境祈安的传统联系起来。'
+        },
+        {
+            name: '五福大帝',
+            role: '地方保护神  —  Five Emperors',
+            stage: '主祀与地方信仰',
+            image: 'assets/神明图谱/五福大帝台湾.png',
+            model: 'assets/神殿模型/五福大帝群像.glb',
+            desc: '福州重要的地方保护神信仰体系，与驱疫、祈安和保境传统关系密切。在长乐等地的游神活动中，五福大帝会与所属部将及其他神圣共同巡境。'
+        }
+    ];
+

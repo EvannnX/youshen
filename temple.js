@@ -115,6 +115,14 @@
             desc: '为少年参与游神而塑造的较小型太子形象，体量更轻，也让年轻一代能够进入巡游与传承的现场。'
         },
         {
+            name: '文状元',
+            role: '随行文官  —  Civil Official',
+            stage: '神将与部属',
+            image: 'assets/神明图谱/文状元.jpg',
+            model: 'assets/神殿模型/文状元.glb',
+            desc: '游神队伍中的文官类塔骨角色，常位于世子团之后，以冠饰、官服与温雅面容形成有别于武将的仪仗形象。'
+        },
+        {
             name: '七爷',
             role: '随行神将  —  Seventh Lord',
             stage: '神将与部属',
@@ -137,6 +145,22 @@
             image: 'assets/神明图谱/马元帅.JPG',
             model: 'assets/神殿模型/马元帅.glb',
             desc: '道教护法神将之一，在不同宫庙的神驾中具有镇护与威仪象征；是否随行以及具体位置会因境庙而异。'
+        },
+        {
+            name: '温元帅',
+            role: '护法神将  —  Marshal Wen',
+            stage: '神将与部属',
+            image: 'assets/神明图谱/温元帅.jpg',
+            model: 'assets/神殿模型/温元帅.glb',
+            desc: '九案十三堂信仰体系中的温太保温琼，蓝面红发的形象源于吞服瘟丹的传说，也是福州城区游神中极具辨识度的护法神将。'
+        },
+        {
+            name: '康元帅',
+            role: '护法神将  —  Marshal Kang',
+            stage: '神将与部属',
+            image: 'assets/神明图谱/康元帅.jpg',
+            model: 'assets/神殿模型/康元帅.glb',
+            desc: '九案十三堂信仰体系中的康元帅康席，以仁慈护生的传说著称，与温元帅并称温康二都统。'
         },
         {
             name: '关帝',
@@ -207,7 +231,8 @@
     }
 
     renderTempleItems();
-    setActiveDeity(0);
+    const requestedDeity = new URLSearchParams(location.search).get('deity');
+    setActiveDeity(Math.max(0, deities.findIndex(deity => deity.name === requestedDeity)));
 
     const revealEls = document.querySelectorAll('.reveal');
     if (revealEls.length > 0) {
