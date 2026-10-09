@@ -1,10 +1,13 @@
 import * as THREE from 'three';
+import { deityRows, hall } from './temple-layout.js?v=20261009-plaque-1';
+import { buildTempleArchitecture } from './temple-architecture.js?v=20261009-plaque-1';
+import { createEntrance } from './temple-entrance.js?v=20261009-plaque-1';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { deities } from './temple-space-data.js';
-import { templeProps } from './temple-props.js';
+import { templeProps } from './temple-props.js?v=20261009-plaque-1';
 import { applyRelaxedPose } from './temple-pose.js?v=20260923-clearance-3';
-import { templeMaterial } from './temple-materials.js';
+import { templeMaterial, agedTempleMaterial } from './temple-materials.js?v=20261009-plaque-1';
 
 const $ = id => document.getElementById(id);
 const isEnglish = new URLSearchParams(location.search).get('lang') === 'en';
@@ -84,7 +87,7 @@ function localizeStaticInterface() {
   $('scene').setAttribute('aria-label', 'Interactive Youshen immersive temple');
   renderer.domElement.setAttribute('aria-label', 'Immersive temple. Drag to look around and use arrow keys to walk.');
   const brand = document.querySelector('.brand');
-  brand.href = 'en/index.html'; brand.innerHTML = 'Youshen<span>FUZHOU</span>';
+  brand.href = 'en/index.html'; brand.textContent = '神殿';
   document.querySelector('.topbar nav a').href = 'en/temple.html#sanctum';
   document.querySelector('.topbar nav a').textContent = 'Text Temple';
   $('helpOpen').setAttribute('aria-label', 'Visitor guide');
@@ -121,12 +124,12 @@ function localizeStaticInterface() {
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const scene = new THREE.Scene();
 scene.background = new THREE.Color('#19130f');
-scene.fog = new THREE.FogExp2('#21140e', 0.017);
-const camera = new THREE.PerspectiveCamera(62, innerWidth / innerHeight, 0.08, 110);
+scene.fog = new THREE.FogExp2('#30271e', 0.005);
+const camera = new THREE.PerspectiveCamera(62, innerWidth / innerHeight, 0.08, 240);
 camera.position.set(0, 2.5, 10);
 camera.rotation.order = 'YXZ';
 const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
-renderer.setPixelRatio(devicePixelRatio);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
 renderer.setSize(innerWidth, innerHeight);
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -145,10 +148,10 @@ fill.position.set(-6, 3, -25);
 scene.add(fill);
 
 const mat = (color, extra = {}) => new THREE.MeshStandardMaterial({ color, roughness: .65, ...extra });
-const wood = mat('#21130d');
-const red = mat('#631d14', { roughness: .38 });
-const gold = mat('#af7840', { metalness: .48, roughness: .4 });
-const stone = mat('#3f3731');
+const wood = agedTempleMaterial('timber');
+const red = agedTempleMaterial('vermilion');
+const gold = agedTempleMaterial('gold');
+const stone = templeMaterial('slate_floor_03', [2, 2], '#756b5d', .35);
 const black = mat('#100d0b');
 const glow = new THREE.MeshBasicMaterial({ color: '#ed734b' });
 const cube = new THREE.BoxGeometry(1, 1, 1);
@@ -165,25 +168,7 @@ function canvasTexture(w, h, draw) {
   draw(c.getContext('2d'), w, h);
   const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
 }
-box(scene, 0, -.12, -18, 17, .24, 63, templeMaterial('slate_floor_03',[5.7,21],'#aaa79f',.65));
-const plaster=templeMaterial('plastered_wall',[21,2.7],'#777168',.55);
-box(scene, -8.2, 4, -18, .4, 8, 63, plaster);
-box(scene, 8.2, 4, -18, .4, 8, 63, plaster);
-box(scene, 0, 8, -18, 17, .3, 63, templeMaterial('dark_wood',[8.5,15.75],'#b99b7c',.55));
-box(scene, 0, 3.8, -48, 17, 8, .35, templeMaterial('plastered_wall',[5.7,2.7],'#873a2a',.45));
-box(scene, 0, .015, -17, .035, .022, 57, glow);
-for (let z = 9; z > -46; z -= 5.4) {
-  for (const side of [-1, 1]) {
-    cylinder(scene, side * 5.65, 3.8, z, .23, 7.6, red);
-    cylinder(scene, side * 5.65, .24, z, .37, .48, stone);
-    cylinder(scene, side * 5.65, .51, z, .25, .065, gold);
-    box(scene, side * 5.65, 6.85, z, 1.45, .23, .7, gold);
-    box(scene, side * 5.65, 7.15, z, 2.25, .27, .8, wood);
-  }
-  box(scene, 0, 7.6, z, 16, .4, .32, red);
-  box(scene, 0, 7.37, z, 11.2, .08, .38, gold);
-}
-for (const x of [-4, -2, 0, 2, 4]) box(scene, x, 7.9, -18, .16, .2, 61, wood);
+buildTempleArchitecture(scene);
 
 const loader = new GLTFLoader();
 const draco = new DRACOLoader();
@@ -248,22 +233,16 @@ function prop(type, x, y, z, yaw = 0) {
   }
   return root;
 }
-for (let z = 7; z > -44; z -= 10.8) {
+for (const z of deityRows) {
   for (const side of [-1, 1]) {
-    prop('lantern', side * 4.75, 5.15, z);
+    prop('lantern', side * (hall.wallX - 1.4), 7.3, z).scale.setScalar(2);
     // Ceiling cross rail and suspension rod connect the lantern to the frame.
-    box(scene, side * 4.75, 7.65, z, .14, .18, 5.4, wood);
-    cylinder(scene, side * 4.75, 7.025, z, .022, 1.25, gold);
-    // Lower fixtures hang from a freestanding post, not from empty space.
-    prop('lantern', side * 5.05, .55, z - 3);
-    cylinder(scene, side * 5.48, .12, z - 3, .3, .24, stone);
-    cylinder(scene, side * 5.48, 1.15, z - 3, .055, 2.1, wood);
-    box(scene, side * 5.265, 2.17, z - 3, .56, .09, .09, gold);
-    cylinder(scene, side * 5.05, 2, z - 3, .018, .34, gold);
-    prop('banner', side * 4.6, 3.7, z - 2.3);
+    box(scene, side * (hall.wallX - 1.4), 10.7, z, .14, .18, 5.4, wood);
+    cylinder(scene, side * (hall.wallX - 1.4), 10.25, z, .035, .7, gold);
+    prop('banner', side * (hall.wallX - .7), 1.05, z - 4.8, Math.PI / 2).scale.setScalar(3);
     // Two short drops suspend the embroidered banner's top rod.
-    box(scene, side * 4.6, 7.65, z - 2.3, 1.35, .16, .16, wood);
-    for(const dx of [-.36,.36])cylinder(scene, side * 4.6+dx, 7.26, z - 2.3, .016, .8, gold);
+    box(scene, side * (hall.wallX - .7), 10.7, z - 4.8, 1.35, .16, .16, wood);
+    for(const dx of [-.36,.36])cylinder(scene, side * (hall.wallX - .7)+dx, 10.65, z - 4.8, .016, .15, gold);
   }
 }
 
@@ -281,31 +260,35 @@ function label(text, width = 2.4, height = .42) {
 deities.forEach((d, index) => {
   const isAltar = index === deities.length - 1;
   const side = index % 2 === 0 ? -1 : 1;
-  const z = isAltar ? -45 : 5 - Math.floor(index / 2) * 5.2;
-  const x = isAltar ? 0 : side * 6.65;
+  const z = isAltar ? hall.altar : deityRows[Math.floor(index / 2)];
+  const x = isAltar ? 0 : side * hall.statueX;
   const root = new THREE.Group(); root.position.set(x, 0, z);
   root.rotation.y = isAltar ? 0 : -side * Math.PI / 2;
   scene.add(root);
   if (isAltar) {
-    box(scene, 0, .16, -45, 11, .32, 5, stone);
-    box(scene, 0, .48, -45.4, 9.8, .32, 4.2, stone);
-    box(scene, 0, .89, -45.7, 8.8, .5, 3.4, wood);
-    box(scene, 0, 1.16, -45.7, 9, .08, 3.55, gold);
-    for (const sx of [-4.9, 4.9]) cylinder(scene, sx, 3.9, -45, .2, 7.1, red);
-    for (let j = 0; j < 5; j++) box(scene, 0, 6.1 + j * .2, -45.5, 12 - j * .7, .2, 4 - j * .4, j === 0 ? gold : wood);
-    prop('curtain', 0, 2.85, -46.6);
+    box(scene, 0, .16, hall.altar, 22, .32, 7, stone);
+    box(scene, 0, .48, hall.altar - .4, 19.6, .32, 6.3, stone);
+    box(scene, 0, .89, hall.altar - .7, 17.6, .5, 5.6, wood);
+    box(scene, 0, 1.16, hall.altar - .7, 18, .08, 5.75, gold);
+    for (const sx of [-7.35, 7.35]) cylinder(scene, sx, 5.25, hall.altar, .2, 9.8, red);
+    for (let j = 0; j < 5; j++) box(scene, 0, 8.8 + j * .2, hall.altar - .5, 18 - j * .7, .2, 4 - j * .4, j === 0 ? gold : wood);
+    prop('plaque', 0, 9.5, hall.altar + 1.8);
+    for (const x of [-2.9, 2.9]) box(scene, x, 12.5, hall.altar + 1.8, .055, 1.2, .055, gold);
+    prop('curtain', 0, 5.55, hall.altar - 1.6).scale.x = 1.5;
     // Curtain rail carried by two posts and tied into the altar canopy.
-    box(scene, 0, 6.2, -46.6, 10.7, .16, .18, wood);
-    for(const sx of [-5.2,5.2]) {
-      cylinder(scene, sx, 3.12, -46.6, .09, 6.24, wood);
-      box(scene, sx, 6.24, -46, .14, .18, 1.4, gold);
+    box(scene, 0, 8.9, hall.altar - 1.6, 16, .16, .18, wood);
+    for(const sx of [-7.8,7.8]) {
+      cylinder(scene, sx, 4.47, hall.altar - 1.6, .09, 8.94, wood);
+      box(scene, sx, 8.94, hall.altar - 1, .14, .18, 1.4, gold);
     }
   } else {
-    prop('plinth', x, 0, z, root.rotation.y);
-    prop('lattice', x + side * 1.05, .8, z, root.rotation.y);
+    const plinth = prop('plinth', x, 0, z, root.rotation.y);
+    plinth.scale.set(2, 1.5, 2);
+    const screen = prop('lattice', x + side * 2.15, 1.05, z, root.rotation.y);
+    screen.scale.set(1.8, 1.5, 1);
   }
   const picture = new THREE.Mesh(new THREE.PlaneGeometry(isAltar ? 7 : 2.35, isAltar ? 3.7 : 3.4), new THREE.MeshBasicMaterial({ color: '#56412d', side: THREE.DoubleSide }));
-  picture.position.set(0, isAltar ? 3.2 : 2.5, .12); root.add(picture);
+  picture.position.set(0, isAltar ? 4.2 : 3.6, .12); root.add(picture);
   textureLoader.load(d.image, t => {
     t.colorSpace = THREE.SRGBColorSpace; picture.material.map = t; picture.material.color.set('#ffffff');
     picture.material.needsUpdate = true; pictureTextures.push(t);
@@ -313,18 +296,21 @@ deities.forEach((d, index) => {
     picture.scale.x = Math.min(1, (isAltar ? 3.7 : 3.4) * aspect / (isAltar ? 7 : 2.35));
   }, undefined, () => {});
   const plaque = label(deityName(d), isAltar ? 3.4 : 2.4);
-  plaque.position.set(0, isAltar ? .94 : .46, isAltar ? 2.3 : 1.1); root.add(plaque);
+  plaque.position.set(0, isAltar ? .94 : .69, isAltar ? 2.3 : 2.2); root.add(plaque);
   picture.userData.index = plaque.userData.index = index;
   clickTargets.push(picture, plaque);
   const ring = new THREE.Mesh(new THREE.RingGeometry(.2, .23, 40), glow);
-  ring.rotation.x = -Math.PI / 2; ring.position.set(isAltar ? 0 : side * 3.5, .025, isAltar ? -39 : z);
+  ring.rotation.x = -Math.PI / 2; ring.position.set(isAltar ? 0 : side * 3.5, .025, isAltar ? hall.altar + 10 : z);
   ring.userData.index = index; scene.add(ring); clickTargets.push(ring);
-  stations.push({ root, picture, index, data: d, isAltar, state: 'idle', model: null, lastUsed: 0, target: new THREE.Vector3(isAltar ? 0 : side * 1.1, isAltar ? 2.7 : 2.5, isAltar ? -36 : z + .5) });
+  stations.push({ root, picture, index, data: d, isAltar, state: 'idle', model: null, lastUsed: 0, target: new THREE.Vector3(isAltar ? 0 : side * (hall.statueX - 8.5), isAltar ? 2.7 : 2.5, isAltar ? hall.altar + 13 : z) });
 });
 // A deliberately small number of lights keeps the prototype usable on laptops.
-for (const z of [3, -14, -30, -44]) {
-  const light = new THREE.PointLight('#ffbb78', 38, 16, 2); light.position.set(0, 5.1, z); scene.add(light);
+for (const z of deityRows.filter((_, i) => i % 2 === 0)) {
+  const light = new THREE.PointLight('#ffbb78', 55, 28, 2); light.position.set(0, 7, z); scene.add(light);
 }
+
+const roofLight = new THREE.HemisphereLight('#f2e2bb', '#73604d', 1.2);
+scene.add(roofLight);
 
 function fit(root, maxHeight, maxWidth, maxDepth, ground) {
   const bounds = new THREE.Box3().setFromObject(root);
@@ -345,7 +331,7 @@ function disposeModel(root) {
   geometries.forEach(g => g.dispose()); materials.forEach(m => m.dispose());
   textures.forEach(t => { t.dispose(); t.source?.data?.close?.(); });
 }
-let selected = -1, loading = false, rotationEnabled = false, active = false;
+let selected = -1, loading = 0, rotationEnabled = false, active = false;
 let desired = null, yaw = 0, pitch = -.04;
 const keys = new Set();
 const queue = new Set();
@@ -370,16 +356,13 @@ function requestModel(index) {
   if (s.state === 'idle') { queue.add(index); pump(); }
 }
 async function pump() {
-  if (loading || !queue.size) return;
-  const index = queue.has(selected) ? selected : queue.values().next().value;
+  if (loading >= 2 || !queue.size) return;
+  const index = queue.has(selected) ? selected : [...queue].sort((a, b) => stations[a].target.distanceToSquared(camera.position) - stations[b].target.distanceToSquared(camera.position))[0];
   queue.delete(index); const s = stations[index];
   if (s.state !== 'idle') { pump(); return; }
-  loading = true; s.state = 'loading'; updateStatus();
+  loading++; s.state = 'loading'; updateStatus();
   try {
-    const repaired = ['华光大世子','金龙太子','长郡主','哪吒','小太子'];
-    const displayPath = repaired.includes(s.data.name)
-      ? `assets/temple-fullres/${s.data.name}.glb`
-      : s.data.name === '七爷' ? 'assets/实时渲染模型/七爷动作.glb' : s.data.model;
+    const displayPath = `assets/temple-models/${s.data.model.split('/').pop()}`;
     const gltf = await loader.loadAsync(displayPath);
     const model = gltf.scene;
     // The original five scans face -X; current Tripo humanoid exports face +Z.
@@ -387,19 +370,19 @@ async function pump() {
     model.rotation.y = s.data.rotationY ?? (scans.includes(s.data.name) ? -Math.PI / 2 : 0);
     s.pose = applyRelaxedPose(model,s.data.name);
     const child = ['孩儿弟','小太子'].includes(s.data.name);
-    fit(model, s.isAltar ? 4.2 : child ? 3.8*2/3 : 3.8, s.isAltar ? 8 : child ? Infinity : 3.15, s.isAltar ? 3.5 : child ? Infinity : 2.5, s.isAltar ? 1.2 : .72);
+    fit(model, s.isAltar ? 6.3 : child ? 3.8 : 5.7, s.isAltar ? 12 : child ? Infinity : 4.725, s.isAltar ? 5.25 : child ? Infinity : 3.75, s.isAltar ? 1.2 : 1.08);
+    s.bounds = new THREE.Box3().setFromObject(model).getSize(new THREE.Vector3()).toArray();
     const pivot = new THREE.Group(); pivot.add(model); s.root.add(pivot); s.model = pivot;
     pivot.traverse(o => { if (o.isMesh) { o.userData.index = index; clickTargets.push(o); } });
     s.picture.visible = false; s.state = 'ready'; s.lastUsed = performance.now();
   } catch (error) { console.error('Deity model failed:', s.data.name, error); s.state = 'error'; }
-  loading = false; updateStatus(); pump();
+  loading--; updateStatus(); pump();
 }
 async function replaceProps() {
   for (const [type, config] of Object.entries(templeProps)) {
     if (!config.model) continue;
     try {
-      const originals = {lantern:'六角宫灯',banner:'垂挂绣幡',curtain:'主坛帷幔',plinth:'雕花底座',lattice:'木雕花格屏'};
-      const gltf = await loader.loadAsync(`assets/temple-props/source/${originals[type]}.glb`);
+      const gltf = await loader.loadAsync(config.model);
       gltf.scene.rotation.y = config.rotationY || 0;
       fit(gltf.scene, config.height, Infinity, Infinity, 0);
       // Architectural fittings have fixed openings and top elevations.
@@ -423,16 +406,20 @@ async function replaceProps() {
     } catch (e) { console.warn('Prop placeholder retained:', type, e); }
   }
 }
-replaceProps();
 
-function start() { active = true; const intro = $('intro'); if (intro) intro.hidden = true; }
+function start() { active = true; }
 function select(index) {
   start(); selected = (index + stations.length) % stations.length;
   const s = stations[selected];
   const destination = s.target.clone();
-  if (s.isAltar) destination.z = s.root.position.z + Math.max(9, 4.8 / (Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.aspect));
-  else if (innerWidth < 700) destination.x = 0;
-  desired = { position: destination, look: new THREE.Vector3(s.root.position.x, 2.65, s.root.position.z) };
+  if (s.isAltar) destination.z = s.root.position.z + Math.max(17, 7 / (Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.aspect));
+  else {
+    const size = s.bounds || [4.725, 5.7, 3.75];
+    const halfFov = THREE.MathUtils.degToRad(camera.fov / 2);
+    const distance = Math.max(8.5, size[1] * .7 / Math.tan(halfFov), size[0] * .65 / (Math.tan(halfFov) * camera.aspect));
+    destination.x = Math.sign(s.root.position.x) * Math.max(0, hall.statueX - distance);
+  }
+  desired = { position: destination, look: new THREE.Vector3(s.root.position.x, s.isAltar ? 6 : 3.45, s.root.position.z) };
   $('story').open = innerWidth > 700;
   $('detail').hidden = false; $('directory').hidden = true;
   $('detailName').textContent = deityName(s.data);
@@ -460,7 +447,7 @@ $('previous').onclick = () => select(selected < 0 ? 0 : selected - 1);
 $('next').onclick = () => select(selected + 1);
 $('altar').onclick = () => select(stations.length - 1);
 $('home').onclick = () => {
-  start(); desired = { position: new THREE.Vector3(0, 2.5, 10), look: new THREE.Vector3(0, 2.5, -40) };
+  start(); desired = { position: new THREE.Vector3(0, 2.5, 3.8), look: new THREE.Vector3(0, 2.5, -40) };
   selected = -1; $('detail').hidden = true; $('directory').hidden = true; $('zone').textContent = ui('入殿门庭', 'Entrance Hall'); rotationEnabled = false;
 };
 $('rotate').onclick = () => { rotationEnabled = !rotationEnabled; $('rotate').textContent = rotationEnabled ? ui('停止旋转', 'Stop rotating') : ui('旋转神像', 'Rotate figure'); };
@@ -468,7 +455,7 @@ $('retry').onclick = () => { if (selected >= 0) { stations[selected].state = 'id
 
 let pointer = null;
 renderer.domElement.addEventListener('pointerdown', e => {
-  if ($('help').open) return;
+  if (entrance.active || $('help').open) return;
   renderer.domElement.focus(); renderer.domElement.setPointerCapture(e.pointerId);
   pointer = { x: e.clientX, y: e.clientY, lastX: e.clientX, lastY: e.clientY, moved: false };
 });
@@ -494,7 +481,7 @@ renderer.domElement.addEventListener('pointercancel', () => pointer = null);
 const movementKeys = { KeyW: 'forward', ArrowUp: 'forward', KeyS: 'back', ArrowDown: 'back', KeyA: 'left', ArrowLeft: 'left', KeyD: 'right', ArrowRight: 'right' };
 addEventListener('keydown', e => {
   if (e.code === 'Escape') { $('detail').hidden = true; $('directory').hidden = true; keys.clear(); }
-  if (movementKeys[e.code] && !$('help').open && !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
+  if (!entrance.active && movementKeys[e.code] && !$('help').open && !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
     e.preventDefault(); start(); desired = null; keys.add(movementKeys[e.code]);
   }
 });
@@ -518,6 +505,7 @@ function animate(time) {
   requestAnimationFrame(animate);
   const dt = Math.min((time - previousTime) / 1000, .045); previousTime = time;
   if (document.hidden) return;
+  entrance.update(dt);
   if (desired) {
     const alpha = reducedMotion ? 1 : 1 - Math.exp(-dt * 4);
     camera.position.lerp(desired.position, alpha);
@@ -533,23 +521,31 @@ function animate(time) {
     camera.position.x += (-Math.sin(yaw) * f + Math.cos(yaw) * r) * dt * 4 / norm;
     camera.position.z += (-Math.cos(yaw) * f - Math.sin(yaw) * r) * dt * 4 / norm;
     // Keep visitors within the clear central aisle and in front of the altar steps.
-    camera.position.x = THREE.MathUtils.clamp(camera.position.x, -4.1, 4.1);
-    camera.position.z = THREE.MathUtils.clamp(camera.position.z, -39, 11);
+    camera.position.x = THREE.MathUtils.clamp(camera.position.x, -hall.walkLimit, hall.walkLimit);
+    camera.position.z = THREE.MathUtils.clamp(camera.position.z, hall.altar + 8, 11);
   }
   camera.rotation.set(pitch, yaw, 0, 'YXZ');
   if (rotationEnabled && stations[selected]?.model) stations[selected].model.rotation.y += dt * .3;
   nearbyCheck += dt;
-  if (nearbyCheck > 1.5 && active && !desired && selected < 0) {
+  if (nearbyCheck > .75 && active) {
     nearbyCheck = 0;
-    const closest = stations.filter(s => s.target.distanceTo(camera.position) < 7).sort((a, b) => a.target.distanceTo(camera.position) - b.target.distanceTo(camera.position));
-    if (closest[0]) { requestModel(closest[0].index); $('zone').textContent = stageName(closest[0].data.stage); }
+    const closest = stations.filter(s => s.target.distanceTo(desired?.position || camera.position) < 24).sort((a, b) => a.target.distanceTo(camera.position) - b.target.distanceTo(camera.position));
+    if (closest[0]) { closest.slice(0, 4).forEach(s => requestModel(s.index)); if (selected < 0) $('zone').textContent = stageName(closest[0].data.stage); }
   }
   renderer.render(scene, camera);
 }
+const entrance = createEntrance({ scene, camera, box, wood, gold, stone, ui, reducedMotion,
+  readiness: () => ({ ready: stations.slice(0, 4).filter(s => s.state === 'ready').length,
+    settled: stations.slice(0, 4).filter(s => ['ready', 'error'].includes(s.state)).length, total: 4 }),
+  onComplete: () => {
+    active = true; keys.clear(); renderer.domElement.focus(); replaceProps();
+    // Keep the entrance priority, then finish the hall without requiring every bay to be visited.
+    stations.forEach(s => requestModel(s.index));
+  }
+});
 requestAnimationFrame(animate);
 updateStatus();
-// Populate every bay with its GLB. Selection takes priority, but does not cancel
-// the background queue. Lightweight derivatives stay resident after loading.
-for (const index of [0,1,stations.length-1,...stations.map(s=>s.index)]) requestModel(index);
+// Reserve bandwidth for the first two bays; other figures load near the visitor.
+for (const index of [0, 1, 2, 3]) requestModel(index);
 // Read-only diagnostics used to verify navigation and progressive model loading.
-window.templeDiagnostics = () => ({ models: stations.map(s => ({ name: s.data.name, state: s.state, pose:s.pose })), resident: stations.filter(s => s.model).length, selected, position: camera.position.toArray(), drawCalls: renderer.info.render.calls, triangles: renderer.info.render.triangles, props: Object.fromEntries([...propInstances].map(([k, v]) => [k, {count:v.length,loaded:v.filter(i=>i.root.userData.asset).length}])) });
+window.templeDiagnostics = () => ({ entrance: entrance.active, loading, queued: [...queue], models: stations.map(s => ({ name: s.data.name, state: s.state, pose:s.pose, bounds:s.bounds, position:s.root.position.toArray() })), resident: stations.filter(s => s.model).length, selected, position: camera.position.toArray(), drawCalls: renderer.info.render.calls, triangles: renderer.info.render.triangles, props: Object.fromEntries([...propInstances].map(([k, v]) => [k, {count:v.length,loaded:v.filter(i=>i.root.userData.asset).length}])) });

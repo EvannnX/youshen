@@ -1,0 +1,625 @@
+[
+  {
+    "source": "assets/神殿模型/保长公.glb",
+    "output": "assets/temple-models/保长公.glb",
+    "target": 60000,
+    "texture": 1024,
+    "inputBytes": 56178692,
+    "outputBytes": 1799956,
+    "inputTriangles": 1918021,
+    "outputTriangles": 59999,
+    "skins": 0,
+    "bounds": {
+      "min": [
+        -0.2159576416015625,
+        -0.49090576171875,
+        -0.260955810546875
+      ],
+      "max": [
+        0.2171173095703125,
+        0.49151611328125,
+        0.260894775390625
+      ]
+    }
+  },
+  {
+    "source": "assets/神殿模型/马夫.glb",
+    "output": "assets/temple-models/马夫.glb",
+    "target": 60000,
+    "texture": 1024,
+    "inputBytes": 29617916,
+    "outputBytes": 1764544,
+    "inputTriangles": 979298,
+    "outputTriangles": 59998,
+    "skins": 0,
+    "bounds": {
+      "min": [
+        -0.228973388671875,
+        -0.5,
+        -0.1898651123046875
+      ],
+      "max": [
+        0.228973388671875,
+        0.499908447265625,
+        0.1898345947265625
+      ]
+    }
+  },
+  {
+    "source": "assets/神殿模型/赵世子.glb",
+    "output": "assets/temple-models/赵世子.glb",
+    "target": 60000,
+    "texture": 1024,
+    "inputBytes": 57805824,
+    "outputBytes": 2020000,
+    "inputTriangles": 1916490,
+    "outputTriangles": 59997,
+    "skins": 0,
+    "bounds": {
+      "min": [
+        -0.1532745361328125,
+        -0.48876953125,
+        -0.2278900146484375
+      ],
+      "max": [
+        0.1542816162109375,
+        0.48919677734375,
+        0.2285919189453125
+      ]
+    }
+  },
+  {
+    "source": "assets/神殿模型/张大世子.glb",
+    "output": "assets/temple-models/张大世子.glb",
+    "target": 60000,
+    "texture": 1024,
+    "inputBytes": 58387584,
+    "outputBytes": 1970644,
+    "inputTriangles": 1952085,
+    "outputTriangles": 60000,
+    "skins": 0,
+    "bounds": {
+      "min": [
+        -0.1142578125,
+        -0.489013671875,
+        -0.1947784423828125
+      ],
+      "max": [
+        0.11492919921875,
+        0.488800048828125,
+        0.195220947265625
+      ]
+    }
+  },
+  {
+    "source": "assets/神殿模型/张二世子.glb",
+    "output": "assets/temple-models/张二世子.glb",
+    "target": 60000,
+    "texture": 1024,
+    "inputBytes": 57630012,
+    "outputBytes": 1956488,
+    "inputTriangles": 1930257,
+    "outputTriangles": 59999,
+    "skins": 0,
+    "bounds": {
+      "min": [
+        -0.1345062255859375,
+        -0.48974609375,
+        -0.1975860595703125
+      ],
+      "max": [
+        0.13433837890625,
+        0.490020751953125,
+        0.196533203125
+      ]
+    }
+  },
+  {
+    "source": "assets/神殿模型/孩儿弟.glb",
+    "output": "assets/temple-models/孩儿弟.glb",
+    "target": 60000,
+    "texture": 1024,
+    "inputBytes": 11640656,
+    "outputBytes": 3021132,
+    "inputTriangles": 99979,
+    "outputTriangles": 59998,
+    "skins": 1,
+    "bounds": {
+      "min": [
+        -0.3634336590766907,
+        0.00003057997673749924,
+        -0.1689606010913849
+      ],
+      "max": [
+        0.3634337782859802,
+        0.95037841796875,
+        0.1689453125
+      ]
+    }
+  },
+  {
+    "source": "assets/神殿模型/文状元.glb",
+    "output": "assets/temple-models/文状元.glb",
+    "target": 60000,
+    "texture": 1024,
+    "inputBytes": 12944816,
+    "outputBytes": 3287256,
+    "inputTriangles": 99980,
+    "outputTriangles": 59999,
+    "skins": 1,
+    "bounds": {
+      "min": [
+        -0.344482421875,
+        3.834275048575364e-7,
+        -0.12858574092388153
+      ],
+      "max": [
+        0.34451305866241455,
+        0.9792479872703552,
+        0.1285858303308487
+      ]
+    }
+  },
+  {
+    "source": "assets/神殿模型/八爷.glb",
+    "output": "assets/temple-models/八爷.glb",
+    "target": 60000,
+    "texture": 1024,
+    "inputBytes": 13427628,
+    "outputBytes": 3333072,
+    "inputTriangles": 99980,
+    "outputTriangles": 59994,
+    "skins": 1,
+    "bounds": {
+      "min": [
+        -0.3851012885570526,
+        -1.5573940004287579e-7,
+        -0.12750244140625
+      ],
+      "max": [
+        0.38510140776634216,
+        0.9797973036766052,
+        0.12750244140625
+      ]
+    }
+  },
+  {
+    "source": "assets/神殿模型/马元帅.glb",
+    "output": "assets/temple-models/马元帅.glb",
+    "target": 60000,
+    "texture": 1024,
+    "inputBytes": 13190464,
+    "outputBytes": 3332256,
+    "inputTriangles": 99980,
+    "outputTriangles": 59994,
+    "skins": 1,
+    "bounds": {
+      "min": [
+        -0.38488760590553284,
+        3.2375282899010926e-8,
+        -0.10819242894649506
+      ],
+      "max": [
+        0.3849182426929474,
+        0.9788819551467896,
+        0.10797879099845886
+      ]
+    }
+  },
+  {
+    "source": "assets/神殿模型/温元帅.glb",
+    "output": "assets/temple-models/温元帅.glb",
+    "target": 60000,
+    "texture": 1024,
+    "inputBytes": 16620760,
+    "outputBytes": 2702424,
+    "inputTriangles": 97136,
+    "outputTriangles": 60000,
+    "skins": 1,
+    "bounds": {
+      "min": [
+        -0.395263671875,
+        0.00009157904423773289,
+        -0.11338039487600327
+      ],
+      "max": [
+        0.3952942490577698,
+        0.97662353515625,
+        0.11344148963689804
+      ]
+    }
+  },
+  {
+    "source": "assets/神殿模型/康元帅.glb",
+    "output": "assets/temple-models/康元帅.glb",
+    "target": 60000,
+    "texture": 1024,
+    "inputBytes": 22649384,
+    "outputBytes": 2891156,
+    "inputTriangles": 96620,
+    "outputTriangles": 59998,
+    "skins": 1,
+    "bounds": {
+      "min": [
+        -0.4320372939109802,
+        -8.144706953316927e-8,
+        -0.1377868354320526
+      ],
+      "max": [
+        0.4320371747016907,
+        0.9810182452201843,
+        0.13778679072856903
+      ]
+    }
+  },
+  {
+    "source": "assets/神殿模型/关帝.glb",
+    "output": "assets/temple-models/关帝.glb",
+    "target": 60000,
+    "texture": 1024,
+    "inputBytes": 68775812,
+    "outputBytes": 6384888,
+    "inputTriangles": 1831615,
+    "outputTriangles": 153903,
+    "skins": 0,
+    "bounds": {
+      "min": [
+        -0.3229370415210724,
+        0.000030517578125,
+        -0.19085697829723358
+      ],
+      "max": [
+        0.3225403428077698,
+        0.979156494140625,
+        0.1910400539636612
+      ]
+    }
+  },
+  {
+    "source": "assets/神殿模型/白马尊王.glb",
+    "output": "assets/temple-models/白马尊王.glb",
+    "target": 60000,
+    "texture": 1024,
+    "inputBytes": 65960192,
+    "outputBytes": 4026964,
+    "inputTriangles": 1831596,
+    "outputTriangles": 94419,
+    "skins": 0,
+    "bounds": {
+      "min": [
+        -0.2897643893957138,
+        0.000030517578125,
+        -0.2182617038488388
+      ],
+      "max": [
+        0.2890319973230362,
+        0.979736328125,
+        0.21900944411754608
+      ]
+    }
+  },
+  {
+    "source": "assets/神殿模型/福州城隍.glb",
+    "output": "assets/temple-models/福州城隍.glb",
+    "target": 60000,
+    "texture": 1024,
+    "inputBytes": 70186716,
+    "outputBytes": 5474216,
+    "inputTriangles": 1880122,
+    "outputTriangles": 134466,
+    "skins": 0,
+    "bounds": {
+      "min": [
+        -0.3034973442554474,
+        0,
+        -0.20947270095348358
+      ],
+      "max": [
+        0.3026428520679474,
+        0.977752685546875,
+        0.2105712890625
+      ]
+    }
+  },
+  {
+    "source": "assets/神殿模型/五福大帝群像.glb",
+    "output": "assets/temple-models/五福大帝群像.glb",
+    "target": 60000,
+    "texture": 1024,
+    "inputBytes": 64562336,
+    "outputBytes": 2290068,
+    "inputTriangles": 1778006,
+    "outputTriangles": 59998,
+    "skins": 0,
+    "bounds": {
+      "min": [
+        -0.4902801513671875,
+        0.00003053247928619385,
+        -0.09573744237422943
+      ],
+      "max": [
+        0.4900970458984375,
+        0.456298828125,
+        0.09570693969726562
+      ]
+    }
+  },
+  {
+    "source": "assets/temple-props/source/六角宫灯.glb",
+    "output": "assets/temple-props/lantern.glb",
+    "target": 18000,
+    "texture": 1024,
+    "inputBytes": 15247304,
+    "outputBytes": 1074660,
+    "inputTriangles": 89708,
+    "outputTriangles": 17999,
+    "skins": 0,
+    "bounds": {
+      "min": [
+        -0.2817840576171875,
+        0,
+        -0.24554443359375
+      ],
+      "max": [
+        0.2820587158203125,
+        0.97955322265625,
+        0.24554443359375
+      ]
+    }
+  },
+  {
+    "source": "assets/temple-props/source/垂挂绣幡.glb",
+    "output": "assets/temple-props/banner.glb",
+    "target": 18000,
+    "texture": 1024,
+    "inputBytes": 19748980,
+    "outputBytes": 1181916,
+    "inputTriangles": 95703,
+    "outputTriangles": 18000,
+    "skins": 0,
+    "bounds": {
+      "min": [
+        -0.200225830078125,
+        0,
+        -0.03986358642578125
+      ],
+      "max": [
+        0.200225830078125,
+        0.978302001953125,
+        0.040607452392578125
+      ]
+    }
+  },
+  {
+    "source": "assets/temple-props/source/主坛帷幔.glb",
+    "output": "assets/temple-props/curtain.glb",
+    "target": 18000,
+    "texture": 1024,
+    "inputBytes": 14383308,
+    "outputBytes": 926312,
+    "inputTriangles": 97694,
+    "outputTriangles": 17998,
+    "skins": 0,
+    "bounds": {
+      "min": [
+        -0.4910430908203125,
+        0.000152587890625,
+        -0.09204106032848358
+      ],
+      "max": [
+        0.4905548393726349,
+        0.614471435546875,
+        0.09204106032848358
+      ]
+    }
+  },
+  {
+    "source": "assets/temple-props/source/雕花底座.glb",
+    "output": "assets/temple-props/plinth.glb",
+    "target": 18000,
+    "texture": 1024,
+    "inputBytes": 15017036,
+    "outputBytes": 893908,
+    "inputTriangles": 86386,
+    "outputTriangles": 18000,
+    "skins": 0,
+    "bounds": {
+      "min": [
+        -0.48992919921875,
+        0.000091552734375,
+        -0.3693847060203552
+      ],
+      "max": [
+        0.4896546006202698,
+        0.2607116401195526,
+        0.3697203993797302
+      ]
+    }
+  },
+  {
+    "source": "assets/temple-props/source/木雕花格屏.glb",
+    "output": "assets/temple-props/lattice.glb",
+    "target": 18000,
+    "texture": 1024,
+    "inputBytes": 11843808,
+    "outputBytes": 1232836,
+    "inputTriangles": 73359,
+    "outputTriangles": 18000,
+    "skins": 0,
+    "bounds": {
+      "min": [
+        -0.3595580756664276,
+        0.000030547380447387695,
+        -0.028940239921212196
+      ],
+      "max": [
+        0.3597716987133026,
+        0.97674560546875,
+        0.028839070349931717
+      ]
+    }
+  },
+  {
+    "source": "assets/实时渲染模型/七爷动作.glb",
+    "output": "assets/temple-models/七爷.glb",
+    "target": 60000,
+    "texture": 1024,
+    "inputBytes": 78285232,
+    "outputBytes": 3096000,
+    "inputTriangles": 1756019,
+    "outputTriangles": 59999,
+    "skins": 1,
+    "bounds": {
+      "min": [
+        -0.09571804851293564,
+        -4.715244870112656e-7,
+        -0.4154970049858093
+      ],
+      "max": [
+        0.09570316225290298,
+        0.9779051542282104,
+        0.4154970645904541
+      ]
+    }
+  },
+  {
+    "source": "assets/神殿模型/华光大世子.glb",
+    "output": "assets/temple-models/华光大世子.glb",
+    "target": 60000,
+    "texture": 1024,
+    "skinRepair": {
+      "repaired": true,
+      "rootOnlyFraction": 0.9998637393333447,
+      "repairedVertices": 10808
+    },
+    "inputBytes": 12114108,
+    "outputBytes": 3111444,
+    "inputTriangles": 99979,
+    "outputTriangles": 59997,
+    "skins": 1,
+    "bounds": {
+      "min": [
+        -0.415771484375,
+        0,
+        -0.1274871826171875
+      ],
+      "max": [
+        0.415771484375,
+        0.9797972440719604,
+        0.1274871826171875
+      ]
+    }
+  },
+  {
+    "source": "assets/神殿模型/长郡主.glb",
+    "output": "assets/temple-models/长郡主.glb",
+    "target": 60000,
+    "texture": 1024,
+    "skinRepair": {
+      "repaired": true,
+      "rootOnlyFraction": 0.9988907014681893,
+      "repairedVertices": 8647
+    },
+    "inputBytes": 13178188,
+    "outputBytes": 3272968,
+    "inputTriangles": 99979,
+    "outputTriangles": 60000,
+    "skins": 1,
+    "bounds": {
+      "min": [
+        -0.40411376953125,
+        0.00006104446947574615,
+        -0.1345062255859375
+      ],
+      "max": [
+        0.40411376953125,
+        0.9797975420951843,
+        0.1345062255859375
+      ]
+    }
+  },
+  {
+    "source": "assets/神殿模型/金龙太子.glb",
+    "output": "assets/temple-models/金龙太子.glb",
+    "target": 60000,
+    "texture": 1024,
+    "skinRepair": {
+      "repaired": true,
+      "rootOnlyFraction": 0.9992412256627168,
+      "repairedVertices": 7392
+    },
+    "inputBytes": 13220812,
+    "outputBytes": 3381944,
+    "inputTriangles": 99980,
+    "outputTriangles": 59992,
+    "skins": 1,
+    "bounds": {
+      "min": [
+        -0.4190216064453125,
+        0,
+        -0.1387939453125
+      ],
+      "max": [
+        0.4190216064453125,
+        0.9772950410842896,
+        0.1387786567211151
+      ]
+    }
+  },
+  {
+    "source": "assets/神殿模型/哪吒.glb",
+    "output": "assets/temple-models/哪吒.glb",
+    "target": 60000,
+    "texture": 1024,
+    "skinRepair": {
+      "repaired": true,
+      "rootOnlyFraction": 0.9996263650413546,
+      "repairedVertices": 7120
+    },
+    "inputBytes": 12537680,
+    "outputBytes": 3201584,
+    "inputTriangles": 99992,
+    "outputTriangles": 60000,
+    "skins": 1,
+    "bounds": {
+      "min": [
+        -0.4674072265625,
+        0,
+        -0.1347808837890625
+      ],
+      "max": [
+        0.4674072265625,
+        0.9796143770217896,
+        0.1347808837890625
+      ]
+    }
+  },
+  {
+    "source": "assets/神殿模型/小太子.glb",
+    "output": "assets/temple-models/小太子.glb",
+    "target": 60000,
+    "texture": 1024,
+    "skinRepair": {
+      "repaired": true,
+      "rootOnlyFraction": 0.9987189827774351,
+      "repairedVertices": 5629
+    },
+    "inputBytes": 12769540,
+    "outputBytes": 3381400,
+    "inputTriangles": 99980,
+    "outputTriangles": 59996,
+    "skins": 1,
+    "bounds": {
+      "min": [
+        -0.347808837890625,
+        0.00003054767148569226,
+        -0.12310791015625
+      ],
+      "max": [
+        0.347808837890625,
+        0.9817503690719604,
+        0.12310791015625
+      ]
+    }
+  }
+]
