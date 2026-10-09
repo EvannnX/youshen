@@ -8,6 +8,35 @@ import { templeMaterial } from './temple-materials.js';
 
 const $ = id => document.getElementById(id);
 const isEnglish = new URLSearchParams(location.search).get('lang') === 'en';
+const templeAudio = $('templeAudio');
+const audioToggle = $('audioToggle');
+templeAudio.volume = 0.32;
+
+function syncAudioControl() {
+  const playing = !templeAudio.paused;
+  audioToggle.setAttribute('aria-pressed', String(playing));
+  audioToggle.textContent = isEnglish ? (playing ? 'Sound on' : 'Sound off') : (playing ? '音乐开' : '音乐关');
+  audioToggle.setAttribute('aria-label', isEnglish
+    ? (playing ? 'Pause temple music' : 'Play temple music')
+    : (playing ? '关闭神殿音乐' : '播放神殿音乐'));
+}
+
+function beginTempleMusic() {
+  // Do not wait for loadeddata or canplaythrough. The browser may begin as soon
+  // as it has enough of the M4A stream, while the remainder continues loading.
+  templeAudio.play().catch(() => syncAudioControl());
+}
+
+templeAudio.addEventListener('play', syncAudioControl);
+templeAudio.addEventListener('pause', syncAudioControl);
+audioToggle.addEventListener('click', () => {
+  if (templeAudio.paused) beginTempleMusic();
+  else templeAudio.pause();
+});
+for (const eventName of ['pointerdown', 'keydown', 'touchstart']) {
+  addEventListener(eventName, beginTempleMusic, { once: true, passive: true });
+}
+beginTempleMusic();
 const englishNames = {
   '保长公': 'Procession Leader', '马夫': 'Horse Handler', '赵世子': 'Prince Zhao',
   '张大世子': 'Elder Prince Zhang', '张二世子': 'Second Prince Zhang', '华光大世子': 'Prince Huaguang',

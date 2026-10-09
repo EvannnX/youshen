@@ -6,15 +6,19 @@
   <meta name="theme-color" content="#140e0b">
   <title>巡境入殿 — 游神</title>
   <link rel="stylesheet" href="temple-space.css?v=original-1">
+  <link rel="stylesheet" href="temple-audio.css?v=20261009-1">
   <link rel="stylesheet" href="temple-minimal.css">
   <script type="importmap">{"imports":{"three":"./assets/vendor/three/three.module.js","three/addons/":"./assets/vendor/three/addons/"}}</script>
 </head>
 <body>
+  <audio id="templeAudio" preload="auto" autoplay loop playsinline>
+    <source src="assets/audio/temple-ambient.m4a" type="audio/mp4">
+  </audio>
   <div id="scene" aria-label="可交互的游神三维展厅"></div>
   <div class="vignette" aria-hidden="true"></div>
   <header class="topbar">
     <a href="index.html" class="brand">游神<span>YÓUSHÉN</span></a>
-    <nav><a href="temple-text.html#sanctum">图文神殿</a><button id="helpOpen" aria-label="操作指南">?</button></nav>
+    <nav><a href="temple-text.html#sanctum">图文神殿</a><button id="audioToggle" aria-label="关闭神殿音乐" aria-pressed="true">音</button><button id="helpOpen" aria-label="操作指南">?</button></nav>
   </header>
   <aside class="detail" id="detail" hidden aria-label="当前神像详情"><button id="detailClose" class="close" aria-label="关闭详情">×</button><span class="eyebrow" id="detailStage"></span><h2 id="detailName"></h2><details id="story" open><summary>神明故事</summary><p id="detailDesc"></p><small>本空间采用策展顺序，各地仪式队序有所不同。</small></details><div id="modelStatus" role="status"></div><div class="detail-actions"><button id="rotate">旋转神像</button><button id="retry" hidden>重新加载</button><a id="classicLink" href="temple.html#sanctum">图文观像 ↗</a></div></aside>
   <aside class="directory" id="directory" hidden><div class="drawer-title"><h2>神位索引</h2><button id="directoryClose" aria-label="关闭神位索引">×</button></div><div id="deityList"></div></aside>
@@ -25,7 +29,7 @@
   <div id="fatal" class="fatal" hidden><h2>暂时无法开启三维神殿</h2><p id="fatalMessage">请使用支持 WebGL 的浏览器访问。</p><a href="temple-text.html#sanctum">进入图文神殿 ↗</a></div>
   <noscript><div class="fatal">请启用 JavaScript，或<a href="temple-text.html#sanctum">进入图文神殿</a>。</div></noscript>
   <script type="module">
-    import('./temple-space.js?v=20260923-en-1').catch(error => {
+    import('./temple-space.js?v=20261009-audio-1').catch(error => {
       console.error(error);
       document.getElementById('fatal').hidden = false;
       if (location.protocol === 'file:') document.getElementById('fatalMessage').textContent = new URLSearchParams(location.search).get('lang') === 'en'

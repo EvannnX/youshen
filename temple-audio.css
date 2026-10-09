@@ -1,0 +1,9 @@
+#audioToggle {
+  font: 12px/1 "Songti SC", serif;
+  color: #e8c687;
+}
+
+#audioToggle[aria-pressed="false"] {
+  color: #887a6b;
+  border-color: #6f5d4c;
+}
